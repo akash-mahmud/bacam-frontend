@@ -1,0 +1,55 @@
+mutation Register($input: CreateOneUserArgsCustom!) {
+  register(input: $input) {
+    __typename
+    message
+    success
+  }
+}
+
+query Me {
+  me {
+    id
+    firstname
+    lastname
+    email
+    phoneNumber
+    avater
+  }
+}
+
+mutation Login($password: String!, $email: String!) {
+  login(password: $password, email: $email) {
+    accessToken
+    isAuthenticated
+    message
+    success
+    user {
+      id
+            firstname
+      lastname
+      email
+      role
+      status
+    }
+  }
+}
+
+# mutation AddPaymentMethod($token: String!) {
+#   addPaymentMethod(token: $token)
+# }
+
+# mutation EmailVerification($token: String!) {
+#   emailVerification(token: $token)
+# }
+
+mutation RefreshToken {
+  refreshToken
+}
+
+
+mutation UpdateProfile($input: UpdateOneUserArgsCustom!, $passwordInput: UpdateProfilePaswordArgs!) {
+  updateProfile(input: $input, passwordInput: $passwordInput) {
+    message
+    success
+  }
+}

@@ -1,0 +1,29 @@
+query Products($where: ProductWhereInput, $orderBy: [ProductOrderByWithRelationInput!], $cursor: ProductWhereUniqueInput, $take: Int, $skip: Int, $distinct: [ProductScalarFieldEnum!]) {
+  products(where: $where, orderBy: $orderBy, cursor: $cursor, take: $take, skip: $skip, distinct: $distinct) {
+
+    id
+    images
+    name
+    price
+    slug
+  }
+}
+
+query Product($where: ProductWhereUniqueInput!, $reveiwsWhere2: ReviewWhereInput) {
+  product(where: $where) {
+    _count {
+      reveiws(where: $reveiwsWhere2)
+    }
+    category {
+      name
+      slug
+    }
+    id
+    description
+    images
+    name
+    price
+    orderStartPrice
+    slug
+  }
+}

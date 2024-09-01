@@ -1,0 +1,21 @@
+query MyOrders($where: OrderWhereInput, $orderBy: [OrderOrderByWithRelationInput!], $cursor: OrderWhereUniqueInput, $take: Int, $skip: Int, $distinct: [OrderScalarFieldEnum!]) {
+  myOrders(where: $where, orderBy: $orderBy, cursor: $cursor, take: $take, skip: $skip, distinct: $distinct) {
+    createdAt
+    id
+    itemsPrePrice
+    itemsPrice
+    status
+    taxPrice
+    totalPrice
+    orderItem {
+      product {
+        id
+        images
+        name
+      }
+      qty
+    }
+    shippingPrice
+    userId
+  }
+}
