@@ -7,7 +7,6 @@ import { usePathname } from 'next/navigation';
 import { Dialog, Transition } from '@headlessui/react';
 import { useModal, MODAL_VIEW } from '@/components/modals/context';
 import Button from '@/components/ui/button';
-import BookNowModal from '../ui/modals/BookNowModal';
 
 // dynamic imports
 const SignIn = dynamic(() => import('@/components/auth/sign-in'));
@@ -34,8 +33,7 @@ function renderModalContent(view: MODAL_VIEW | string) {
       return <ReportListing />;
     case 'CONTACT_HOST':
       return <ContactHost />;
-      case 'BOOK_NOW_MODAL':
-        return <BookNowModal />;
+
 
     case 'SHARE':
       return <ShareModal />;

@@ -9,14 +9,36 @@ import Pagination from '@/components/ui/pagination';
 import Text from '@/components/ui/typography/text';
 import Table from '@/components/ui/table';
 import useAuth from '@/hooks/use-auth';
-import { useMyOrdersQuery } from '@/graphql/generated/schema';
+import { ProductPaymentTypes, useCreateCheckoutSessionMutation, useMyOrdersQuery } from '@/graphql/generated/schema';
 import { OrderReservationCol } from './OrderReservationCol';
-import { Modal } from 'antd';
+import { Modal, Spin } from 'antd';
+import { useStripe } from '@stripe/react-stripe-js';
 
 export default function OrdersTable() {
   const [order, setOrder] = useState<string>('desc');
   const [column, setColumn] = useState<string>('');
   const {user} = useAuth()
+  const [CreateSession , {loading}] = useCreateCheckoutSessionMutation()
+const stripe = useStripe();
+
+const createPaymentSession = async (productId:string, qty:number , orderId:string ) => {
+  const {data} = await CreateSession({
+    variables:{
+      input:{
+        paymentType:ProductPaymentTypes.Totalprice,
+        productId:productId,
+        quantity:qty,
+        orderId:orderId
+      }
+    }
+  })
+
+  if (data?.createCheckoutSession?.id) {
+    stripe?.redirectToCheckout({ sessionId: data?.createCheckoutSession?.id });
+
+  }
+  
+}
   const {data} = useMyOrdersQuery({
  variables:{
 
@@ -48,13 +70,16 @@ export default function OrdersTable() {
         // onChange,
         onMore,
         // onHeaderClick
-        openAddShippingModal
+        openAddShippingModal,
+        createPaymentSession
+
       ),
     [order, column, 
         // onSelectAll,
         //  onChange,
           onMore,
-          openAddShippingModal
+          openAddShippingModal,
+          createPaymentSession
         //  onHeaderClick
         ]
   );
@@ -67,6 +92,8 @@ export default function OrdersTable() {
         </Text>
      
       </div>
+      <Spin spinning={loading}>
+
       <Table 
         data={data?.myOrders??[]}
         columns={columns}
@@ -74,6 +101,7 @@ export default function OrdersTable() {
         className="text-sm w-[80vw] "
 
       />
+      </Spin>
       {/* <div className="mt-8 text-center">
         <Pagination
           current={current}

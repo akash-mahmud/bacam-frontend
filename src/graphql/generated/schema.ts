@@ -448,33 +448,6 @@ export type FloatFilter = {
   notIn?: InputMaybe<Array<Scalars['Float']['input']>>;
 };
 
-export type FloatNullableFilter = {
-  equals?: InputMaybe<Scalars['Float']['input']>;
-  gt?: InputMaybe<Scalars['Float']['input']>;
-  gte?: InputMaybe<Scalars['Float']['input']>;
-  in?: InputMaybe<Array<Scalars['Float']['input']>>;
-  lt?: InputMaybe<Scalars['Float']['input']>;
-  lte?: InputMaybe<Scalars['Float']['input']>;
-  not?: InputMaybe<NestedFloatNullableFilter>;
-  notIn?: InputMaybe<Array<Scalars['Float']['input']>>;
-};
-
-export type FloatNullableWithAggregatesFilter = {
-  _avg?: InputMaybe<NestedFloatNullableFilter>;
-  _count?: InputMaybe<NestedIntNullableFilter>;
-  _max?: InputMaybe<NestedFloatNullableFilter>;
-  _min?: InputMaybe<NestedFloatNullableFilter>;
-  _sum?: InputMaybe<NestedFloatNullableFilter>;
-  equals?: InputMaybe<Scalars['Float']['input']>;
-  gt?: InputMaybe<Scalars['Float']['input']>;
-  gte?: InputMaybe<Scalars['Float']['input']>;
-  in?: InputMaybe<Array<Scalars['Float']['input']>>;
-  lt?: InputMaybe<Scalars['Float']['input']>;
-  lte?: InputMaybe<Scalars['Float']['input']>;
-  not?: InputMaybe<NestedFloatNullableWithAggregatesFilter>;
-  notIn?: InputMaybe<Array<Scalars['Float']['input']>>;
-};
-
 export type FloatWithAggregatesFilter = {
   _avg?: InputMaybe<NestedFloatFilter>;
   _count?: InputMaybe<NestedIntFilter>;
@@ -1120,33 +1093,6 @@ export type NestedFloatFilter = {
   notIn?: InputMaybe<Array<Scalars['Float']['input']>>;
 };
 
-export type NestedFloatNullableFilter = {
-  equals?: InputMaybe<Scalars['Float']['input']>;
-  gt?: InputMaybe<Scalars['Float']['input']>;
-  gte?: InputMaybe<Scalars['Float']['input']>;
-  in?: InputMaybe<Array<Scalars['Float']['input']>>;
-  lt?: InputMaybe<Scalars['Float']['input']>;
-  lte?: InputMaybe<Scalars['Float']['input']>;
-  not?: InputMaybe<NestedFloatNullableFilter>;
-  notIn?: InputMaybe<Array<Scalars['Float']['input']>>;
-};
-
-export type NestedFloatNullableWithAggregatesFilter = {
-  _avg?: InputMaybe<NestedFloatNullableFilter>;
-  _count?: InputMaybe<NestedIntNullableFilter>;
-  _max?: InputMaybe<NestedFloatNullableFilter>;
-  _min?: InputMaybe<NestedFloatNullableFilter>;
-  _sum?: InputMaybe<NestedFloatNullableFilter>;
-  equals?: InputMaybe<Scalars['Float']['input']>;
-  gt?: InputMaybe<Scalars['Float']['input']>;
-  gte?: InputMaybe<Scalars['Float']['input']>;
-  in?: InputMaybe<Array<Scalars['Float']['input']>>;
-  lt?: InputMaybe<Scalars['Float']['input']>;
-  lte?: InputMaybe<Scalars['Float']['input']>;
-  not?: InputMaybe<NestedFloatNullableWithAggregatesFilter>;
-  notIn?: InputMaybe<Array<Scalars['Float']['input']>>;
-};
-
 export type NestedFloatWithAggregatesFilter = {
   _avg?: InputMaybe<NestedFloatFilter>;
   _count?: InputMaybe<NestedIntFilter>;
@@ -1263,14 +1209,6 @@ export type NestedStringWithAggregatesFilter = {
   startsWith?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type NullableFloatFieldUpdateOperationsInput = {
-  decrement?: InputMaybe<Scalars['Float']['input']>;
-  divide?: InputMaybe<Scalars['Float']['input']>;
-  increment?: InputMaybe<Scalars['Float']['input']>;
-  multiply?: InputMaybe<Scalars['Float']['input']>;
-  set?: InputMaybe<Scalars['Float']['input']>;
-};
-
 export type NullableStringFieldUpdateOperationsInput = {
   set?: InputMaybe<Scalars['String']['input']>;
 };
@@ -1291,10 +1229,10 @@ export type Order = {
   orderItem?: Maybe<OrderItem>;
   paymentResult?: Maybe<PaymentResult>;
   shippingAddress?: Maybe<ShippingAddress>;
-  shippingPrice?: Maybe<Scalars['Float']['output']>;
+  shippingPrice: Scalars['Float']['output'];
   status: OrderStatus;
-  taxPrice?: Maybe<Scalars['Float']['output']>;
-  totalPrice?: Maybe<Scalars['Float']['output']>;
+  taxPrice: Scalars['Float']['output'];
+  totalPrice: Scalars['Float']['output'];
   updatedAt: Scalars['DateTime']['output'];
   user: User;
   userId: Scalars['String']['output'];
@@ -1527,10 +1465,10 @@ export type OrderGroupBy = {
   itemsPrePricePaymentSessionId?: Maybe<Scalars['String']['output']>;
   itemsPrice: Scalars['Float']['output'];
   itemsTotalPricePaymentSessionId?: Maybe<Scalars['String']['output']>;
-  shippingPrice?: Maybe<Scalars['Float']['output']>;
+  shippingPrice: Scalars['Float']['output'];
   status: OrderStatus;
-  taxPrice?: Maybe<Scalars['Float']['output']>;
-  totalPrice?: Maybe<Scalars['Float']['output']>;
+  taxPrice: Scalars['Float']['output'];
+  totalPrice: Scalars['Float']['output'];
   updatedAt: Scalars['DateTime']['output'];
   userId: Scalars['String']['output'];
 };
@@ -1915,10 +1853,10 @@ export type OrderOrderByWithAggregationInput = {
   itemsPrePricePaymentSessionId?: InputMaybe<SortOrderInput>;
   itemsPrice?: InputMaybe<SortOrder>;
   itemsTotalPricePaymentSessionId?: InputMaybe<SortOrderInput>;
-  shippingPrice?: InputMaybe<SortOrderInput>;
+  shippingPrice?: InputMaybe<SortOrder>;
   status?: InputMaybe<SortOrder>;
-  taxPrice?: InputMaybe<SortOrderInput>;
-  totalPrice?: InputMaybe<SortOrderInput>;
+  taxPrice?: InputMaybe<SortOrder>;
+  totalPrice?: InputMaybe<SortOrder>;
   updatedAt?: InputMaybe<SortOrder>;
   userId?: InputMaybe<SortOrder>;
 };
@@ -1933,10 +1871,10 @@ export type OrderOrderByWithRelationInput = {
   orderItem?: InputMaybe<OrderItemOrderByWithRelationInput>;
   paymentResult?: InputMaybe<PaymentResultOrderByWithRelationInput>;
   shippingAddress?: InputMaybe<ShippingAddressOrderByWithRelationInput>;
-  shippingPrice?: InputMaybe<SortOrderInput>;
+  shippingPrice?: InputMaybe<SortOrder>;
   status?: InputMaybe<SortOrder>;
-  taxPrice?: InputMaybe<SortOrderInput>;
-  totalPrice?: InputMaybe<SortOrderInput>;
+  taxPrice?: InputMaybe<SortOrder>;
+  totalPrice?: InputMaybe<SortOrder>;
   updatedAt?: InputMaybe<SortOrder>;
   user?: InputMaybe<UserOrderByWithRelationInput>;
   userId?: InputMaybe<SortOrder>;
@@ -1972,10 +1910,10 @@ export type OrderScalarWhereInput = {
   itemsPrePricePaymentSessionId?: InputMaybe<StringNullableFilter>;
   itemsPrice?: InputMaybe<FloatFilter>;
   itemsTotalPricePaymentSessionId?: InputMaybe<StringNullableFilter>;
-  shippingPrice?: InputMaybe<FloatNullableFilter>;
+  shippingPrice?: InputMaybe<FloatFilter>;
   status?: InputMaybe<EnumOrderStatusFilter>;
-  taxPrice?: InputMaybe<FloatNullableFilter>;
-  totalPrice?: InputMaybe<FloatNullableFilter>;
+  taxPrice?: InputMaybe<FloatFilter>;
+  totalPrice?: InputMaybe<FloatFilter>;
   updatedAt?: InputMaybe<DateTimeFilter>;
   userId?: InputMaybe<StringFilter>;
 };
@@ -1990,10 +1928,10 @@ export type OrderScalarWhereWithAggregatesInput = {
   itemsPrePricePaymentSessionId?: InputMaybe<StringNullableWithAggregatesFilter>;
   itemsPrice?: InputMaybe<FloatWithAggregatesFilter>;
   itemsTotalPricePaymentSessionId?: InputMaybe<StringNullableWithAggregatesFilter>;
-  shippingPrice?: InputMaybe<FloatNullableWithAggregatesFilter>;
+  shippingPrice?: InputMaybe<FloatWithAggregatesFilter>;
   status?: InputMaybe<EnumOrderStatusWithAggregatesFilter>;
-  taxPrice?: InputMaybe<FloatNullableWithAggregatesFilter>;
-  totalPrice?: InputMaybe<FloatNullableWithAggregatesFilter>;
+  taxPrice?: InputMaybe<FloatWithAggregatesFilter>;
+  totalPrice?: InputMaybe<FloatWithAggregatesFilter>;
   updatedAt?: InputMaybe<DateTimeWithAggregatesFilter>;
   userId?: InputMaybe<StringWithAggregatesFilter>;
 };
@@ -2004,7 +1942,8 @@ export enum OrderStatus {
   Done = 'done',
   FullPaymentSuccess = 'full_payment_success',
   PendingPrePayment = 'pending_pre_payment',
-  PrePaymentPaid = 'pre_payment_paid'
+  PrePaymentPaid = 'pre_payment_paid',
+  Shipping = 'shipping'
 }
 
 export type OrderSumAggregate = {
@@ -2034,10 +1973,10 @@ export type OrderUpdateInput = {
   orderItem?: InputMaybe<OrderItemUpdateOneWithoutOrderNestedInput>;
   paymentResult?: InputMaybe<PaymentResultUpdateOneWithoutOrderNestedInput>;
   shippingAddress?: InputMaybe<ShippingAddressUpdateOneWithoutOrderNestedInput>;
-  shippingPrice?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
+  shippingPrice?: InputMaybe<FloatFieldUpdateOperationsInput>;
   status?: InputMaybe<EnumOrderStatusFieldUpdateOperationsInput>;
-  taxPrice?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
-  totalPrice?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
+  taxPrice?: InputMaybe<FloatFieldUpdateOperationsInput>;
+  totalPrice?: InputMaybe<FloatFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   user?: InputMaybe<UserUpdateOneRequiredWithoutOrdersNestedInput>;
 };
@@ -2049,10 +1988,10 @@ export type OrderUpdateManyMutationInput = {
   itemsPrePricePaymentSessionId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   itemsPrice?: InputMaybe<FloatFieldUpdateOperationsInput>;
   itemsTotalPricePaymentSessionId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
-  shippingPrice?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
+  shippingPrice?: InputMaybe<FloatFieldUpdateOperationsInput>;
   status?: InputMaybe<EnumOrderStatusFieldUpdateOperationsInput>;
-  taxPrice?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
-  totalPrice?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
+  taxPrice?: InputMaybe<FloatFieldUpdateOperationsInput>;
+  totalPrice?: InputMaybe<FloatFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
@@ -2113,10 +2052,10 @@ export type OrderUpdateWithoutOrderItemInput = {
   itemsTotalPricePaymentSessionId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   paymentResult?: InputMaybe<PaymentResultUpdateOneWithoutOrderNestedInput>;
   shippingAddress?: InputMaybe<ShippingAddressUpdateOneWithoutOrderNestedInput>;
-  shippingPrice?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
+  shippingPrice?: InputMaybe<FloatFieldUpdateOperationsInput>;
   status?: InputMaybe<EnumOrderStatusFieldUpdateOperationsInput>;
-  taxPrice?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
-  totalPrice?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
+  taxPrice?: InputMaybe<FloatFieldUpdateOperationsInput>;
+  totalPrice?: InputMaybe<FloatFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   user?: InputMaybe<UserUpdateOneRequiredWithoutOrdersNestedInput>;
 };
@@ -2130,10 +2069,10 @@ export type OrderUpdateWithoutPaymentResultInput = {
   itemsTotalPricePaymentSessionId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   orderItem?: InputMaybe<OrderItemUpdateOneWithoutOrderNestedInput>;
   shippingAddress?: InputMaybe<ShippingAddressUpdateOneWithoutOrderNestedInput>;
-  shippingPrice?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
+  shippingPrice?: InputMaybe<FloatFieldUpdateOperationsInput>;
   status?: InputMaybe<EnumOrderStatusFieldUpdateOperationsInput>;
-  taxPrice?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
-  totalPrice?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
+  taxPrice?: InputMaybe<FloatFieldUpdateOperationsInput>;
+  totalPrice?: InputMaybe<FloatFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   user?: InputMaybe<UserUpdateOneRequiredWithoutOrdersNestedInput>;
 };
@@ -2147,10 +2086,10 @@ export type OrderUpdateWithoutShippingAddressInput = {
   itemsTotalPricePaymentSessionId?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   orderItem?: InputMaybe<OrderItemUpdateOneWithoutOrderNestedInput>;
   paymentResult?: InputMaybe<PaymentResultUpdateOneWithoutOrderNestedInput>;
-  shippingPrice?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
+  shippingPrice?: InputMaybe<FloatFieldUpdateOperationsInput>;
   status?: InputMaybe<EnumOrderStatusFieldUpdateOperationsInput>;
-  taxPrice?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
-  totalPrice?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
+  taxPrice?: InputMaybe<FloatFieldUpdateOperationsInput>;
+  totalPrice?: InputMaybe<FloatFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   user?: InputMaybe<UserUpdateOneRequiredWithoutOrdersNestedInput>;
 };
@@ -2165,10 +2104,10 @@ export type OrderUpdateWithoutUserInput = {
   orderItem?: InputMaybe<OrderItemUpdateOneWithoutOrderNestedInput>;
   paymentResult?: InputMaybe<PaymentResultUpdateOneWithoutOrderNestedInput>;
   shippingAddress?: InputMaybe<ShippingAddressUpdateOneWithoutOrderNestedInput>;
-  shippingPrice?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
+  shippingPrice?: InputMaybe<FloatFieldUpdateOperationsInput>;
   status?: InputMaybe<EnumOrderStatusFieldUpdateOperationsInput>;
-  taxPrice?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
-  totalPrice?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
+  taxPrice?: InputMaybe<FloatFieldUpdateOperationsInput>;
+  totalPrice?: InputMaybe<FloatFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
@@ -2206,10 +2145,10 @@ export type OrderWhereInput = {
   orderItem?: InputMaybe<OrderItemRelationFilter>;
   paymentResult?: InputMaybe<PaymentResultRelationFilter>;
   shippingAddress?: InputMaybe<ShippingAddressRelationFilter>;
-  shippingPrice?: InputMaybe<FloatNullableFilter>;
+  shippingPrice?: InputMaybe<FloatFilter>;
   status?: InputMaybe<EnumOrderStatusFilter>;
-  taxPrice?: InputMaybe<FloatNullableFilter>;
-  totalPrice?: InputMaybe<FloatNullableFilter>;
+  taxPrice?: InputMaybe<FloatFilter>;
+  totalPrice?: InputMaybe<FloatFilter>;
   updatedAt?: InputMaybe<DateTimeFilter>;
   user?: InputMaybe<UserRelationFilter>;
   userId?: InputMaybe<StringFilter>;
@@ -5012,6 +4951,7 @@ export type UserWhereUniqueInput = {
 };
 
 export type CreateCheckoutSessionargs = {
+  orderId?: InputMaybe<Scalars['String']['input']>;
   paymentType: ProductPaymentTypes;
   productId: Scalars['String']['input'];
   quantity: Scalars['Float']['input'];
@@ -5032,7 +4972,7 @@ export type FileUploadResponsce = {
 
 export type PaymentSessionCreateResponse = {
   __typename?: 'paymentSessionCreateResponse';
-  id: Scalars['String']['output'];
+  id?: Maybe<Scalars['String']['output']>;
   message: Scalars['String']['output'];
   success: Scalars['Boolean']['output'];
 };
@@ -5054,14 +4994,14 @@ export type MyOrdersQueryVariables = Exact<{
 }>;
 
 
-export type MyOrdersQuery = { __typename?: 'Query', myOrders: Array<{ __typename?: 'Order', createdAt: any, updatedAt: any, id: string, itemsPrePrice: number, itemsPrice: number, status: OrderStatus, taxPrice?: number | null, totalPrice?: number | null, shippingPrice?: number | null, userId: string, orderItem?: { __typename?: 'OrderItem', qty: number, product: { __typename?: 'Product', id: string, images: Array<string>, name: string } } | null, shippingAddress?: { __typename?: 'ShippingAddress', id: string, lat: number, lng: number, postalCode: string, fullName: string, country: string, city: string, address: string } | null }> };
+export type MyOrdersQuery = { __typename?: 'Query', myOrders: Array<{ __typename?: 'Order', createdAt: any, updatedAt: any, id: string, itemsPrePrice: number, itemsPrice: number, status: OrderStatus, taxPrice: number, totalPrice: number, shippingPrice: number, userId: string, orderItem?: { __typename?: 'OrderItem', qty: number, product: { __typename?: 'Product', id: string, images: Array<string>, name: string } } | null, shippingAddress?: { __typename?: 'ShippingAddress', id: string, lat: number, lng: number, postalCode: string, fullName: string, country: string, city: string, address: string } | null }> };
 
 export type CreateCheckoutSessionMutationVariables = Exact<{
   input: CreateCheckoutSessionargs;
 }>;
 
 
-export type CreateCheckoutSessionMutation = { __typename?: 'Mutation', createCheckoutSession?: { __typename?: 'paymentSessionCreateResponse', success: boolean, message: string, id: string } | null };
+export type CreateCheckoutSessionMutation = { __typename?: 'Mutation', createCheckoutSession?: { __typename?: 'paymentSessionCreateResponse', success: boolean, message: string, id?: string | null } | null };
 
 export type ProductsQueryVariables = Exact<{
   where?: InputMaybe<ProductWhereInput>;

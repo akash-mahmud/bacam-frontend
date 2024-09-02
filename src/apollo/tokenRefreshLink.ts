@@ -5,8 +5,8 @@ import { refreshToken } from './renew';
 
 export const tokenRefreshLink=   new TokenRefreshLink({
     isTokenValidOrUndefined: async () => {
-      console.log( String(localStorage.getItem(USER_COOKIE)));
-      
+
+      if (typeof window !=='undefined') {
         try {
           
           if (String(localStorage.getItem(USER_COOKIE)) ==='null' ||String(localStorage.getItem(USER_COOKIE))  ==='' ) {
@@ -20,6 +20,10 @@ return true
         } catch (error) {
             return false            
         }
+      }else{
+        return false
+      }
+      
 
     },
     // @ts-ignore

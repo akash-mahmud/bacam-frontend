@@ -2,7 +2,7 @@
 
 import HeaderCell from '@/components/ui/table/header-cell';
 import Badge from '@/components/ui/badge';
-import { OrderItem, OrderStatus, ShippingAddress } from '@/graphql/generated/schema';
+import { Order, OrderItem, OrderStatus, ShippingAddress } from '@/graphql/generated/schema';
 import Button from '@/components/ui/button';
 import { formatPriceNumber } from '@/utils/priceFormat';
 import { getImage } from '@/utils/getImage';
@@ -22,9 +22,8 @@ export function getStatus(status: string) {
 }
 
 export const OrderReservationCol = (
-order: string, column: string, // onSelectAll: (key: boolean) => any,
-// onChange: (row: any) => any,
-onMore: (e: any, row: any) => any, openAddShippingModal: () => void,
+order: string, column: string, // onChange: (row: any) => any,
+onMore: (e: any, row: any) => any, openAddShippingModal: () => void, createPaymentSession: (productId: string, qty: number, orderId: string) => Promise<void>,
   // onHeaderClick: (value: string) => any
 ) => [
 
@@ -97,26 +96,27 @@ onMore: (e: any, row: any) => any, openAddShippingModal: () => void,
 
     {
       title: <HeaderCell title={'Status'} />,
-      dataIndex: 'status',
+      dataIndex: '',
       width: 300,
-      key: 'status',
+      key: '',
 
-      render: (status: string) => {
-        if (!status) return '__';
+      render: (data: Order) => {
+        
+        if (!data.status) return '__';
         return (
           // @ts-ignore
           <>
 
-            <Badge variant="flat" className="uppercase" color={getStatus(status)}>
-              {status}
+            <Badge variant="flat" className="uppercase" color={getStatus(data.status)}>
+              {data.status}
             </Badge>
             {
-              status === OrderStatus.PendingPrePayment && <Button className='my-5'>
+              data.status === OrderStatus.PendingPrePayment && <Button className='my-5'>
                 Pay Building Start Price
               </Button>
             }
             {
-              status === OrderStatus.BuildCompleted && <Button className='my-5'>
+              data.status === OrderStatus.BuildCompleted && <Button onClick={()=>createPaymentSession(data.orderItem?.product.id??"", data.orderItem?.qty??1, data.id)} className='my-5'>
                 Pay Now
               </Button>
             }
