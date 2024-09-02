@@ -2,7 +2,7 @@
 
 import HeaderCell from '@/components/ui/table/header-cell';
 import Badge from '@/components/ui/badge';
-import { OrderItem, OrderStatus } from '@/graphql/generated/schema';
+import { OrderItem, OrderStatus, ShippingAddress } from '@/graphql/generated/schema';
 import Button from '@/components/ui/button';
 import { formatPriceNumber } from '@/utils/priceFormat';
 import { getImage } from '@/utils/getImage';
@@ -22,11 +22,9 @@ export function getStatus(status: string) {
 }
 
 export const OrderReservationCol = (
-  order: string,
-  column: string,
-  // onSelectAll: (key: boolean) => any,
-  // onChange: (row: any) => any,
-  onMore: (e: any, row: any) => any,
+order: string, column: string, // onSelectAll: (key: boolean) => any,
+// onChange: (row: any) => any,
+onMore: (e: any, row: any) => any, openAddShippingModal: () => void,
   // onHeaderClick: (value: string) => any
 ) => [
 
@@ -78,6 +76,25 @@ export const OrderReservationCol = (
         </div>
       ),
     },
+    {
+      title: <HeaderCell title={'shipping Details'} />,
+      dataIndex: 'shippingAddress',
+      width: 300,
+      key: 'shippingAddress',
+
+      render: (shippingAddress: ShippingAddress) => (
+        <div className=' flex flex-col w-full'>
+        {
+          !shippingAddress?.id? <Button onClick={openAddShippingModal}>
+            Add
+          </Button>:<Button>
+            View
+          </Button>
+        }
+        </div>
+      ),
+    },
+
     {
       title: <HeaderCell title={'Status'} />,
       dataIndex: 'status',

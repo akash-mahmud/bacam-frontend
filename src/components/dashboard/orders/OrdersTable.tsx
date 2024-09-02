@@ -11,6 +11,7 @@ import Table from '@/components/ui/table';
 import useAuth from '@/hooks/use-auth';
 import { useMyOrdersQuery } from '@/graphql/generated/schema';
 import { OrderReservationCol } from './OrderReservationCol';
+import { Modal } from 'antd';
 
 export default function OrdersTable() {
   const [order, setOrder] = useState<string>('desc');
@@ -21,6 +22,14 @@ export default function OrdersTable() {
 
  }
   })
+  const [addShippingModal, setaddShippingModal] = useState(false)
+  const openAddShippingModal =() => {
+    setaddShippingModal(true)
+  }
+  const closeAddShippingModal =() => {
+    setaddShippingModal(false)
+
+  }
   const [searchfilter, setSearchFilter] = useState('');
   const [current, setCurrent] = useState(1);
 
@@ -39,11 +48,13 @@ export default function OrdersTable() {
         // onChange,
         onMore,
         // onHeaderClick
+        openAddShippingModal
       ),
     [order, column, 
         // onSelectAll,
         //  onChange,
           onMore,
+          openAddShippingModal
         //  onHeaderClick
         ]
   );
@@ -78,6 +89,9 @@ export default function OrdersTable() {
           }}
         />
       </div> */}
+      <Modal footer={<></>} onCancel={closeAddShippingModal} open={addShippingModal}>
+
+      </Modal>
     </>
   );
 }

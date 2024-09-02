@@ -1,6 +1,7 @@
 query MyOrders($where: OrderWhereInput, $orderBy: [OrderOrderByWithRelationInput!], $cursor: OrderWhereUniqueInput, $take: Int, $skip: Int, $distinct: [OrderScalarFieldEnum!]) {
   myOrders(where: $where, orderBy: $orderBy, cursor: $cursor, take: $take, skip: $skip, distinct: $distinct) {
     createdAt
+    updatedAt
     id
     itemsPrePrice
     itemsPrice
@@ -17,5 +18,15 @@ query MyOrders($where: OrderWhereInput, $orderBy: [OrderOrderByWithRelationInput
     }
     shippingPrice
     userId
+    shippingAddress {
+      id
+      lat
+      lng
+      postalCode
+      fullName
+      country
+      city
+      address
+    }
   }
 }

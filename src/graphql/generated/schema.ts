@@ -5054,7 +5054,7 @@ export type MyOrdersQueryVariables = Exact<{
 }>;
 
 
-export type MyOrdersQuery = { __typename?: 'Query', myOrders: Array<{ __typename?: 'Order', createdAt: any, id: string, itemsPrePrice: number, itemsPrice: number, status: OrderStatus, taxPrice?: number | null, totalPrice?: number | null, shippingPrice?: number | null, userId: string, orderItem?: { __typename?: 'OrderItem', qty: number, product: { __typename?: 'Product', id: string, images: Array<string>, name: string } } | null }> };
+export type MyOrdersQuery = { __typename?: 'Query', myOrders: Array<{ __typename?: 'Order', createdAt: any, updatedAt: any, id: string, itemsPrePrice: number, itemsPrice: number, status: OrderStatus, taxPrice?: number | null, totalPrice?: number | null, shippingPrice?: number | null, userId: string, orderItem?: { __typename?: 'OrderItem', qty: number, product: { __typename?: 'Product', id: string, images: Array<string>, name: string } } | null, shippingAddress?: { __typename?: 'ShippingAddress', id: string, lat: number, lng: number, postalCode: string, fullName: string, country: string, city: string, address: string } | null }> };
 
 export type CreateCheckoutSessionMutationVariables = Exact<{
   input: CreateCheckoutSessionargs;
@@ -5163,6 +5163,7 @@ export const MyOrdersDocument = gql`
     distinct: $distinct
   ) {
     createdAt
+    updatedAt
     id
     itemsPrePrice
     itemsPrice
@@ -5179,6 +5180,16 @@ export const MyOrdersDocument = gql`
     }
     shippingPrice
     userId
+    shippingAddress {
+      id
+      lat
+      lng
+      postalCode
+      fullName
+      country
+      city
+      address
+    }
   }
 }
     `;
