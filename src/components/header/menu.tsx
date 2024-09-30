@@ -20,19 +20,10 @@ const menuItems = [
   },
   {
     id: 2,
-    label: 'Explore',
-    path: Routes.public.explore,
+    label: 'Bikes',
+    path: Routes.public.product,
   },
-  {
-    id: 3,
-    label: 'Pricing',
-    path: Routes.public.pricing,
-  },
-  {
-    id: 4,
-    label: 'Help',
-    path: Routes.public.help,
-  },
+
 ];
 
 export default function Menu() {

@@ -74,9 +74,11 @@ const router = useRouter()
           'relative h-9 w-9 rounded-full bg-white shadow-card sm:h-10 sm:w-10 2xl:h-12 2xl:w-12 2xl:border 2xl:border-gray-lighter 2xl:p-[3px]',
           className
         )}
-      >
-        <Menu.Button className="relative h-full w-full rounded-full bg-white" onClick={  ()=>         router.push(Routes.private.account)
-}>
+      > 
+        
+        <Menu.Button className="relative h-full w-full rounded-full bg-white">
+          <Link href={Routes.private.account}>
+          
           <Avatar name={`${user?.firstname} ${user?.lastname}`}
             className="cursor-pointer"
             
@@ -84,6 +86,7 @@ const router = useRouter()
             rounded="full"
             size="100%"
           />
+          </Link>
         </Menu.Button>
    
       </Menu>

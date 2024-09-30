@@ -6,14 +6,9 @@ import GalleryCarouselView from '@/components/gallery/view';
 import DrawerContainer from '@/components/drawers/view';
 import ModalContainer from '@/components/modals/view';
 import ReduxStoreProvider from '@/store/provider'
-// import 'antd/dist/reset.css';
 import 'react-image-gallery/styles/css/image-gallery.css';
-// import 'react-dates/lib/css/_datepicker.css';
 import 'react-multi-carousel/lib/styles.css';
-// import '@glidejs/glide/dist/css/glide.core.min.css';
-// import 'antd/lib/date-picker/style/index.css';
-import { ThemeProvider } from 'styled-components';
-import theme from '@/themes/default.theme';
+
 import ClientProviders from '@/providers/ClientProviders';
 import StyledComponentsRegistry from '@/providers/StyledComponentsRegistry';
 import Head from 'next/head';

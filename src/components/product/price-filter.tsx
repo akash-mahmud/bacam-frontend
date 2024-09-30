@@ -49,7 +49,7 @@ export default function PriceFilter() {
         tag="span"
         className="mb-3 block text-sm font-bold capitalize text-gray-dark lg:text-base"
       >
-        Price per day
+        Price
       </Text>
       <div className="xl:px-3">
         <RangeSlider
