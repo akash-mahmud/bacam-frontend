@@ -22,7 +22,7 @@ interface AvatarProps extends ReactAvatarProps {
 
 const Avatar = ({ className, rounded = 'full', ...props }: AvatarProps) => {
   return (
-    <ReactAvatar
+    <ReactAvatar 
       className={clsx(
         className,
         classes.base,

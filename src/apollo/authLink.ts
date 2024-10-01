@@ -8,7 +8,7 @@ export const authLink = new ApolloLink((operation, forward) => {
   operation.setContext(({ headers = {} }) => ({
     headers: {
       ...headers,
-      authorization: `Bearer ${localStorage.getItem('yellow-cartee')??''}`,
+      authorization:typeof window !=='undefined' ? `Bearer ${localStorage.getItem('yellow-cartee')}`:"",
     },
   }));
 

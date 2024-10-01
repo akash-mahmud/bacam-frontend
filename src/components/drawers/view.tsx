@@ -33,7 +33,7 @@ function renderDrawerContent(view: DRAWER_VIEW | string) {
     case 'FILTER_MENU':
       return <Filter />;
       case 'DASHBOARD_SIDEBAR':
-        return <DashboardSidebar />;
+        return <DashboardSidebar className={''} />;
     case 'BOOKING_FORM':
       return <BookingFormModal />;
     default:

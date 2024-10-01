@@ -9,12 +9,12 @@ export const tokenRefreshLink=   new TokenRefreshLink({
       if (typeof window !=='undefined') {
         try {
           
-          if (String(localStorage.getItem(USER_COOKIE)) ==='null' ||String(localStorage.getItem(USER_COOKIE))  ==='' ) {
+          if (typeof window !=='undefined'  &&String(localStorage.getItem(USER_COOKIE)) ==='null' ||String(localStorage.getItem(USER_COOKIE))  ==='' ) {
             
 return true            
           }else{
 
-            return !isJwtExpired(localStorage.getItem(USER_COOKIE))
+            return !isJwtExpired(typeof window !=='undefined' ?localStorage.getItem(USER_COOKIE):"")
           }
 
         } catch (error) {

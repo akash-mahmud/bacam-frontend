@@ -22,8 +22,8 @@ export default function TransparentHeader() {
 
   return (
     <header
-      ref={headerRef}
-      className="transparent-header fixed top-0 left-0 z-[100] flex w-full justify-between   px-4 py-2.5 sm:bg-transparent sm:px-6 lg:py-3 2xl:px-7 3xl:px-8 4xl:py-6 4xl:px-16"
+      // ref={headerRef}
+      className="transparent-header is-scrolling fixed top-0 left-0 z-[100] flex w-full justify-between   px-4 py-2.5 sm:bg-transparent sm:px-6 lg:py-3 2xl:px-7 3xl:px-8 4xl:py-6 4xl:px-16"
     >
     <div className="flex items-center gap-2 md:gap-4 2xl:gap-5">
           <Logo className="!text-gray-dark" />

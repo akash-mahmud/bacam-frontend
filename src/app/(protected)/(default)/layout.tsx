@@ -1,4 +1,4 @@
-import TransparentHeader from '@/components/header/transparent';
+
 import Footer from '@/components/footer/footer';
 import MobileNav from '@/components/ui/mobile-nav';
 import ListingDetailsHeader from '@/components/header/listing-details';

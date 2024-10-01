@@ -45,10 +45,11 @@ const router = useRouter()
         <>
                <ActionIcon
       variant="text"
+      onClick={()=> router.push("/cart")}
 
     >
 
-                   <ShoppingCartIcon/>
+                   <ShoppingCartIcon />
     </ActionIcon>
               
           {

@@ -6,7 +6,7 @@ import { DATA_SERVER } from "../config/secrets";
 export const dataServerLink =  ()=> { 
   let token =''
   try {
-    token = localStorage.getItem('yellow-cartee') ??'' 
+    token =typeof window !=='undefined' ? localStorage.getItem('yellow-cartee') ??'' :""
   } catch (error) {
      token =''
   }
@@ -15,8 +15,8 @@ export const dataServerLink =  ()=> {
     createHttpLink({
       uri: DATA_SERVER,
       headers: {      
-           authorization: `Bearer ${localStorage.getItem('yellow-cartee')??''}`,
-           'Apollo-Require-Preflight': 'true',
+        authorization:typeof window !=='undefined' ? `Bearer ${localStorage.getItem('yellow-cartee')}`:"",
+        'Apollo-Require-Preflight': 'true',
 // 'Access-Control-Allow-Credentials':'true'
     },
       credentials: 'include',

@@ -78,11 +78,15 @@ const handleFormSubmit = useCallback(
         })
        }else{
     console.log(res);
-    
+    notification.error({
+      message:res?.login?.message
+     })
        }
-    } catch (error) {
+    } catch (error:any) {
       console.log(error);
-      
+      notification.error({
+        message:error.message
+       })
     }
 
 

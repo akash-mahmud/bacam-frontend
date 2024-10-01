@@ -4,12 +4,12 @@ import fetch from 'cross-fetch';
 
 import { SERVER_1 } from "../config/secrets";
 
-const token =  `Bearer ${localStorage.getItem('yellow-cartee')??''}` ;
 export const renewTokenApiClient = new ApolloClient({
     link:     new HttpLink({
       uri: SERVER_1,
-      headers: { Authorization: token,  
-           'Apollo-Require-Preflight': 'false'
+      headers: {
+        authorization:typeof window !=='undefined' ? `Bearer ${localStorage.getItem('yellow-cartee')}`:"",
+        'Apollo-Require-Preflight': 'false'
     },
       credentials: 'include',
       fetch

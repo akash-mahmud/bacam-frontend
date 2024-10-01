@@ -11,6 +11,7 @@
     "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
+    "@ant-design/nextjs-registry": "^1.0.1",
     "@apollo/client": "^3.7.15",
     "@glidejs/glide": "^3.6.2",
     "@graphql-codegen/typescript-operations": "^4.0.0",
@@ -27,7 +28,7 @@
     "@tailwindcss/typography": "^0.5.9",
     "@types/react": "18.2.8",
     "@types/react-dom": "18.2.4",
-    "antd": "^5.5.2",
+    "antd": "^5.21.1",
     "apollo-link-token-refresh": "^0.7.0",
     "apollo-upload-client": "^17.0.0",
     "clsx": "^1.2.1",
@@ -42,7 +43,7 @@
     "jotai": "^2.1.0",
     "jwt-check-expiration": "^1.0.5",
     "lodash": "^4.17.21",
-    "next": "^13.4.4",
+    "next": "^14.1.0",
     "next-nprogress-bar": "^2.3.13",
     "next-pwa": "^5.6.0",
     "next-redux-wrapper": "^8.1.0",

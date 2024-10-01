@@ -11,8 +11,8 @@ export const server1Link =  ()=> {
     createUploadLink({
       uri: SERVER_1,
       headers: {      
-           authorization: `Bearer ${localStorage.getItem('yellow-cartee')??''}`,
-           'Apollo-Require-Preflight': 'true',
+        authorization:typeof window !=='undefined' ? `Bearer ${localStorage.getItem('yellow-cartee')}`:"",
+        'Apollo-Require-Preflight': 'true',
 // 'Access-Control-Allow-Credentials':'true'
     },
       credentials: 'include',

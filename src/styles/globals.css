@@ -649,5 +649,5 @@ th.rc-table-cell {
   }
 
   .image-gallery-content .image-gallery-slide .image-gallery-image {
-    max-height: calc(75vh - 100px);
+    max-height: calc(60vh - 100px);
 }

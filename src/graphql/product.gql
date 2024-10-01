@@ -25,5 +25,16 @@ query Product($where: ProductWhereUniqueInput!, $reveiwsWhere2: ReviewWhereInput
     price
     orderStartPrice
     slug
+      type 
+  minimumOrderNeededToStart 
+  custom_product_status 
+  }
+}
+
+query AggregateOrderItem($where: OrderItemWhereInput, $orderBy: [OrderItemOrderByWithRelationInput!], $cursor: OrderItemWhereUniqueInput, $take: Int, $skip: Int) {
+  aggregateOrderItem(where: $where, orderBy: $orderBy, cursor: $cursor, take: $take, skip: $skip) {
+    _sum {
+      qty
+    }
   }
 }

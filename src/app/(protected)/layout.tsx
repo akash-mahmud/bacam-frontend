@@ -2,8 +2,9 @@
 import useAuth from '@/hooks/use-auth'
 import { useIsMounted } from '@/hooks/use-is-mounted'
 import { Spin } from 'antd'
-import { usePathname, useRouter } from 'next/navigation'
-import React, { ReactNode, useCallback, useEffect } from 'react'
+import { useRouter } from 'next-nprogress-bar'
+import { usePathname } from 'next/navigation'
+import React, { ReactNode,  useEffect } from 'react'
 
 export default function layout({children}:{children:ReactNode}) {
     const router = useRouter()

@@ -1,24 +1,18 @@
 'use client';
 
-import { vendorData } from 'public/data/listing-details';
-import Image from 'next/image';
-import { InstaSolidIcon } from '@/components/icons/instagram-solid-icon';
-import { TwitterIcon } from '@/components/icons/twitter-icon';
-import Text from '@/components/ui/typography/text';
 
-import { Product, ProductPaymentTypes, useCreateCheckoutSessionMutation , } from '@/graphql/generated/schema';
+import { Product, ProductPaymentTypes, useAggregateOrderItemQuery, useCreateCheckoutSessionMutation , } from '@/graphql/generated/schema';
 import { getImage } from '@/utils/getImage';
 import ImageGallery, { ReactImageGalleryItem } from "react-image-gallery";
 
 import ImageMagnifier from '../ImageMagnifier';
 import ActionIcon from '../action-icon';
-import InputNumber from 'rc-input-number';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 import Button from '../button';
 import AuthRequiredButton from '@/components/auth/AuthRequiredButton';
 import { useStripe } from '@stripe/react-stripe-js';
-import { Spin } from 'antd';
+import { Flex, Progress, Spin, Tooltip } from 'antd';
 import { formatPriceNumber } from '@/utils/priceFormat';
 export default function VendorProfileCard({ product }: {
   product?: Product
@@ -28,36 +22,46 @@ const [CreateSession , {loading}] = useCreateCheckoutSessionMutation()
 const stripe = useStripe();
 
 const createPaymentSession = async () => {
-  const {data} = await CreateSession({
-    variables:{
-      input:{
-        paymentType:ProductPaymentTypes.OrderStartPrice,
-        productId:product?.id??"",
-        quantity:qty
+  if (product?.id) {
+    
+    const {data} = await CreateSession({
+      variables:{
+        input:{
+          paymentType:ProductPaymentTypes.OrderStartPrice,
+          productIds:[product?.id],
+          quantity:qty
+        }
       }
+    })
+  
+    if (data?.createCheckoutSession?.id) {
+      stripe?.redirectToCheckout({ sessionId: data?.createCheckoutSession?.id });
+  
     }
-  })
-
-  if (data?.createCheckoutSession?.id) {
-    stripe?.redirectToCheckout({ sessionId: data?.createCheckoutSession?.id });
-
   }
   
 }
+
+const {data} = useAggregateOrderItemQuery()
+const ordersForThisProductCount = data?.aggregateOrderItem?._sum?.qty??0
+const percentage = ordersForThisProductCount>0?(ordersForThisProductCount/(product?.minimumOrderNeededToStart??1)*100):0
+
   return (
     <div className="relative flex flex-col md:flex-row justify-center px-4  text-center md:mt-8  md:justify-between md:overflow-hidden md:rounded-lg md:px-0   2xl:mt-12 ">
 
 
       <div className="relative w-full md:w-[60%] overflow-hidden rounded-xl mx-3 ">
 <div>
-  <h1 className=' text-left font-medium text-5xl'>
+  <h1 className=' text-left font-medium text-4xl'>
     {product?.name}
   </h1>
 </div>
+<div className=''>
+
         <ImageGallery showNav={true} 
         renderLeftNav={(onclick)=>       <ActionIcon onClick={onclick}
                 rounded="full"
-                color="light"
+                color="light" 
                 size="xl"
            className=' absolute z-50 left-5  inset-y-0 my-auto mx-0'
               >
@@ -74,18 +78,19 @@ const createPaymentSession = async () => {
               showFullscreenButton={false} showPlayButton={false} items={product?.images.map((img) => ({
           thumbnail: getImage(img) ?? "",
           original: getImage(img) ?? "",
-          renderItem: ((item: ReactImageGalleryItem) =>
+          // renderItem: ((item: ReactImageGalleryItem) =>
 
 
-            <ImageMagnifier src={item.original} imageClasses='image-gallery-image'
+          //   <ImageMagnifier src={item.original} imageClasses='image-gallery-image'
 
 
-            />
+          //   />
 
-          )
+          // )
 
         })) ?? []
         } />
+</div>
       </div>
 
       <div className="z-10 mt-20 flex h-auto w-full md:w-[40%] flex-col  rounded-lg bg-white p-8 border shadow-lg   md:mt-0 md:h-full  
@@ -93,7 +98,7 @@ const createPaymentSession = async () => {
       ">
   <div className="flex flex-col justify-start items-start">
 <div>
-  <h3 className=' text-5xl text-left'>
+  <h3 className=' text-3xl text-left'>
  
   {formatPriceNumber( product?.price)}
 
@@ -115,6 +120,15 @@ const createPaymentSession = async () => {
         </button>
     </div>
 </div>
+<div className='my-3 flex flex-col '>
+  <label>Project starting minimum order progress</label>
+  <Tooltip title={`${ordersForThisProductCount}/${product?.minimumOrderNeededToStart}`}>
+
+<Progress  percent={percentage} 
+/>
+</Tooltip>
+</div>
+
 <div className=' flex flex-col my-5 w-full'>
 
 <Button  variant='outline' className=' my-3 py-4 rounded-md '>

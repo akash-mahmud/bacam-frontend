@@ -12,7 +12,7 @@ export const server2Link = ()=>     {
     new HttpLink({
       uri: SERVER_2,
 headers:{
-    authorization: `Bearer ${localStorage.getItem('yellow-cartee')??''}`
+  authorization:typeof window !=='undefined' ? `Bearer ${localStorage.getItem('yellow-cartee')}`:"",
 
 },
       credentials: 'include',
