@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import useAuth from '@/hooks/use-auth';
 import { addScrollingClass } from '@/utils/add-scrolling-class';
 import SearchIconBtn from '@/components/ui/search-icon-btn';
@@ -16,6 +16,8 @@ import { Routes } from '@/config/routes';
 import { useRouter } from 'next/navigation';
 import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 import ActionIcon from '../ui/action-icon';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCartItemCount } from '@/store/slices/product/cart';
 
 export default function ListingDetailsHeader() {
   const mounted = useIsMounted();
@@ -24,6 +26,13 @@ export default function ListingDetailsHeader() {
   const headerRef = useRef(null);
   addScrollingClass(headerRef);
 const router = useRouter()
+const dispatch = useDispatch();
+const { cartItemCount, status, error } = useSelector((state) => state.cart);
+
+// Fetch cart item count on component mount
+useEffect(() => {
+  dispatch(fetchCartItemCount());
+}, [dispatch]);
   return (
     <header
       // ref={headerRef}

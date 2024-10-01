@@ -2,19 +2,20 @@ import { TokenRefreshLink } from 'apollo-link-token-refresh';
 import {getAuthData, USER_COOKIE} from '../utils/session'
 import {isJwtExpired} from 'jwt-check-expiration'
 import { refreshToken } from './renew';
+import { token } from './authLink';
 
 export const tokenRefreshLink=   new TokenRefreshLink({
     isTokenValidOrUndefined: async () => {
 
       if (typeof window !=='undefined') {
         try {
-          
-          if (typeof window !=='undefined'  &&String(localStorage.getItem(USER_COOKIE)) ==='null' ||String(localStorage.getItem(USER_COOKIE))  ==='' ) {
+
+          if (typeof window ==='undefined'  && !token) {
             
 return true            
           }else{
 
-            return !isJwtExpired(typeof window !=='undefined' ?localStorage.getItem(USER_COOKIE):"")
+            return !isJwtExpired(token)
           }
 
         } catch (error) {
@@ -53,18 +54,23 @@ console.log(token);
       try {
         
         if (accessToken) {
-          localStorage.setItem(USER_COOKIE , accessToken)
+        const auth =  JSON.parse(localStorage.getItem(USER_COOKIE)??"{}")
+console.log(auth);
+
+          localStorage.setItem(USER_COOKIE , JSON.stringify({
+            ...auth,
+           token: accessToken}))
                     // store.dispatch(setRenewdToken(accessToken))
                
           
                   }else{
-                    localStorage.setItem(USER_COOKIE , '')
+                    localStorage.setItem(USER_COOKIE , JSON.stringify({}))
 
                   }
           
       } catch (error) {
         console.log(error);
-        localStorage.setItem(USER_COOKIE , '')
+        localStorage.setItem(USER_COOKIE , JSON.stringify({}))
 
       }
    

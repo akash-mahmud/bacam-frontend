@@ -7,21 +7,20 @@ export function getAuthData() {
       token: null,
 
     };
-  const AuthData: string | undefined | null =typeof window !=='undefined' ?localStorage.getItem('yellow-cartee'):""
+  const AuthData: string | undefined | null =typeof window !=='undefined' ?JSON.parse(localStorage.getItem(USER_COOKIE)??"{}"):{}
 
+  const persustedData = AuthData;
+  return persustedData;
 
   if (typeof AuthData === 'string') {
     const persustedData = AuthData;
     return persustedData;
   } else
-    return {
-
-      token: null,
-   
-    };
+    return JSON.stringify({token: null})
 }
 interface localstorageAuth {}
 export function setAuthData(auth: IinitialStateAuth) {
+  
   const strState = JSON.stringify(auth);
   localStorage.setItem(USER_COOKIE, strState);
 }

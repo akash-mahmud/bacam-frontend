@@ -3,12 +3,13 @@ import { RefreshTokenDocument } from "../graphql/generated/schema";
 import fetch from 'cross-fetch';
 
 import { SERVER_1 } from "../config/secrets";
+import { token } from "./authLink";
 
 export const renewTokenApiClient = new ApolloClient({
     link:     new HttpLink({
       uri: SERVER_1,
       headers: {
-        authorization:typeof window !=='undefined' ? `Bearer ${localStorage.getItem('yellow-cartee')}`:"",
+        authorization:typeof window !=='undefined' ? `Bearer ${token}`:"",
         'Apollo-Require-Preflight': 'false'
     },
       credentials: 'include',

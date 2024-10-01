@@ -1,8 +1,10 @@
 'use client';
 
 import { useMeQuery, User } from '@/graphql/generated/schema';
+import { useAppDispatch } from '@/store';
+import { setUser } from '@/store/slices/auth/authSlice';
+import { useEffect } from 'react';
 
-import { useEffect, useState } from 'react';
 
 interface UserType {
   name: string;
@@ -20,6 +22,11 @@ const demoUser = {
 export default function useAuth() {
 
 const {data , loading, refetch} = useMeQuery()
+const dispatch = useAppDispatch()
+useEffect(() => {
+if (data?.me?.id) {
+  dispatch(setUser(data?.me)??{})}
+}, [dispatch , data?.me?.id])
 
   
   return {

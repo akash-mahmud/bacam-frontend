@@ -3,19 +3,15 @@ import { ApolloLink, createHttpLink } from "@apollo/client";
 
 import fetch from 'cross-fetch';
 import { DATA_SERVER } from "../config/secrets";
+import { token } from "./authLink";
 export const dataServerLink =  ()=> { 
-  let token =''
-  try {
-    token =typeof window !=='undefined' ? localStorage.getItem('yellow-cartee') ??'' :""
-  } catch (error) {
-     token =''
-  }
+
   return ApolloLink.from([
   
     createHttpLink({
       uri: DATA_SERVER,
       headers: {      
-        authorization:typeof window !=='undefined' ? `Bearer ${localStorage.getItem('yellow-cartee')}`:"",
+        authorization:typeof window !=='undefined' ? `Bearer ${token}`:"",
         'Apollo-Require-Preflight': 'true',
 // 'Access-Control-Allow-Credentials':'true'
     },

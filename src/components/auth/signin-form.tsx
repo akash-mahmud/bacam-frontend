@@ -64,7 +64,16 @@ const handleFormSubmit = useCallback(
         const localStoreVal = {
           token: accessToken
         }
-        localStorage.setItem(USER_COOKIE,accessToken??"")
+        localStorage.setItem(USER_COOKIE, JSON.stringify({
+          
+          isAuthenticated: true,
+          user: user,
+          token: accessToken??"",
+          loading: false,
+          isError: false,
+          error: "",
+        })
+          )
         authorize()
         if (redirectTo) {
          router.push(redirectTo)

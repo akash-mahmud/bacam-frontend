@@ -1,18 +1,17 @@
 import { ApolloLink, HttpLink } from "@apollo/client";
 import { getAuthData } from "../utils/session";
-const auth = getAuthData();
-const token = auth ? `Bearer ${auth}` : "";
 
 
 import fetch from 'cross-fetch';
 import { SERVER_2 } from "../config/secrets";
+import { token } from "./authLink";
 export const server2Link = ()=>     {
 
   return ApolloLink.from([
     new HttpLink({
       uri: SERVER_2,
 headers:{
-  authorization:typeof window !=='undefined' ? `Bearer ${localStorage.getItem('yellow-cartee')}`:"",
+  authorization:typeof window !=='undefined' ? `Bearer ${token}`:"",
 
 },
       credentials: 'include',
