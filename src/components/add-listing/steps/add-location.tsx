@@ -42,7 +42,6 @@ export default function AddLocation() {
       location: data.location,
       phoneNumber: data.phoneNumber,
     });
-    console.log(data);
     setStep(5);
   }
 

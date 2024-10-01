@@ -21,7 +21,6 @@ export const saveState = (state:Isate) => {
 export const persistedState = (() => {
   try {
     const auth = getAuthData();
-console.log(auth);
 
     if (Object.keys(auth).length === 0) return undefined;
     return {

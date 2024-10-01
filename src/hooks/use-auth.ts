@@ -25,7 +25,11 @@ const {data , loading, refetch} = useMeQuery()
 const dispatch = useAppDispatch()
 useEffect(() => {
 if (data?.me?.id) {
-  dispatch(setUser(data?.me)??{})}
+  dispatch(setUser(
+{    isAuthorized: data?.me?.id?true:false,
+    user: data?.me,
+    loading,}
+  )??{})}
 }, [dispatch , data?.me?.id])
 
   

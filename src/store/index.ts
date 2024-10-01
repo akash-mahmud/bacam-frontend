@@ -12,11 +12,11 @@ export const store = configureStore({
     cart:cartSlice
   },
   // @ts-ignore
-  preloadedState: persistedState,
+  // preloadedState: persistedState,
 });
-store.subscribe(() => {
-  saveState(store.getState());
-});
+// store.subscribe(() => {
+//   saveState(store.getState());
+// });
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 export const useAppDispatch = () => useDispatch<AppDispatch>();

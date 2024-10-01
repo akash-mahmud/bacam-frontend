@@ -3,7 +3,6 @@ import { ApolloLink, createHttpLink } from "@apollo/client";
 
 import fetch from 'cross-fetch';
 import { DATA_SERVER } from "../config/secrets";
-import { token } from "./authLink";
 export const dataServerLink =  ()=> { 
 
   return ApolloLink.from([
@@ -11,7 +10,7 @@ export const dataServerLink =  ()=> {
     createHttpLink({
       uri: DATA_SERVER,
       headers: {      
-        authorization:typeof window !=='undefined' ? `Bearer ${token}`:"",
+        // authorization:typeof window !=='undefined' ? `Bearer ${token}`:"",
         'Apollo-Require-Preflight': 'true',
 // 'Access-Control-Allow-Credentials':'true'
     },

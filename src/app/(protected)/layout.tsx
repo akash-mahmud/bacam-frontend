@@ -19,7 +19,6 @@ router.push(`/sign-in?redirectTo=${path}`)
 
 }, [ isAuthorized , loading])
 
-console.log(!isAuthorized && !loading);
 
 
     if (loading ) {

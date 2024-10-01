@@ -10,7 +10,7 @@ import {
   RegisterDocument,
 } from "../../../graphql/generated/schema";
 export interface IinitialStateAuth {
-  isAuthenticated: Boolean;
+  isAuthorized: Boolean;
   user: User | undefined | null;
   token: String | null | undefined;
   loading: Boolean;
@@ -18,7 +18,7 @@ export interface IinitialStateAuth {
   error: String | undefined;
 }
 const initialState: IinitialStateAuth = {
-  isAuthenticated: false,
+  isAuthorized: false,
   user: {},
   token: null,
   loading: false,
@@ -78,7 +78,9 @@ export const authSlice = createSlice({
       // state.token = '';
     },
     setUser(state , {payload}) {
-            state.user = payload;
+            state.user = payload.user;
+            state.isAuthorized = payload.isAuthorized;
+            state.loading = payload.loading;
 
    
     },
