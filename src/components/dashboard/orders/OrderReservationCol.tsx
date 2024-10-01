@@ -5,8 +5,7 @@ import Badge from '@/components/ui/badge';
 import { Order, OrderItem, OrderStatus, ShippingAddress } from '@/graphql/generated/schema';
 import Button from '@/components/ui/button';
 import { formatPriceNumber } from '@/utils/priceFormat';
-import { getImage } from '@/utils/getImage';
-import { Avatar } from 'antd';
+
 
 
 
@@ -25,15 +24,14 @@ export const OrderReservationCol = (
 order: string, column: string, // onChange: (row: any) => any,
 onMore: (e: any, row: any) => any, openAddShippingModal: () => void, createPaymentSession: (productId: string, qty: number, orderId: string) => Promise<void>,
   // onHeaderClick: (value: string) => any
-) => [
+) => 
+  
+{ 
+  
+  
+  return [
 
-    {
-      title: "OrderId",
-      dataIndex: 'id',
-      width: 300,
-      key: 'id',
 
-    },
     {
       title: <HeaderCell title={'Items Pre-Price'} />,
       dataIndex: 'itemsPrePrice',
@@ -55,23 +53,16 @@ onMore: (e: any, row: any) => any, openAddShippingModal: () => void, createPayme
       ),
     },
     {
-      title: <HeaderCell title={'Product'} />,
+      title: <HeaderCell title={'Products'} />,
       dataIndex: 'orderItem',
       width: 300,
       key: 'orderItem',
 
       render: (orderItem: OrderItem) => (
         <div className=' flex flex-col'>
-          <div>
-{orderItem.product.name}
-          </div>
-          <div className='flex'>
-
-          {orderItem.product.images.map((el) => <Avatar src={getImage(el)} />)}
-          </div>
-          <div>
-          Quantity:  {orderItem.qty}
-          </div>
+       <Button>
+        View
+       </Button>
         </div>
       ),
     },
@@ -188,4 +179,4 @@ onMore: (e: any, row: any) => any, openAddShippingModal: () => void, createPayme
     },
 
 
-  ];
+  ]};

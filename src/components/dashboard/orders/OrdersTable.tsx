@@ -44,6 +44,8 @@ const createPaymentSession = async (productId:string, qty:number , orderId:strin
 
  }
   })
+  console.log(data);
+  
   const [addShippingModal, setaddShippingModal] = useState(false)
   const openAddShippingModal =() => {
     setaddShippingModal(true)

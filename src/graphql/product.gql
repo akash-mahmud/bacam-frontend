@@ -38,3 +38,4 @@ query AggregateOrderItem($where: OrderItemWhereInput, $orderBy: [OrderItemOrderB
     }
   }
 }
+

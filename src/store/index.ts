@@ -12,7 +12,7 @@ export const store = configureStore({
     cart:cartSlice
   },
   // @ts-ignore
-  // preloadedState: persistedState,
+  preloadedState: persistedState,
 });
 // store.subscribe(() => {
 //   saveState(store.getState());

@@ -17,7 +17,8 @@ import { useRouter } from 'next/navigation';
 import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 import ActionIcon from '../ui/action-icon';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCartItemCount } from '@/store/slices/product/cart';
+import { fetchCartItemCount, fetchCartOfTheUser } from '@/store/slices/product/cart';
+import { useAppDispatch, useAppSelector } from '@/store';
 
 export default function ListingDetailsHeader() {
   const mounted = useIsMounted();
@@ -26,13 +27,20 @@ export default function ListingDetailsHeader() {
   const headerRef = useRef(null);
   addScrollingClass(headerRef);
 const router = useRouter()
-const dispatch = useDispatch();
-const { cartItemCount, status, error } = useSelector((state) => state.cart);
+const dispatch = useAppDispatch();
+const { cartItemCount, status, error, cart } = useAppSelector((state) => state.cart);
 
 // Fetch cart item count on component mount
 useEffect(() => {
-  dispatch(fetchCartItemCount());
+  dispatch(fetchCartOfTheUser());
 }, [dispatch]);
+
+useEffect(() => {
+if(cart?.id){
+
+  dispatch(fetchCartItemCount());
+}
+}, [dispatch , cart?.id]);
   return (
     <header
       // ref={headerRef}
@@ -48,7 +56,7 @@ useEffect(() => {
           <SearchIconBtn className=' ' />
           {mounted ? (
         <>
-                  <Badge count={0} showZero> <ActionIcon 
+                  <Badge count={cartItemCount} showZero> <ActionIcon 
       variant="text"
       onClick={()=> router.push("/cart")}
 

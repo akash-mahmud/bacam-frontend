@@ -6686,7 +6686,7 @@ export type CreateCheckoutSessionargs = {
   orderId?: InputMaybe<Scalars['String']['input']>;
   paymentType: ProductPaymentTypes;
   productIds: Array<Scalars['String']['input']>;
-  quantity: Scalars['Float']['input'];
+  quantity?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type DefaultResponsce = {
@@ -6714,6 +6714,64 @@ export enum ProductPaymentTypes {
   OrderStartPrice = 'orderStartPrice',
   Totalprice = 'totalprice'
 }
+
+export type CartQueryVariables = Exact<{
+  where: CartWhereUniqueInput;
+}>;
+
+
+export type CartQuery = { __typename?: 'Query', cart?: { __typename?: 'Cart', id: string } | null };
+
+export type CartItemsExistOrNotForThisProductQueryVariables = Exact<{
+  where?: InputMaybe<CartItemWhereInput>;
+  orderBy?: InputMaybe<Array<CartItemOrderByWithRelationInput> | CartItemOrderByWithRelationInput>;
+  cursor?: InputMaybe<CartItemWhereUniqueInput>;
+  take?: InputMaybe<Scalars['Int']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  distinct?: InputMaybe<Array<CartItemScalarFieldEnum> | CartItemScalarFieldEnum>;
+}>;
+
+
+export type CartItemsExistOrNotForThisProductQuery = { __typename?: 'Query', cartItems: Array<{ __typename?: 'CartItem', id: string, quantity: number }> };
+
+export type UpsertOneCartItemMutationVariables = Exact<{
+  where: CartItemWhereUniqueInput;
+  create: CartItemCreateInput;
+  update: CartItemUpdateInput;
+}>;
+
+
+export type UpsertOneCartItemMutation = { __typename?: 'Mutation', upsertOneCartItem: { __typename?: 'CartItem', id: string } };
+
+export type AggregateCartItemQueryVariables = Exact<{
+  where?: InputMaybe<CartItemWhereInput>;
+  orderBy?: InputMaybe<Array<CartItemOrderByWithRelationInput> | CartItemOrderByWithRelationInput>;
+  cursor?: InputMaybe<CartItemWhereUniqueInput>;
+  take?: InputMaybe<Scalars['Int']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type AggregateCartItemQuery = { __typename?: 'Query', aggregateCartItem: { __typename?: 'AggregateCartItem', _sum?: { __typename?: 'CartItemSumAggregate', quantity?: number | null } | null } };
+
+export type CartItemsQueryVariables = Exact<{
+  where?: InputMaybe<CartItemWhereInput>;
+  orderBy?: InputMaybe<Array<CartItemOrderByWithRelationInput> | CartItemOrderByWithRelationInput>;
+  cursor?: InputMaybe<CartItemWhereUniqueInput>;
+  take?: InputMaybe<Scalars['Int']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  distinct?: InputMaybe<Array<CartItemScalarFieldEnum> | CartItemScalarFieldEnum>;
+}>;
+
+
+export type CartItemsQuery = { __typename?: 'Query', cartItems: Array<{ __typename?: 'CartItem', id: string, quantity: number, product: { __typename?: 'Product', id: string, images: Array<string>, name: string, minimumOrderNeededToStart: number, orderStartPrice?: number | null, price: number, type: ProductType, custom_product_status: CustomProductStatus } }> };
+
+export type DeleteOneCartItemMutationVariables = Exact<{
+  where: CartItemWhereUniqueInput;
+}>;
+
+
+export type DeleteOneCartItemMutation = { __typename?: 'Mutation', deleteOneCartItem?: { __typename?: 'CartItem', id: string } | null };
 
 export type UploadFileMutationVariables = Exact<{
   file: Scalars['Upload']['input'];
@@ -6806,6 +6864,262 @@ export type UpdateProfileMutationVariables = Exact<{
 export type UpdateProfileMutation = { __typename?: 'Mutation', updateProfile?: { __typename?: 'defaultResponsce', message: string, success: boolean } | null };
 
 
+export const CartDocument = gql`
+    query Cart($where: CartWhereUniqueInput!) {
+  cart(where: $where) {
+    id
+  }
+}
+    `;
+
+/**
+ * __useCartQuery__
+ *
+ * To run a query within a React component, call `useCartQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCartQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCartQuery({
+ *   variables: {
+ *      where: // value for 'where'
+ *   },
+ * });
+ */
+export function useCartQuery(baseOptions: Apollo.QueryHookOptions<CartQuery, CartQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<CartQuery, CartQueryVariables>(CartDocument, options);
+      }
+export function useCartLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CartQuery, CartQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<CartQuery, CartQueryVariables>(CartDocument, options);
+        }
+export type CartQueryHookResult = ReturnType<typeof useCartQuery>;
+export type CartLazyQueryHookResult = ReturnType<typeof useCartLazyQuery>;
+export type CartQueryResult = Apollo.QueryResult<CartQuery, CartQueryVariables>;
+export const CartItemsExistOrNotForThisProductDocument = gql`
+    query CartItemsExistOrNotForThisProduct($where: CartItemWhereInput, $orderBy: [CartItemOrderByWithRelationInput!], $cursor: CartItemWhereUniqueInput, $take: Int, $skip: Int, $distinct: [CartItemScalarFieldEnum!]) {
+  cartItems(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+    distinct: $distinct
+  ) {
+    id
+    quantity
+  }
+}
+    `;
+
+/**
+ * __useCartItemsExistOrNotForThisProductQuery__
+ *
+ * To run a query within a React component, call `useCartItemsExistOrNotForThisProductQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCartItemsExistOrNotForThisProductQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCartItemsExistOrNotForThisProductQuery({
+ *   variables: {
+ *      where: // value for 'where'
+ *      orderBy: // value for 'orderBy'
+ *      cursor: // value for 'cursor'
+ *      take: // value for 'take'
+ *      skip: // value for 'skip'
+ *      distinct: // value for 'distinct'
+ *   },
+ * });
+ */
+export function useCartItemsExistOrNotForThisProductQuery(baseOptions?: Apollo.QueryHookOptions<CartItemsExistOrNotForThisProductQuery, CartItemsExistOrNotForThisProductQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<CartItemsExistOrNotForThisProductQuery, CartItemsExistOrNotForThisProductQueryVariables>(CartItemsExistOrNotForThisProductDocument, options);
+      }
+export function useCartItemsExistOrNotForThisProductLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CartItemsExistOrNotForThisProductQuery, CartItemsExistOrNotForThisProductQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<CartItemsExistOrNotForThisProductQuery, CartItemsExistOrNotForThisProductQueryVariables>(CartItemsExistOrNotForThisProductDocument, options);
+        }
+export type CartItemsExistOrNotForThisProductQueryHookResult = ReturnType<typeof useCartItemsExistOrNotForThisProductQuery>;
+export type CartItemsExistOrNotForThisProductLazyQueryHookResult = ReturnType<typeof useCartItemsExistOrNotForThisProductLazyQuery>;
+export type CartItemsExistOrNotForThisProductQueryResult = Apollo.QueryResult<CartItemsExistOrNotForThisProductQuery, CartItemsExistOrNotForThisProductQueryVariables>;
+export const UpsertOneCartItemDocument = gql`
+    mutation UpsertOneCartItem($where: CartItemWhereUniqueInput!, $create: CartItemCreateInput!, $update: CartItemUpdateInput!) {
+  upsertOneCartItem(where: $where, create: $create, update: $update) {
+    id
+  }
+}
+    `;
+export type UpsertOneCartItemMutationFn = Apollo.MutationFunction<UpsertOneCartItemMutation, UpsertOneCartItemMutationVariables>;
+
+/**
+ * __useUpsertOneCartItemMutation__
+ *
+ * To run a mutation, you first call `useUpsertOneCartItemMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpsertOneCartItemMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [upsertOneCartItemMutation, { data, loading, error }] = useUpsertOneCartItemMutation({
+ *   variables: {
+ *      where: // value for 'where'
+ *      create: // value for 'create'
+ *      update: // value for 'update'
+ *   },
+ * });
+ */
+export function useUpsertOneCartItemMutation(baseOptions?: Apollo.MutationHookOptions<UpsertOneCartItemMutation, UpsertOneCartItemMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpsertOneCartItemMutation, UpsertOneCartItemMutationVariables>(UpsertOneCartItemDocument, options);
+      }
+export type UpsertOneCartItemMutationHookResult = ReturnType<typeof useUpsertOneCartItemMutation>;
+export type UpsertOneCartItemMutationResult = Apollo.MutationResult<UpsertOneCartItemMutation>;
+export type UpsertOneCartItemMutationOptions = Apollo.BaseMutationOptions<UpsertOneCartItemMutation, UpsertOneCartItemMutationVariables>;
+export const AggregateCartItemDocument = gql`
+    query AggregateCartItem($where: CartItemWhereInput, $orderBy: [CartItemOrderByWithRelationInput!], $cursor: CartItemWhereUniqueInput, $take: Int, $skip: Int) {
+  aggregateCartItem(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+  ) {
+    _sum {
+      quantity
+    }
+  }
+}
+    `;
+
+/**
+ * __useAggregateCartItemQuery__
+ *
+ * To run a query within a React component, call `useAggregateCartItemQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAggregateCartItemQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAggregateCartItemQuery({
+ *   variables: {
+ *      where: // value for 'where'
+ *      orderBy: // value for 'orderBy'
+ *      cursor: // value for 'cursor'
+ *      take: // value for 'take'
+ *      skip: // value for 'skip'
+ *   },
+ * });
+ */
+export function useAggregateCartItemQuery(baseOptions?: Apollo.QueryHookOptions<AggregateCartItemQuery, AggregateCartItemQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<AggregateCartItemQuery, AggregateCartItemQueryVariables>(AggregateCartItemDocument, options);
+      }
+export function useAggregateCartItemLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AggregateCartItemQuery, AggregateCartItemQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<AggregateCartItemQuery, AggregateCartItemQueryVariables>(AggregateCartItemDocument, options);
+        }
+export type AggregateCartItemQueryHookResult = ReturnType<typeof useAggregateCartItemQuery>;
+export type AggregateCartItemLazyQueryHookResult = ReturnType<typeof useAggregateCartItemLazyQuery>;
+export type AggregateCartItemQueryResult = Apollo.QueryResult<AggregateCartItemQuery, AggregateCartItemQueryVariables>;
+export const CartItemsDocument = gql`
+    query CartItems($where: CartItemWhereInput, $orderBy: [CartItemOrderByWithRelationInput!], $cursor: CartItemWhereUniqueInput, $take: Int, $skip: Int, $distinct: [CartItemScalarFieldEnum!]) {
+  cartItems(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+    distinct: $distinct
+  ) {
+    id
+    quantity
+    product {
+      id
+      images
+      name
+      minimumOrderNeededToStart
+      orderStartPrice
+      price
+      type
+      custom_product_status
+    }
+  }
+}
+    `;
+
+/**
+ * __useCartItemsQuery__
+ *
+ * To run a query within a React component, call `useCartItemsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCartItemsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCartItemsQuery({
+ *   variables: {
+ *      where: // value for 'where'
+ *      orderBy: // value for 'orderBy'
+ *      cursor: // value for 'cursor'
+ *      take: // value for 'take'
+ *      skip: // value for 'skip'
+ *      distinct: // value for 'distinct'
+ *   },
+ * });
+ */
+export function useCartItemsQuery(baseOptions?: Apollo.QueryHookOptions<CartItemsQuery, CartItemsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<CartItemsQuery, CartItemsQueryVariables>(CartItemsDocument, options);
+      }
+export function useCartItemsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CartItemsQuery, CartItemsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<CartItemsQuery, CartItemsQueryVariables>(CartItemsDocument, options);
+        }
+export type CartItemsQueryHookResult = ReturnType<typeof useCartItemsQuery>;
+export type CartItemsLazyQueryHookResult = ReturnType<typeof useCartItemsLazyQuery>;
+export type CartItemsQueryResult = Apollo.QueryResult<CartItemsQuery, CartItemsQueryVariables>;
+export const DeleteOneCartItemDocument = gql`
+    mutation DeleteOneCartItem($where: CartItemWhereUniqueInput!) {
+  deleteOneCartItem(where: $where) {
+    id
+  }
+}
+    `;
+export type DeleteOneCartItemMutationFn = Apollo.MutationFunction<DeleteOneCartItemMutation, DeleteOneCartItemMutationVariables>;
+
+/**
+ * __useDeleteOneCartItemMutation__
+ *
+ * To run a mutation, you first call `useDeleteOneCartItemMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteOneCartItemMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteOneCartItemMutation, { data, loading, error }] = useDeleteOneCartItemMutation({
+ *   variables: {
+ *      where: // value for 'where'
+ *   },
+ * });
+ */
+export function useDeleteOneCartItemMutation(baseOptions?: Apollo.MutationHookOptions<DeleteOneCartItemMutation, DeleteOneCartItemMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<DeleteOneCartItemMutation, DeleteOneCartItemMutationVariables>(DeleteOneCartItemDocument, options);
+      }
+export type DeleteOneCartItemMutationHookResult = ReturnType<typeof useDeleteOneCartItemMutation>;
+export type DeleteOneCartItemMutationResult = Apollo.MutationResult<DeleteOneCartItemMutation>;
+export type DeleteOneCartItemMutationOptions = Apollo.BaseMutationOptions<DeleteOneCartItemMutation, DeleteOneCartItemMutationVariables>;
 export const UploadFileDocument = gql`
     mutation UploadFile($file: Upload!) {
   uploadFile(file: $file) {

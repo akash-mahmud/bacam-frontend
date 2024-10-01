@@ -22,7 +22,7 @@ export const persistedState = (() => {
   try {
     const auth = getAuthData();
 
-    if (Object.keys(auth).length === 0) return undefined;
+    if (Object.keys(auth as any).length === 0) return undefined;
     return {
       auth,
       

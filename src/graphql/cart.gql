@@ -1,0 +1,50 @@
+query Cart($where: CartWhereUniqueInput!) {
+  cart(where: $where) {
+    id
+  }
+}
+
+query CartItemsExistOrNotForThisProduct($where: CartItemWhereInput, $orderBy: [CartItemOrderByWithRelationInput!], $cursor: CartItemWhereUniqueInput, $take: Int, $skip: Int, $distinct: [CartItemScalarFieldEnum!]) {
+  cartItems(where: $where, orderBy: $orderBy, cursor: $cursor, take: $take, skip: $skip, distinct: $distinct) {
+    id
+    quantity
+  }
+}
+
+mutation UpsertOneCartItem($where: CartItemWhereUniqueInput!, $create: CartItemCreateInput!, $update: CartItemUpdateInput!) {
+  upsertOneCartItem(where: $where, create: $create, update: $update) {
+    id
+  }
+}
+
+
+query AggregateCartItem($where: CartItemWhereInput, $orderBy: [CartItemOrderByWithRelationInput!], $cursor: CartItemWhereUniqueInput, $take: Int, $skip: Int) {
+  aggregateCartItem(where: $where, orderBy: $orderBy, cursor: $cursor, take: $take, skip: $skip) {
+    _sum {
+      quantity
+    }
+  }
+}
+
+query CartItems($where: CartItemWhereInput, $orderBy: [CartItemOrderByWithRelationInput!], $cursor: CartItemWhereUniqueInput, $take: Int, $skip: Int, $distinct: [CartItemScalarFieldEnum!]) {
+  cartItems(where: $where, orderBy: $orderBy, cursor: $cursor, take: $take, skip: $skip, distinct: $distinct) {
+    id
+    quantity
+    product {
+      id
+      images
+      name
+      minimumOrderNeededToStart
+      orderStartPrice
+      price
+      type
+      custom_product_status
+    }
+  }
+}
+
+mutation DeleteOneCartItem($where: CartItemWhereUniqueInput!) {
+  deleteOneCartItem(where: $where) {
+    id
+  }
+}

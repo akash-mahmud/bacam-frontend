@@ -1,19 +1,23 @@
 'use client';
 
 
-import { Product, ProductPaymentTypes, useAggregateOrderItemQuery, useCreateCheckoutSessionMutation , } from '@/graphql/generated/schema';
+import { Product, ProductPaymentTypes, useAggregateOrderItemQuery, useCartItemsExistOrNotForThisProductLazyQuery, useCreateCheckoutSessionMutation, useUpsertOneCartItemMutation , } from '@/graphql/generated/schema';
 import { getImage } from '@/utils/getImage';
 import ImageGallery, { ReactImageGalleryItem } from "react-image-gallery";
 
-import ImageMagnifier from '../ImageMagnifier';
 import ActionIcon from '../action-icon';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 import Button from '../button';
 import AuthRequiredButton from '@/components/auth/AuthRequiredButton';
 import { useStripe } from '@stripe/react-stripe-js';
-import { Flex, Progress, Spin, Tooltip } from 'antd';
+import { Flex, notification, Progress, Spin, Tooltip } from 'antd';
 import { formatPriceNumber } from '@/utils/priceFormat';
+import useAuth from '@/hooks/use-auth';
+import { usePathname } from 'next/navigation';
+import { useRouter } from 'next-nprogress-bar'
+import { useAppDispatch, useAppSelector } from '@/store';
+import { fetchCartItemCount } from '@/store/slices/product/cart';
 export default function VendorProfileCard({ product }: {
   product?: Product
 }) {
@@ -45,7 +49,77 @@ const createPaymentSession = async () => {
 const {data} = useAggregateOrderItemQuery()
 const ordersForThisProductCount = data?.aggregateOrderItem?._sum?.qty??0
 const percentage = ordersForThisProductCount>0?(ordersForThisProductCount/(product?.minimumOrderNeededToStart??1)*100):0
+const {user} = useAuth()
+const path = usePathname()
+const router = useRouter()
+const [ExistCartItem, {
+  loading:ExistCartItemLoading
+}] = useCartItemsExistOrNotForThisProductLazyQuery({
+  fetchPolicy:"network-only"
+})
+const {cart} = useAppSelector((store)=> store.cart)
+const [AddTocart, {
+  loading:AddToCartLoading
+}] = useUpsertOneCartItemMutation({
+  fetchPolicy:"network-only"
 
+})
+const dipatch = useAppDispatch()
+const addTocartItem = async () => {
+  if (!user?.id) {
+    router.push(`/sign-in?redirectTo=${path}`)
+
+  }else{
+const{data} = await ExistCartItem({
+  variables:{
+    where:{
+      productId:{
+        equals:product?.id
+      },
+    cartId:{
+      equals:cart?.id
+    }
+    }
+  }
+})
+const cartItem =data?.cartItems[0]??{}
+console.log(cartItem);
+
+const res = await AddTocart({
+  variables:{
+    where:{
+      id: cartItem.id??"noItem"
+    },
+    create:{
+product:{
+  connect:{
+    id:product.id
+  }
+},
+quantity: qty,
+cart:{
+  connect:{
+    id:cart?.id
+  }
+}
+    },
+    update:{
+      quantity:{
+        set: (cartItem?.quantity??0)+qty
+      }
+    }
+  }
+})
+console.log(res.data?.upsertOneCartItem);
+if(res.data?.upsertOneCartItem?.id){
+  
+ await dipatch(fetchCartItemCount())
+
+}
+  }
+
+
+}
   return (
     <div className="relative flex flex-col md:flex-row justify-center px-4  text-center md:mt-8  md:justify-between md:overflow-hidden md:rounded-lg md:px-0   2xl:mt-12 ">
 
@@ -130,10 +204,12 @@ const percentage = ordersForThisProductCount>0?(ordersForThisProductCount/(produ
 </div>
 
 <div className=' flex flex-col my-5 w-full'>
+<Spin spinning={ExistCartItemLoading|| AddToCartLoading}>
 
-<Button  variant='outline' className=' my-3 py-4 rounded-md '>
+<Button  variant='outline' className=' my-3 py-4 rounded-md ' onClick={addTocartItem}>
   Add to Cart
 </Button>
+</Spin>
 <AuthRequiredButton>
 <Spin spinning={loading} className=' w-full'>
 
