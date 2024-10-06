@@ -40,41 +40,47 @@ export default function RootLayout({ children }: React.PropsWithChildren<{}>) {
   return (
     // <ThemeProvider theme={theme}>
     // <GlobalStyles /> 
-    <html
+    <html suppressHydrationWarning
       lang="en"
-      className={clsx(
-        'h-full font-lato antialiased',
+
+    >
+
+
+
+
+      <body className={clsx(
+        'antialiased',
         satisfy.variable,
         lato.variable
       )}
-    >
-  
-      
-      <ClientProviders>
-        <AppProgressBarProvider>
 
-    <StripeProvider>
-      <PublicApolloClient>
+        suppressHydrationWarning>
+        <ClientProviders>
+          <AppProgressBarProvider>
 
-      <StyledComponentsRegistry>
+            <StripeProvider>
+              <PublicApolloClient>
 
-      <ReduxStoreProvider>
-      <AntdRegistry>
+                <StyledComponentsRegistry>
 
-      <body className="flex min-h-full flex-col">
-        {children}
-        <ModalContainer />
-        <DrawerContainer />
-        <GalleryCarouselView />
+                  <ReduxStoreProvider>
+                    <AntdRegistry>
+                      <main className='flex flex-col min-h-screen'>
+                        {children}
+
+                      </main>
+                      <ModalContainer />
+                      <DrawerContainer />
+                      <GalleryCarouselView />
+                    </AntdRegistry>
+                  </ReduxStoreProvider>
+                </StyledComponentsRegistry>
+              </PublicApolloClient>
+
+            </StripeProvider>
+          </AppProgressBarProvider>
+        </ClientProviders>
       </body>
-      </AntdRegistry>
-      </ReduxStoreProvider>
-      </StyledComponentsRegistry>
-      </PublicApolloClient>
-
-    </StripeProvider>
-        </AppProgressBarProvider>
-      </ClientProviders>
     </html>
     //  </ThemeProvider>
   );

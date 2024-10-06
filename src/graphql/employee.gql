@@ -1,0 +1,9 @@
+query Employees($where: EmployeeWhereInput, $orderBy: [EmployeeOrderByWithRelationInput!], $cursor: EmployeeWhereUniqueInput, $take: Int, $skip: Int, $distinct: [EmployeeScalarFieldEnum!]) {
+  employees(where: $where, orderBy: $orderBy, cursor: $cursor, take: $take, skip: $skip, distinct: $distinct) {
+    id
+    image
+    name
+    role
+    shortDescription
+  }
+}

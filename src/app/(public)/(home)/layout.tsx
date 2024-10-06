@@ -6,7 +6,7 @@ export default function HomeLayout({ children }: React.PropsWithChildren<{}>) {
   return (
     <>
       <TransparentHeader />
-      <main className="flex-grow">{children}</main>
+      <section className="flex-grow">{children}</section>
       <Footer />
       <MobileNav />
     </>

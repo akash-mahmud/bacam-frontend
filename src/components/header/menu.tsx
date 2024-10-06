@@ -20,7 +20,7 @@ const menuItems = [
   },
   {
     id: 2,
-    label: 'Bikes',
+    label: 'Products',
     path: Routes.public.product,
   },
 

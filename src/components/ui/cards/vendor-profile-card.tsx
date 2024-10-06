@@ -206,7 +206,7 @@ if(res.data?.upsertOneCartItem?.id){
 <div className=' flex flex-col my-5 w-full'>
 <Spin spinning={ExistCartItemLoading|| AddToCartLoading}>
 
-<Button  variant='outline' className=' my-3 py-4 rounded-md ' onClick={addTocartItem}>
+<Button  variant='outline' className=' my-3 py-4 w-full rounded-md ' onClick={addTocartItem}>
   Add to Cart
 </Button>
 </Spin>
