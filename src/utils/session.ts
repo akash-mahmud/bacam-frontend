@@ -7,8 +7,13 @@ export function getAuthData() {
       token: null,
 
     };
-  const AuthData: string | undefined | null =typeof window !=='undefined' ?localStorage.getItem('yellow-cartee') &&JSON.parse(localStorage.getItem(USER_COOKIE)??"{}"):{}
-
+  let AuthData: string | undefined | null 
+try {
+  AuthData =typeof window !=='undefined' ?localStorage.getItem('yellow-cartee') &&JSON.parse(localStorage.getItem(USER_COOKIE)??"{}"):{}
+} catch (error) {
+  console.log(error);
+  
+}
   const persustedData = AuthData;
   return persustedData;
 

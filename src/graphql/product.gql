@@ -1,6 +1,19 @@
-query Products($where: ProductWhereInput, $orderBy: [ProductOrderByWithRelationInput!], $cursor: ProductWhereUniqueInput, $take: Int, $skip: Int, $distinct: [ProductScalarFieldEnum!]) {
-  products(where: $where, orderBy: $orderBy, cursor: $cursor, take: $take, skip: $skip, distinct: $distinct) {
-
+query Products(
+  $where: ProductWhereInput
+  $orderBy: [ProductOrderByWithRelationInput!]
+  $cursor: ProductWhereUniqueInput
+  $take: Int
+  $skip: Int
+  $distinct: [ProductScalarFieldEnum!]
+) {
+  products(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+    distinct: $distinct
+  ) {
     id
     images
     name
@@ -9,7 +22,10 @@ query Products($where: ProductWhereInput, $orderBy: [ProductOrderByWithRelationI
   }
 }
 
-query Product($where: ProductWhereUniqueInput!, $reveiwsWhere2: ReviewWhereInput) {
+query Product(
+  $where: ProductWhereUniqueInput!
+  $reveiwsWhere2: ReviewWhereInput
+) {
   product(where: $where) {
     _count {
       reveiws(where: $reveiwsWhere2)
@@ -25,17 +41,29 @@ query Product($where: ProductWhereUniqueInput!, $reveiwsWhere2: ReviewWhereInput
     price
     orderStartPrice
     slug
-      type 
-  minimumOrderNeededToStart 
-  custom_product_status 
+    type
+    stock
+    minimumOrderNeededToStart
+    custom_product_status
   }
 }
 
-query AggregateOrderItem($where: OrderItemWhereInput, $orderBy: [OrderItemOrderByWithRelationInput!], $cursor: OrderItemWhereUniqueInput, $take: Int, $skip: Int) {
-  aggregateOrderItem(where: $where, orderBy: $orderBy, cursor: $cursor, take: $take, skip: $skip) {
+query AggregateOrderItem(
+  $where: OrderItemWhereInput
+  $orderBy: [OrderItemOrderByWithRelationInput!]
+  $cursor: OrderItemWhereUniqueInput
+  $take: Int
+  $skip: Int
+) {
+  aggregateOrderItem(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+  ) {
     _sum {
       qty
     }
   }
 }
-

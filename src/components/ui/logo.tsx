@@ -18,11 +18,8 @@ const Logo: React.FC<React.AnchorHTMLAttributes<{}>> = ({
       )}
       {...props}
     >
-     <h2 className='font-bold text-xl'>
-      
-      Baccam
-      </h2> 
-      {/* <LogoIcon className="w-full" /> */}
+
+      <LogoIcon className="w-full" />
     </Link>
   );
 };

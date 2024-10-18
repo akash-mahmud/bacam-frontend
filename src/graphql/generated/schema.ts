@@ -1712,6 +1712,7 @@ export type LoginResponsce = {
 export type Mutation = {
   __typename?: 'Mutation';
   adminLogin?: Maybe<LoginResponsce>;
+  adminRefreshToken?: Maybe<Scalars['String']['output']>;
   adminRegister?: Maybe<DefaultResponsce>;
   createCheckoutSession?: Maybe<PaymentSessionCreateResponse>;
   createManyCart: AffectedRowsOutput;
@@ -3899,7 +3900,9 @@ export type Product = {
   orderStartPrice?: Maybe<Scalars['Float']['output']>;
   price: Scalars['Float']['output'];
   reveiws: Array<Review>;
+  shortdescription: Scalars['String']['output'];
   slug: Scalars['String']['output'];
+  stock: Scalars['Int']['output'];
   type: ProductType;
   updatedAt: Scalars['DateTime']['output'];
 };
@@ -3939,12 +3942,14 @@ export type ProductAvgAggregate = {
   minimumOrderNeededToStart?: Maybe<Scalars['Float']['output']>;
   orderStartPrice?: Maybe<Scalars['Float']['output']>;
   price?: Maybe<Scalars['Float']['output']>;
+  stock?: Maybe<Scalars['Float']['output']>;
 };
 
 export type ProductAvgOrderByAggregateInput = {
   minimumOrderNeededToStart?: InputMaybe<SortOrder>;
   orderStartPrice?: InputMaybe<SortOrder>;
   price?: InputMaybe<SortOrder>;
+  stock?: InputMaybe<SortOrder>;
 };
 
 export type ProductCount = {
@@ -3982,7 +3987,9 @@ export type ProductCountAggregate = {
   name: Scalars['Int']['output'];
   orderStartPrice: Scalars['Int']['output'];
   price: Scalars['Int']['output'];
+  shortdescription: Scalars['Int']['output'];
   slug: Scalars['Int']['output'];
+  stock: Scalars['Int']['output'];
   type: Scalars['Int']['output'];
   updatedAt: Scalars['Int']['output'];
 };
@@ -3998,7 +4005,9 @@ export type ProductCountOrderByAggregateInput = {
   name?: InputMaybe<SortOrder>;
   orderStartPrice?: InputMaybe<SortOrder>;
   price?: InputMaybe<SortOrder>;
+  shortdescription?: InputMaybe<SortOrder>;
   slug?: InputMaybe<SortOrder>;
+  stock?: InputMaybe<SortOrder>;
   type?: InputMaybe<SortOrder>;
   updatedAt?: InputMaybe<SortOrder>;
 };
@@ -4017,7 +4026,9 @@ export type ProductCreateInput = {
   orderStartPrice?: InputMaybe<Scalars['Float']['input']>;
   price: Scalars['Float']['input'];
   reveiws?: InputMaybe<ReviewCreateNestedManyWithoutProductInput>;
+  shortdescription?: InputMaybe<Scalars['String']['input']>;
   slug: Scalars['String']['input'];
+  stock?: InputMaybe<Scalars['Int']['input']>;
   type: ProductType;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
@@ -4032,7 +4043,9 @@ export type ProductCreateManyCategoryInput = {
   name: Scalars['String']['input'];
   orderStartPrice?: InputMaybe<Scalars['Float']['input']>;
   price: Scalars['Float']['input'];
+  shortdescription?: InputMaybe<Scalars['String']['input']>;
   slug: Scalars['String']['input'];
+  stock?: InputMaybe<Scalars['Int']['input']>;
   type: ProductType;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
@@ -4053,7 +4066,9 @@ export type ProductCreateManyInput = {
   name: Scalars['String']['input'];
   orderStartPrice?: InputMaybe<Scalars['Float']['input']>;
   price: Scalars['Float']['input'];
+  shortdescription?: InputMaybe<Scalars['String']['input']>;
   slug: Scalars['String']['input'];
+  stock?: InputMaybe<Scalars['Int']['input']>;
   type: ProductType;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
@@ -4116,7 +4131,9 @@ export type ProductCreateWithoutCartItemInput = {
   orderStartPrice?: InputMaybe<Scalars['Float']['input']>;
   price: Scalars['Float']['input'];
   reveiws?: InputMaybe<ReviewCreateNestedManyWithoutProductInput>;
+  shortdescription?: InputMaybe<Scalars['String']['input']>;
   slug: Scalars['String']['input'];
+  stock?: InputMaybe<Scalars['Int']['input']>;
   type: ProductType;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
@@ -4134,7 +4151,9 @@ export type ProductCreateWithoutCategoryInput = {
   orderStartPrice?: InputMaybe<Scalars['Float']['input']>;
   price: Scalars['Float']['input'];
   reveiws?: InputMaybe<ReviewCreateNestedManyWithoutProductInput>;
+  shortdescription?: InputMaybe<Scalars['String']['input']>;
   slug: Scalars['String']['input'];
+  stock?: InputMaybe<Scalars['Int']['input']>;
   type: ProductType;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
@@ -4152,7 +4171,9 @@ export type ProductCreateWithoutOrderItemInput = {
   orderStartPrice?: InputMaybe<Scalars['Float']['input']>;
   price: Scalars['Float']['input'];
   reveiws?: InputMaybe<ReviewCreateNestedManyWithoutProductInput>;
+  shortdescription?: InputMaybe<Scalars['String']['input']>;
   slug: Scalars['String']['input'];
+  stock?: InputMaybe<Scalars['Int']['input']>;
   type: ProductType;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
@@ -4170,7 +4191,9 @@ export type ProductCreateWithoutReveiwsInput = {
   orderItem?: InputMaybe<OrderItemCreateNestedManyWithoutProductInput>;
   orderStartPrice?: InputMaybe<Scalars['Float']['input']>;
   price: Scalars['Float']['input'];
+  shortdescription?: InputMaybe<Scalars['String']['input']>;
   slug: Scalars['String']['input'];
+  stock?: InputMaybe<Scalars['Int']['input']>;
   type: ProductType;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
@@ -4196,7 +4219,9 @@ export type ProductGroupBy = {
   name: Scalars['String']['output'];
   orderStartPrice?: Maybe<Scalars['Float']['output']>;
   price: Scalars['Float']['output'];
+  shortdescription: Scalars['String']['output'];
   slug: Scalars['String']['output'];
+  stock: Scalars['Int']['output'];
   type: ProductType;
   updatedAt: Scalars['DateTime']['output'];
 };
@@ -4218,7 +4243,9 @@ export type ProductMaxAggregate = {
   name?: Maybe<Scalars['String']['output']>;
   orderStartPrice?: Maybe<Scalars['Float']['output']>;
   price?: Maybe<Scalars['Float']['output']>;
+  shortdescription?: Maybe<Scalars['String']['output']>;
   slug?: Maybe<Scalars['String']['output']>;
+  stock?: Maybe<Scalars['Int']['output']>;
   type?: Maybe<ProductType>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
@@ -4233,7 +4260,9 @@ export type ProductMaxOrderByAggregateInput = {
   name?: InputMaybe<SortOrder>;
   orderStartPrice?: InputMaybe<SortOrder>;
   price?: InputMaybe<SortOrder>;
+  shortdescription?: InputMaybe<SortOrder>;
   slug?: InputMaybe<SortOrder>;
+  stock?: InputMaybe<SortOrder>;
   type?: InputMaybe<SortOrder>;
   updatedAt?: InputMaybe<SortOrder>;
 };
@@ -4249,7 +4278,9 @@ export type ProductMinAggregate = {
   name?: Maybe<Scalars['String']['output']>;
   orderStartPrice?: Maybe<Scalars['Float']['output']>;
   price?: Maybe<Scalars['Float']['output']>;
+  shortdescription?: Maybe<Scalars['String']['output']>;
   slug?: Maybe<Scalars['String']['output']>;
+  stock?: Maybe<Scalars['Int']['output']>;
   type?: Maybe<ProductType>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
@@ -4264,7 +4295,9 @@ export type ProductMinOrderByAggregateInput = {
   name?: InputMaybe<SortOrder>;
   orderStartPrice?: InputMaybe<SortOrder>;
   price?: InputMaybe<SortOrder>;
+  shortdescription?: InputMaybe<SortOrder>;
   slug?: InputMaybe<SortOrder>;
+  stock?: InputMaybe<SortOrder>;
   type?: InputMaybe<SortOrder>;
   updatedAt?: InputMaybe<SortOrder>;
 };
@@ -4289,7 +4322,9 @@ export type ProductOrderByWithAggregationInput = {
   name?: InputMaybe<SortOrder>;
   orderStartPrice?: InputMaybe<SortOrderInput>;
   price?: InputMaybe<SortOrder>;
+  shortdescription?: InputMaybe<SortOrder>;
   slug?: InputMaybe<SortOrder>;
+  stock?: InputMaybe<SortOrder>;
   type?: InputMaybe<SortOrder>;
   updatedAt?: InputMaybe<SortOrder>;
 };
@@ -4309,7 +4344,9 @@ export type ProductOrderByWithRelationInput = {
   orderStartPrice?: InputMaybe<SortOrderInput>;
   price?: InputMaybe<SortOrder>;
   reveiws?: InputMaybe<ReviewOrderByRelationAggregateInput>;
+  shortdescription?: InputMaybe<SortOrder>;
   slug?: InputMaybe<SortOrder>;
+  stock?: InputMaybe<SortOrder>;
   type?: InputMaybe<SortOrder>;
   updatedAt?: InputMaybe<SortOrder>;
 };
@@ -4330,7 +4367,9 @@ export enum ProductScalarFieldEnum {
   Name = 'name',
   OrderStartPrice = 'orderStartPrice',
   Price = 'price',
+  Shortdescription = 'shortdescription',
   Slug = 'slug',
+  Stock = 'stock',
   Type = 'type',
   UpdatedAt = 'updatedAt'
 }
@@ -4349,7 +4388,9 @@ export type ProductScalarWhereInput = {
   name?: InputMaybe<StringFilter>;
   orderStartPrice?: InputMaybe<FloatNullableFilter>;
   price?: InputMaybe<FloatFilter>;
+  shortdescription?: InputMaybe<StringFilter>;
   slug?: InputMaybe<StringFilter>;
+  stock?: InputMaybe<IntFilter>;
   type?: InputMaybe<EnumProductTypeFilter>;
   updatedAt?: InputMaybe<DateTimeFilter>;
 };
@@ -4368,7 +4409,9 @@ export type ProductScalarWhereWithAggregatesInput = {
   name?: InputMaybe<StringWithAggregatesFilter>;
   orderStartPrice?: InputMaybe<FloatNullableWithAggregatesFilter>;
   price?: InputMaybe<FloatWithAggregatesFilter>;
+  shortdescription?: InputMaybe<StringWithAggregatesFilter>;
   slug?: InputMaybe<StringWithAggregatesFilter>;
+  stock?: InputMaybe<IntWithAggregatesFilter>;
   type?: InputMaybe<EnumProductTypeWithAggregatesFilter>;
   updatedAt?: InputMaybe<DateTimeWithAggregatesFilter>;
 };
@@ -4378,12 +4421,14 @@ export type ProductSumAggregate = {
   minimumOrderNeededToStart?: Maybe<Scalars['Int']['output']>;
   orderStartPrice?: Maybe<Scalars['Float']['output']>;
   price?: Maybe<Scalars['Float']['output']>;
+  stock?: Maybe<Scalars['Int']['output']>;
 };
 
 export type ProductSumOrderByAggregateInput = {
   minimumOrderNeededToStart?: InputMaybe<SortOrder>;
   orderStartPrice?: InputMaybe<SortOrder>;
   price?: InputMaybe<SortOrder>;
+  stock?: InputMaybe<SortOrder>;
 };
 
 export enum ProductType {
@@ -4405,7 +4450,9 @@ export type ProductUpdateInput = {
   orderStartPrice?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
   price?: InputMaybe<FloatFieldUpdateOperationsInput>;
   reveiws?: InputMaybe<ReviewUpdateManyWithoutProductNestedInput>;
+  shortdescription?: InputMaybe<StringFieldUpdateOperationsInput>;
   slug?: InputMaybe<StringFieldUpdateOperationsInput>;
+  stock?: InputMaybe<IntFieldUpdateOperationsInput>;
   type?: InputMaybe<EnumProductTypeFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -4420,7 +4467,9 @@ export type ProductUpdateManyMutationInput = {
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   orderStartPrice?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
   price?: InputMaybe<FloatFieldUpdateOperationsInput>;
+  shortdescription?: InputMaybe<StringFieldUpdateOperationsInput>;
   slug?: InputMaybe<StringFieldUpdateOperationsInput>;
+  stock?: InputMaybe<IntFieldUpdateOperationsInput>;
   type?: InputMaybe<EnumProductTypeFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -4486,7 +4535,9 @@ export type ProductUpdateWithoutCartItemInput = {
   orderStartPrice?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
   price?: InputMaybe<FloatFieldUpdateOperationsInput>;
   reveiws?: InputMaybe<ReviewUpdateManyWithoutProductNestedInput>;
+  shortdescription?: InputMaybe<StringFieldUpdateOperationsInput>;
   slug?: InputMaybe<StringFieldUpdateOperationsInput>;
+  stock?: InputMaybe<IntFieldUpdateOperationsInput>;
   type?: InputMaybe<EnumProductTypeFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -4504,7 +4555,9 @@ export type ProductUpdateWithoutCategoryInput = {
   orderStartPrice?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
   price?: InputMaybe<FloatFieldUpdateOperationsInput>;
   reveiws?: InputMaybe<ReviewUpdateManyWithoutProductNestedInput>;
+  shortdescription?: InputMaybe<StringFieldUpdateOperationsInput>;
   slug?: InputMaybe<StringFieldUpdateOperationsInput>;
+  stock?: InputMaybe<IntFieldUpdateOperationsInput>;
   type?: InputMaybe<EnumProductTypeFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -4522,7 +4575,9 @@ export type ProductUpdateWithoutOrderItemInput = {
   orderStartPrice?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
   price?: InputMaybe<FloatFieldUpdateOperationsInput>;
   reveiws?: InputMaybe<ReviewUpdateManyWithoutProductNestedInput>;
+  shortdescription?: InputMaybe<StringFieldUpdateOperationsInput>;
   slug?: InputMaybe<StringFieldUpdateOperationsInput>;
+  stock?: InputMaybe<IntFieldUpdateOperationsInput>;
   type?: InputMaybe<EnumProductTypeFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -4540,7 +4595,9 @@ export type ProductUpdateWithoutReveiwsInput = {
   orderItem?: InputMaybe<OrderItemUpdateManyWithoutProductNestedInput>;
   orderStartPrice?: InputMaybe<NullableFloatFieldUpdateOperationsInput>;
   price?: InputMaybe<FloatFieldUpdateOperationsInput>;
+  shortdescription?: InputMaybe<StringFieldUpdateOperationsInput>;
   slug?: InputMaybe<StringFieldUpdateOperationsInput>;
+  stock?: InputMaybe<IntFieldUpdateOperationsInput>;
   type?: InputMaybe<EnumProductTypeFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
@@ -4589,7 +4646,9 @@ export type ProductWhereInput = {
   orderStartPrice?: InputMaybe<FloatNullableFilter>;
   price?: InputMaybe<FloatFilter>;
   reveiws?: InputMaybe<ReviewListRelationFilter>;
+  shortdescription?: InputMaybe<StringFilter>;
   slug?: InputMaybe<StringFilter>;
+  stock?: InputMaybe<IntFilter>;
   type?: InputMaybe<EnumProductTypeFilter>;
   updatedAt?: InputMaybe<DateTimeFilter>;
 };
@@ -7195,7 +7254,7 @@ export type ProductQueryVariables = Exact<{
 }>;
 
 
-export type ProductQuery = { __typename?: 'Query', product?: { __typename?: 'Product', id: string, description: string, images: Array<string>, name: string, price: number, orderStartPrice?: number | null, slug: string, type: ProductType, minimumOrderNeededToStart: number, custom_product_status: CustomProductStatus, _count?: { __typename?: 'ProductCount', reveiws: number } | null, category: { __typename?: 'Category', name: string, slug: string } } | null };
+export type ProductQuery = { __typename?: 'Query', product?: { __typename?: 'Product', id: string, description: string, images: Array<string>, name: string, price: number, orderStartPrice?: number | null, slug: string, type: ProductType, stock: number, minimumOrderNeededToStart: number, custom_product_status: CustomProductStatus, _count?: { __typename?: 'ProductCount', reveiws: number } | null, category: { __typename?: 'Category', name: string, slug: string } } | null };
 
 export type AggregateOrderItemQueryVariables = Exact<{
   where?: InputMaybe<OrderItemWhereInput>;
@@ -7810,6 +7869,7 @@ export const ProductDocument = gql`
     orderStartPrice
     slug
     type
+    stock
     minimumOrderNeededToStart
     custom_product_status
   }
