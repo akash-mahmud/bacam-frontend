@@ -9,13 +9,13 @@ export const tokenRefreshLink=   new TokenRefreshLink({
       if (typeof window !=='undefined') {
         try {
 
-          if (typeof window ==='undefined'  && !(JSON.parse(localStorage.getItem('yellow-cartee')??"{}")?.token)) {
+          if (typeof window ==='undefined'  && !( localStorage.getItem('yellow-cartee')&&JSON.parse(localStorage.getItem('yellow-cartee')??"{}")?.token)) {
             
 return true            
           }else{
 
 
-            return !isJwtExpired((JSON.parse(localStorage.getItem('yellow-cartee')??"{}")?.token))
+            return !isJwtExpired((localStorage.getItem('yellow-cartee')&&JSON.parse(localStorage.getItem('yellow-cartee')??"{}")?.token))
           }
 
         } catch (error) {
@@ -54,7 +54,7 @@ console.log(token);
       try {
         
         if (accessToken) {
-        const auth =  JSON.parse(localStorage.getItem(USER_COOKIE)??"{}")
+        const auth =localStorage.getItem('yellow-cartee')&&  JSON.parse(localStorage.getItem(USER_COOKIE)??"{}")
 
           localStorage.setItem(USER_COOKIE , JSON.stringify({
             ...auth,

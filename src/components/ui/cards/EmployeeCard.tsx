@@ -1,5 +1,6 @@
 'use client';
 
+import { getImage } from '@/utils/getImage';
 import clsx from 'clsx';
 
 import Image from 'next/image';
@@ -29,7 +30,7 @@ export default function EmployeeCard({
       >
 <div>
 
-        <Image src={image} alt={name} height={100} width={100} className=' rounded'/>
+        <Image src={image.includes("https")? image: getImage(image)} alt={name} height={100} width={100} className=' rounded'/>
 </div>
 
         <div className="flex items-center justify-start text-left gap-2">

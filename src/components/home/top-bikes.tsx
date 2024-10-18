@@ -16,7 +16,7 @@ export function TopBikes({
   return (
     <div className="grid grid-cols-1 gap-y-8 gap-x-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:gap-y-10">
       {products.map((item, index) => (
-        <ListingCard
+        <ListingCard 
           key={`top-boat-grid-${index}`}
           id={`top-boat-grid-${index}`}
           slides={item.images}

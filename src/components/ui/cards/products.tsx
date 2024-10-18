@@ -15,7 +15,6 @@ import {
 import AddToWishlist from '@/components/add-to-wishlist';
 import ActionIcon from '@/components/ui/action-icon';
 import Rate from '@/components/ui/rating';
-import { Routes } from '@/config/routes';
 import { getImage } from '@/utils/getImage';
 
 export default function ProductCard({
@@ -32,7 +31,7 @@ export default function ProductCard({
 }: ListingItemTypes) {
   return (
     <>
-      <div className="listing-card group/item relative inline-flex w-full flex-col">
+      <div className="listing-card group/item relative inline-flex w-full flex-col shadow-md p-5 rounded-md border">
         <div className="relative w-full overflow-hidden rounded-xl">
           <AddToWishlist
             isWishListed={false}

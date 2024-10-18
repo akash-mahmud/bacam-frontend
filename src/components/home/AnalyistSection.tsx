@@ -36,9 +36,9 @@ export default function AnalyistSection() {
       {loading && <BlockLoader />}
       <div className="testimonial relative">
           <Swiper autoHeight
-            loop={true}
+            // loop={true}
             modules={[Navigation, Autoplay]}
-            autoplay={true}
+            // autoplay={true}
             slidesPerView={4}
             spaceBetween={12}
             navigation={{
