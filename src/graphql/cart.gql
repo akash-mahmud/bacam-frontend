@@ -30,6 +30,11 @@ query CartItems($where: CartItemWhereInput, $orderBy: [CartItemOrderByWithRelati
   cartItems(where: $where, orderBy: $orderBy, cursor: $cursor, take: $take, skip: $skip, distinct: $distinct) {
     id
     quantity
+    employeeId
+    employee{
+      name
+      image
+    }
     product {
       id
       images

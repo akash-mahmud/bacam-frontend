@@ -7,6 +7,7 @@ import {
   useAggregateOrderItemQuery,
   useCartItemsExistOrNotForThisProductLazyQuery,
   useCreateCheckoutSessionMutation,
+  useEmployeesQuery,
   useUpsertOneCartItemMutation,
 } from '@/graphql/generated/schema';
 import { getImage } from '@/utils/getImage';
@@ -14,14 +15,14 @@ import ImageGallery, { ReactImageGalleryItem } from 'react-image-gallery';
 
 import ActionIcon from '../action-icon';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '../button';
 import AuthRequiredButton from '@/components/auth/AuthRequiredButton';
 import { useStripe } from '@stripe/react-stripe-js';
 import { Flex, notification, Progress, Spin, Tooltip } from 'antd';
 import { formatPriceNumber } from '@/utils/priceFormat';
 import useAuth from '@/hooks/use-auth';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { useRouter } from 'next-nprogress-bar';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { fetchCartItemCount } from '@/store/slices/product/cart';
@@ -32,6 +33,15 @@ export default function VendorProfileCard({ product }: { product?: Product }) {
 
   const createPaymentSession = async () => {
     if (product?.id) {
+      if (
+        product.type === ProductType.Custom &&
+        !customEmployeeIdForCutomProduct
+      ) {
+        notification.error({
+          message: 'Please select an artist for building your product.',
+        });
+        return;
+      }
       const { data } = await CreateSession({
         variables: {
           input: {
@@ -61,6 +71,8 @@ export default function VendorProfileCard({ product }: { product?: Product }) {
   const { user } = useAuth();
   const path = usePathname();
   const router = useRouter();
+  const [customEmployeeIdForCutomProduct, setcustomEmployeeIdForCutomProduct] =
+    useState('');
   const [ExistCartItem, { loading: ExistCartItemLoading }] =
     useCartItemsExistOrNotForThisProductLazyQuery({
       fetchPolicy: 'network-only',
@@ -72,6 +84,15 @@ export default function VendorProfileCard({ product }: { product?: Product }) {
     });
   const dipatch = useAppDispatch();
   const addTocartItem = async () => {
+    if (
+      product?.type === ProductType.Custom &&
+      !customEmployeeIdForCutomProduct
+    ) {
+      notification.error({
+        message: 'Please select an artist for building your product.',
+      });
+      return;
+    }
     if (!user?.id) {
       router.push(`/sign-in?redirectTo=${path}`);
     } else {
@@ -80,6 +101,9 @@ export default function VendorProfileCard({ product }: { product?: Product }) {
           where: {
             productId: {
               equals: product?.id,
+            },
+            employeeId: {
+              equals: customEmployeeIdForCutomProduct,
             },
             cartId: {
               equals: cart?.id,
@@ -102,6 +126,11 @@ export default function VendorProfileCard({ product }: { product?: Product }) {
               },
             },
             quantity: qty,
+            employee: {
+              connect: {
+                id: customEmployeeIdForCutomProduct,
+              },
+            },
             cart: {
               connect: {
                 id: cart?.id,
@@ -121,6 +150,19 @@ export default function VendorProfileCard({ product }: { product?: Product }) {
       }
     }
   };
+  useEffect(() => {
+    if (product?.employee?.id && product?.type === ProductType.ReadyMate) {
+      setcustomEmployeeIdForCutomProduct(product?.employee?.id);
+    }
+  }, [product?.id]);
+const params = useSearchParams()
+const employeeId = params?.get("employee")
+  useEffect(() => {
+   product?.type===ProductType.Custom&& employeeId&& setcustomEmployeeIdForCutomProduct(employeeId)
+  }, [product?.id])
+  
+  const { data: EmployeeData } = useEmployeesQuery();
+  const employees = EmployeeData?.employees ?? [];
   return (
     <div className="relative flex flex-col justify-center px-4 text-center  md:mt-8 md:flex-row  md:justify-between md:overflow-hidden md:rounded-lg md:px-0   2xl:mt-12 ">
       <div className="relative mx-3 w-full overflow-hidden rounded-xl md:w-[60%] ">
@@ -189,75 +231,120 @@ export default function VendorProfileCard({ product }: { product?: Product }) {
                     {formatPriceNumber(product?.orderStartPrice ?? 0)}
                   </p>
                 )}
-                <p className="text-base">In Stock: {product?.stock}</p>
+                {product?.stock ?? 0 > 0 ? (
+                  <p className="text-base">In Stock: {product?.stock}</p>
+                ) : (
+                  <p className="text-base text-red-500">Out of stock</p>
+                )}
               </div>
             </>
           </div>
-          <div className="flex flex-col">
-            <label
-              htmlFor="quantity-input"
-              className="my-2 block text-left font-bold text-gray-900 dark:text-white"
-            >
-              Quantity:
-            </label>
-            <div className="relative flex max-w-[8rem] items-center">
-              <button
-                onClick={() => setqty((prev) => (prev > 1 ? prev - 1 : prev))}
-                type="button"
-                id="decrement-button"
-                data-input-counter-decrement="quantity-input"
-                className="h-11 rounded-s-lg border border-gray-300 bg-gray-100 p-3 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
+          <div className="flex w-full flex-col gap-y-3">
+            <div className="flex flex-col">
+              <label
+                htmlFor="quantity-input"
+                className="my-2 block text-left font-bold text-gray-900 dark:text-white"
               >
-                <svg
-                  className="h-3 w-3 text-gray-900 dark:text-white"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 18 2"
+                Quantity:
+              </label>
+              <div className="relative flex max-w-[8rem] items-center">
+                <button
+                  onClick={() => setqty((prev) => (prev > 1 ? prev - 1 : prev))}
+                  type="button"
+                  id="decrement-button"
+                  data-input-counter-decrement="quantity-input"
+                  className="h-11 rounded-s-lg border border-gray-300 bg-gray-100 p-3 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
                 >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M1 1h16"
-                  />
-                </svg>
-              </button>
-              <input
-                type="number"
-                value={qty}
-                id="quantity-input"
-                data-input-counter
-                aria-describedby="helper-text-explanation"
-                className="block h-11 w-full border-x-0 border-gray-300 bg-gray-50 py-2.5 text-center text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                placeholder="999"
-                onChange={(event) => setqty(parseInt(event.target.value))}
-              />
-              <button
-                onClick={() => setqty((prev) => prev + 1)}
-                type="button"
-                id="increment-button"
-                data-input-counter-increment="quantity-input"
-                className="h-11 rounded-e-lg border border-gray-300 bg-gray-100 p-3 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
-              >
-                <svg
-                  className="h-3 w-3 text-gray-900 dark:text-white"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 18 18"
+                  <svg
+                    className="h-3 w-3 text-gray-900 dark:text-white"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 18 2"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M1 1h16"
+                    />
+                  </svg>
+                </button>
+                <input 
+                  type="number"
+                  value={qty}
+                  id="quantity-input"
+                  data-input-counter
+                  aria-describedby="helper-text-explanation"
+                  className="block h-11 w-full border-x-0 border-gray-300 bg-gray-50 py-2.5 text-center text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                  placeholder="999"
+                  onChange={(event) => {
+                    const value = parseInt(event.target.value)
+                   !( value > (product?.stock??0))&& setqty(value);
+                  }}
+                />
+                <button
+                  onClick={() =>{
+
+                    !qty ? setqty(1) :
+                    setqty((prev) =>
+                      prev === product?.stock ? prev : prev + 1
+                    )
+                  }
+                  }
+                  type="button"
+                  id="increment-button"
+                  data-input-counter-increment="quantity-input"
+                  className="h-11 rounded-e-lg border border-gray-300 bg-gray-100 p-3 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
                 >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 1v16M1 9h16"
-                  />
-                </svg>
-              </button>
+                  <svg
+                    className="h-3 w-3 text-gray-900 dark:text-white"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 18 18"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 1v16M1 9h16"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
+            {product?.type === ProductType.Custom ? (
+              <div className="flex flex-col justify-start">
+                <label htmlFor="artistSelect" className=" text-left">
+                  Artist
+                </label>
+                <select value={customEmployeeIdForCutomProduct}
+                  onChange={(event) =>
+                    setcustomEmployeeIdForCutomProduct(event.target.value)
+                  }
+                  id="artistSelect"
+                  placeholder="Select"
+                  className="block w-full rounded-lg border border-gray-300 bg-gray-50  p-2.5 text-sm text-gray-900 focus:border-none focus:outline-none active:border-none active:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                >
+                  <option selected disabled>
+                    Select
+                  </option>
+                  {employees.map((employee) => (
+                    <option key={employee.id} value={employee.id}>
+                      {employee.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            ) : null}
+            {product?.type === ProductType.ReadyMate && product.employee?.id ? (
+              <div className=" text-left">
+                <p className="">Build by: {product.employee.name}</p>
+              </div>
+            ) : null}
           </div>
 
           <div className="my-3 flex flex-col ">

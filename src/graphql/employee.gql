@@ -1,9 +1,71 @@
-query Employees($where: EmployeeWhereInput, $orderBy: [EmployeeOrderByWithRelationInput!], $cursor: EmployeeWhereUniqueInput, $take: Int, $skip: Int, $distinct: [EmployeeScalarFieldEnum!]) {
-  employees(where: $where, orderBy: $orderBy, cursor: $cursor, take: $take, skip: $skip, distinct: $distinct) {
+query Employees(
+  $where: EmployeeWhereInput
+  $orderBy: [EmployeeOrderByWithRelationInput!]
+  $cursor: EmployeeWhereUniqueInput
+  $take: Int
+  $skip: Int
+  $distinct: [EmployeeScalarFieldEnum!]
+) {
+  employees(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+    distinct: $distinct
+  ) {
     id
     image
     name
-    role
+
+    shortDescription
+  }
+}
+
+query EmployeeByCategory(
+  $where: EmployeeCategoryWhereInput
+  $orderBy: [EmployeeCategoryOrderByWithRelationInput!]
+  $cursor: EmployeeCategoryWhereUniqueInput
+  $take: Int
+  $skip: Int
+  $distinct: [EmployeeCategoryScalarFieldEnum!]
+) {
+  employeeCategories(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+    distinct: $distinct
+  ) {
+    employee {
+      id
+      image
+      name
+      employeeSubCategory {
+        name
+        slug
+      }
+      shortDescription
+    }
+    name
+    slug
+  }
+}
+
+query Employee($where: EmployeeWhereUniqueInput!) {
+  employee(where: $where) {
+    id
+    image
+    name
+    employeeCategory {
+      name
+      slug
+    }
+        employeeSubCategory {
+      name
+      slug
+    }
     shortDescription
   }
 }

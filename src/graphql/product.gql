@@ -18,6 +18,7 @@ query Products(
     images
     name
     price
+    type
     slug
   }
 }
@@ -39,6 +40,11 @@ query Product(
     images
     name
     price
+    employee {
+      id
+      image
+      name
+    }
     orderStartPrice
     slug
     type

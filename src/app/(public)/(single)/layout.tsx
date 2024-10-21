@@ -7,7 +7,7 @@ export default function SingleLayout({ children }: React.PropsWithChildren<{}>) 
   return (
     <>
       <ListingDetailsHeader />
-      <main className="flex-grow">{children}</main>
+      <main className="flex-grow m-5">{children}</main>
       <Footer />
       <MobileNav />
     </>

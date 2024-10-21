@@ -50,6 +50,7 @@ const category = searchParams?.get("category")??""
             slug={item.slug}
             // location={item.location}
             price={item.price}
+            type={item.type}
           // ratingCount={item.ratingCount}
           // rating={item.rating}
           />

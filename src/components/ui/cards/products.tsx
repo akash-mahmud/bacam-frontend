@@ -16,11 +16,14 @@ import AddToWishlist from '@/components/add-to-wishlist';
 import ActionIcon from '@/components/ui/action-icon';
 import Rate from '@/components/ui/rating';
 import { getImage } from '@/utils/getImage';
+import { ProductType } from '@/graphql/generated/schema';
+import { useSearchParams } from 'next/navigation';
 
 export default function ProductCard({
   id,
   slides,
   time,
+  type,
   caption,
   title,
   slug,
@@ -28,7 +31,10 @@ export default function ProductCard({
   price,
   rating,
   ratingCount,
+  employeeId
 }: ListingItemTypes) {
+  const searchParams = useSearchParams()
+  const employee = searchParams?.get("employee")??employeeId??""
   return (
     <>
       <div className="listing-card group/item relative inline-flex w-full flex-col shadow-md p-5 rounded-md border">
@@ -52,7 +58,7 @@ export default function ProductCard({
             >
               {slides?.map((slide, index) => (
                 <SwiperSlide key={`slide-${index}`}>
-                  <Link href={`/product/${slug}`}>
+                  <Link href={employee && type===ProductType.Custom ?`/product/${slug}?employee=${employee}`:`/product/${slug}`}>
 
                     <Image
                       className="aspect-[34/25] bg-gray-lighter"
@@ -90,14 +96,12 @@ export default function ProductCard({
             </ActionIcon>
           </div>
         </div>
-        <Link href={`/product/${slug}`}>
+        <Link href={employee && type===ProductType.Custom?`/product/${slug}?employee=${employee}`:`/product/${slug}`}>
           <div className="content pt-3">
-            <div className="mb-1 flex items-center gap-5">
-              <span className="relative flex items-center font-bold text-gray-dark before:absolute before:-right-3 before:block before:h-1 before:w-1 before:rounded-full before:bg-gray-dark">
-                {time}
-              </span>
+            {/* <div className="mb-1 flex items-center gap-5">
+            
               <span className="font-bold">{caption}</span>
-            </div>
+            </div> */}
             <h4 className="text-ellipsis text-gray-dark 2xl:mb-1.5">{title}</h4>
             <p className="mb-3 text-gray-light xl:mb-3">{location}</p>
             <div className="flex flex-wrap items-center justify-between gap-3">

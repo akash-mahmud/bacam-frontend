@@ -23,6 +23,11 @@ const menuItems = [
     label: 'Products',
     path: Routes.public.product,
   },
+  {
+    id: 3,
+    label: 'Employee',
+    path: "/employee",
+  },
 
 ];
 
