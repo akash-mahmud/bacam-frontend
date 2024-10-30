@@ -22,7 +22,7 @@ const classes = {
   variant: {
     solid: {
       base: 'border border-transparent',
-      color: { 
+      color: {
         DEFAULT:
           'bg-primaryBg text-white hover:enabled:bg-primaryBg focus:ring-gray-900/30 text-gray-0',
       },
@@ -63,7 +63,7 @@ export interface ButtonProps
   /** The rounded variants are: */
   rounded?: keyof typeof classes.rounded;
   /** Change button color */
-  color?: keyof typeof classes.variant['solid']['color'];
+  color?: keyof (typeof classes.variant)['solid']['color'];
   /** Add custom classes for extra style */
   className?: string;
 }
@@ -82,7 +82,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       disabled,
       ...buttonProps
     },
-    ref
+    ref,
   ) => {
     const variantStyle = classes.variant[variant];
     return (
@@ -99,7 +99,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           isLoading && 'pointer-events-none relative',
           disabled &&
             'cursor-not-allowed !border-gray-200 !bg-gray-100 !text-gray-400',
-          className
+          className,
         )}
         {...buttonProps}
       >
@@ -121,7 +121,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         )}
       </button>
     );
-  }
+  },
 );
 
 Button.displayName = 'Button';

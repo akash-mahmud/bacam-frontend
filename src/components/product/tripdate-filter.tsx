@@ -19,17 +19,16 @@ export default function TripdateFilter() {
   const returnDateObj = returnDateQuery && new Date(returnDateQuery);
 
   const [departureDate, setDepartureDate] = useState<Date | null>(
-    departureDateObj || null
+    departureDateObj || null,
   );
   const [returnDate, setReturnDate] = useState<Date | null>(
-    returnDateObj || null
+    returnDateObj || null,
   );
 
   const handleRangeChange = (dates: [Date | null, Date | null]) => {
     const [start, end] = dates;
     setDepartureDate(start);
     setReturnDate(end);
-
   };
 
   function handleClearClick() {
@@ -63,7 +62,7 @@ export default function TripdateFilter() {
           className="[&>label>div]:!p-0"
           inputClassName={clsx(
             '!py-3 !text-sm !pl-[48px]',
-            state && '!border !border-gray-1000 !ring-[1px] !ring-gray-900/20'
+            state && '!border !border-gray-1000 !ring-[1px] !ring-gray-900/20',
           )}
           startIcon={<CalenderIcon className="h-5 w-5" />}
           startIconClassName="!left-1"

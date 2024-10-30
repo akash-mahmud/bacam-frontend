@@ -2,36 +2,36 @@
 
 import HeaderCell from '@/components/ui/table/header-cell';
 import Badge from '@/components/ui/badge';
-import { Order, OrderItem, OrderStatus, ShippingAddress } from '@/graphql/generated/schema';
+import {
+  Order,
+  OrderItem,
+  OrderStatus,
+  ShippingAddress,
+} from '@/graphql/generated/schema';
 import Button from '@/components/ui/button';
 import { formatPriceNumber } from '@/utils/priceFormat';
-
-
-
 
 export function getStatus(status: string) {
   if (status === OrderStatus.Done) {
     return 'success';
-  }
-
-  else {
+  } else {
     return 'warning';
   }
-
 }
 
 export const OrderReservationCol = (
-order: string, column: string, // onChange: (row: any) => any,
-onMore: (e: any, row: any) => any, openAddShippingModal: () => void, createPaymentSession: (productId: string, qty: number, orderId: string) => Promise<void>,
+  order: string,
+  column: string, // onChange: (row: any) => any,
+  onMore: (e: any, row: any) => any,
+  openAddShippingModal: () => void,
+  createPaymentSession: (
+    productId: string,
+    qty: number,
+    orderId: string,
+  ) => Promise<void>,
   // onHeaderClick: (value: string) => any
-) => 
-  
-{ 
-  
-  
+) => {
   return [
-
-
     {
       title: <HeaderCell title={'Items Pre-Price'} />,
       dataIndex: 'itemsPrePrice',
@@ -59,10 +59,8 @@ onMore: (e: any, row: any) => any, openAddShippingModal: () => void, createPayme
       key: 'orderItem',
 
       render: (orderItem: OrderItem) => (
-        <div className=' flex flex-col'>
-       <Button>
-        View
-       </Button>
+        <div className=" flex flex-col">
+          <Button>View</Button>
         </div>
       ),
     },
@@ -73,14 +71,12 @@ onMore: (e: any, row: any) => any, openAddShippingModal: () => void, createPayme
       key: 'shippingAddress',
 
       render: (shippingAddress: ShippingAddress) => (
-        <div className=' flex flex-col w-full'>
-        {
-          !shippingAddress?.id? <Button onClick={openAddShippingModal}>
-            Add
-          </Button>:<Button>
-            View
-          </Button>
-        }
+        <div className=" flex w-full flex-col">
+          {!shippingAddress?.id ? (
+            <Button onClick={openAddShippingModal}>Add</Button>
+          ) : (
+            <Button>View</Button>
+          )}
         </div>
       ),
     },
@@ -92,26 +88,34 @@ onMore: (e: any, row: any) => any, openAddShippingModal: () => void, createPayme
       key: '',
 
       render: (data: Order) => {
-        
         if (!data.status) return '__';
         return (
           // @ts-ignore
           <>
-
-            <Badge variant="flat" className="uppercase" color={getStatus(data.status)}>
+            <Badge
+              variant="flat"
+              className="uppercase"
+              color={getStatus(data.status)}
+            >
               {data.status}
             </Badge>
-            {
-              data.status === OrderStatus.PendingPrePayment && <Button className='my-5'>
-                Pay Building Start Price
-              </Button>
-            }
-            {
-              data.status === OrderStatus.BuildCompleted && <Button onClick={()=>createPaymentSession(data.orderItem?.product.id??"", data.orderItem?.qty??1, data.id)} className='my-5'>
+            {data.status === OrderStatus.PendingPrePayment && (
+              <Button className="my-5">Pay Building Start Price</Button>
+            )}
+            {data.status === OrderStatus.BuildCompleted && (
+              <Button
+                onClick={() =>
+                  createPaymentSession(
+                    data.orderItem[0]?.product.id ?? '',
+                    data.orderItem[0]?.qty ?? 1,
+                    data.id,
+                  )
+                }
+                className="my-5"
+              >
                 Pay Now
               </Button>
-            }
-
+            )}
           </>
         );
       },
@@ -123,8 +127,9 @@ onMore: (e: any, row: any) => any, openAddShippingModal: () => void, createPayme
       width: 300,
       key: 'createdAt',
 
-      render: (date: any) => <p className="whitespace-nowrap">{new Date(date).toDateString()}</p>,
-
+      render: (date: any) => (
+        <p className="whitespace-nowrap">{new Date(date).toDateString()}</p>
+      ),
     },
     {
       title: <HeaderCell title={'Last Updated'} />,
@@ -132,8 +137,9 @@ onMore: (e: any, row: any) => any, openAddShippingModal: () => void, createPayme
       width: 300,
       key: 'updatedAt',
 
-      render: (date: any) => <p className="whitespace-nowrap">{new Date(date).toDateString()}</p>,
-
+      render: (date: any) => (
+        <p className="whitespace-nowrap">{new Date(date).toDateString()}</p>
+      ),
     },
     {
       title: <HeaderCell title={'Shipping Price'} />,
@@ -173,10 +179,7 @@ onMore: (e: any, row: any) => any, openAddShippingModal: () => void, createPayme
       dataIndex: 'note',
       width: 300,
       key: 'note',
-      render: (note: string) => (
-        <p className="whitespace-nowrap">{note}</p>
-      ),
+      render: (note: string) => <p className="whitespace-nowrap">{note}</p>,
     },
-
-
-  ]};
+  ];
+};

@@ -81,8 +81,8 @@ module.exports = {
           dark: 'rgb(var(--gray-dark) / <alpha-value>)',
           1000: 'rgb(var(--gray-1000) / <alpha-value>)',
         },
-        primaryBg:"#433f92",
-        secondaryBg:"#5B5586",
+        primaryBg: '#433f92',
+        secondaryBg: '#5B5586',
         primary: {
           DEFAULT: 'rgb(var(--primary) / <alpha-value>)',
         },

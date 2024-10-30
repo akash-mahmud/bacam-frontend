@@ -19,7 +19,6 @@ export default function DashboardTopbar() {
   const [selected, setSelected] = useState(sortingOptions[0]);
   return (
     <div className="mb-8 flex items-center justify-between md:hidden">
- 
       <Button
         variant="text"
         type="button"
@@ -35,7 +34,6 @@ export default function DashboardTopbar() {
       >
         <AdjustmentsHorizontalIcon className="h-auto w-6 lg:w-7" />
       </Button>
-  
     </div>
   );
 }

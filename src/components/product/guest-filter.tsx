@@ -10,8 +10,6 @@ export default function GuestFilter() {
   const p = searchParams?.get('guestCount');
   const [peopleCount, setPeopleCount] = useState(Number(p) ?? 0);
 
-
-
   return (
     <div className="flex items-center justify-between py-2">
       <Text className="block !text-sm font-bold capitalize text-gray-dark lg:!text-base">

@@ -7,9 +7,9 @@ import { useProductsQuery } from '@/graphql/generated/schema';
 import { useParams, useSearchParams } from 'next/navigation';
 import ProductCard from '../ui/cards/products';
 
-export default function Products({ }) {
+export default function Products({}) {
   const [list, setList] = useState(12);
-  const params = useParams()
+  const params = useParams();
   const [isLoading, setIsLoading] = useState(false);
   function handleLoadMore() {
     setIsLoading(true);
@@ -18,22 +18,24 @@ export default function Products({ }) {
       setIsLoading(false);
     }, 600);
   }
-const searchParams = useSearchParams()
-const category = searchParams?.get("category")??""
+  const searchParams = useSearchParams();
+  const category = searchParams?.get('category') ?? '';
   const { data } = useProductsQuery({
     variables: {
       where: {
-        category:category? {
-          is: {
-            slug: {
-              equals: category
+        category: category
+          ? {
+              is: {
+                slug: {
+                  equals: category,
+                },
+              },
             }
-          }
-        }:undefined
-      }
-    }
-  })
-  const products = data?.products ?? []
+          : undefined,
+      },
+    },
+  });
+  const products = data?.products ?? [];
   console.log(products);
 
   return (
@@ -51,12 +53,13 @@ const category = searchParams?.get("category")??""
             // location={item.location}
             price={item.price}
             type={item.type}
-          // ratingCount={item.ratingCount}
-          // rating={item.rating}
+            time={''}
+            caption={''}
+            location={''} // ratingCount={item.ratingCount}
+            // rating={item.rating}
           />
         ))}
       </div>
-
     </div>
   );
 }

@@ -122,7 +122,7 @@ export interface ActionIconProps
   /** The rounded variants are: */
   rounded?: keyof typeof classes.rounded;
   /** Change button color */
-  color?: keyof typeof classes.variant['solid']['color'];
+  color?: keyof (typeof classes.variant)['solid']['color'];
   /** Add custom classes for extra style */
   className?: string;
 }
@@ -145,7 +145,7 @@ const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
       disabled,
       ...buttonProps
     },
-    ref
+    ref,
   ) => {
     const variantStyle = classes.variant[variant];
     return (
@@ -162,7 +162,7 @@ const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
           isLoading && 'pointer-events-none relative',
           disabled &&
             'cursor-not-allowed !border-gray-200 !bg-gray-100 !text-gray-400',
-          className
+          className,
         )}
         {...buttonProps}
       >
@@ -175,7 +175,7 @@ const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
         {/* )} */}
       </button>
     );
-  }
+  },
 );
 
 ActionIcon.displayName = 'ActionIcon';

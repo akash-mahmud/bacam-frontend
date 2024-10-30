@@ -12,27 +12,26 @@ import { notification, Spin } from 'antd';
 import { useRegisterMutation } from '@/graphql/generated/schema';
 import { useRouter } from 'next/navigation';
 
-const signUpSchema = z
-  .object({
-    firstname: z.string(),
-    lastname: z.string(),
-    phoneNumber: z.string(),
-    email: z
-      .string()
-      .min(1, 'The email is required.')
-      .email({ message: 'The email is invalid.' }),
-    password: z
-      .string()
-      .min(8, { message: 'Password must be 8 character long.' }),
-    // confirmPassword: z
-    //   .string()
-    //   .min(8, { message: 'Password must be 8 character long.' }),
-    // acceptPolicy: z.boolean(),
-  })
-  // .refine((data) => data.password === data.confirmPassword, {
-  //   message: "Passwords don't match.",
-  //   path: ['confirmPassword'],
-  // });
+const signUpSchema = z.object({
+  firstname: z.string(),
+  lastname: z.string(),
+  phoneNumber: z.string(),
+  email: z
+    .string()
+    .min(1, 'The email is required.')
+    .email({ message: 'The email is invalid.' }),
+  password: z
+    .string()
+    .min(8, { message: 'Password must be 8 character long.' }),
+  // confirmPassword: z
+  //   .string()
+  //   .min(8, { message: 'Password must be 8 character long.' }),
+  // acceptPolicy: z.boolean(),
+});
+// .refine((data) => data.password === data.confirmPassword, {
+//   message: "Passwords don't match.",
+//   path: ['confirmPassword'],
+// });
 
 type SignUpType = z.infer<typeof signUpSchema>;
 
@@ -44,63 +43,63 @@ export default function SignUpForm() {
   } = useForm<SignUpType>({
     resolver: zodResolver(signUpSchema),
   });
-const [Register , {loading , } ] = useRegisterMutation()
-const router = useRouter()
+  const [Register, { loading }] = useRegisterMutation();
+  const router = useRouter();
   // TO-DO: Send data to API onSubmit.
- async function handleFormSubmit(data: SignUpType) {
-    const {data: res} = await Register({
-      variables:{
-        input: data
-      }
-    }) 
-if (res?.register?.success) {
-  notification.success({
-    message:"Account created."
-  })
-  router.push("/sign-in")
-}
+  async function handleFormSubmit(data: SignUpType) {
+    const { data: res } = await Register({
+      variables: {
+        input: data,
+      },
+    });
+    if (res?.register?.success) {
+      notification.success({
+        message: 'Account created.',
+      });
+      router.push('/sign-in');
+    }
   }
 
   return (
     <Spin spinning={loading}>
-
-    <form noValidate onSubmit={handleSubmit((d) => handleFormSubmit(d))}>
-      <div className="flex items-center justify-between gap-3">
+      <form noValidate onSubmit={handleSubmit((d) => handleFormSubmit(d))}>
+        <div className="flex items-center justify-between gap-3">
+          <Input
+            type="text"
+            label="First name"
+            className="mb-4"
+            error={errors?.firstname?.message}
+            required
+            {...register('firstname')}
+          />
+          <Input
+            type="text"
+            label="Last name"
+            className="mb-4"
+            error={errors?.lastname?.message}
+            {...register('lastname')}
+          />
+        </div>
         <Input
           type="text"
-          label="First name"
+          label="Phone number"
           className="mb-4"
-          error={errors?.firstname?.message}
+          error={errors?.phoneNumber?.message}
           required
-          {...register('firstname')}
+          {...register('phoneNumber')}
         />
         <Input
           type="text"
-          label="Last name"
+          label="Email"
+          autoComplete="off"
           className="mb-4"
-          error={errors?.lastname?.message}
-          {...register('lastname')}
+          error={errors?.email?.message}
+          required
+          {...register('email')}
         />
-      </div>
-      <Input
-        type="text"
-        label="Phone number"
-        className="mb-4"
-        error={errors?.phoneNumber?.message}
-        required
-        {...register('phoneNumber')}
-      />
-      <Input
-        type="text"
-        label="Email"
-        autoComplete='off'
-        className="mb-4"
-        error={errors?.email?.message}
-        required
-        {...register('email')}
-      />
-      {/* <div className="flex items-center justify-between gap-3"> */}
-        <Input autoComplete='new-password'
+        {/* <div className="flex items-center justify-between gap-3"> */}
+        <Input
+          autoComplete="new-password"
           type="password"
           label="Password"
           className="mb-4"
@@ -116,8 +115,8 @@ if (res?.register?.success) {
           required
           {...register('confirmPassword')}
         /> */}
-      {/* </div> */}
-      {/* <Checkbox
+        {/* </div> */}
+        {/* <Checkbox
         label={
           <>
             <span className="font-normal">I’ve read and agree with </span>
@@ -133,20 +132,19 @@ if (res?.register?.success) {
         inputClassName="!text-gray-dark"
         {...register('acceptPolicy')}
       /> */}
-      <Button  type='submit' className="mb-2 w-full" size="xl">
-        Sign Up
-      </Button>
-      <p className="text-sm leading-6 text-gray">
-        Already have an account? &nbsp;
-        <Link
-          href={Routes.auth.signIn}
-          className="font-semibold text-primary underline"
-        >
-          Sign In
-        </Link>
-      </p>
-
-    </form>
+        <Button type="submit" className="mb-2 w-full" size="xl">
+          Sign Up
+        </Button>
+        <p className="text-sm leading-6 text-gray">
+          Already have an account? &nbsp;
+          <Link
+            href={Routes.auth.signIn}
+            className="font-semibold text-primary underline"
+          >
+            Sign In
+          </Link>
+        </p>
+      </form>
     </Spin>
   );
 }

@@ -3,6 +3,7 @@ import { CloseIcon } from '@/components/icons/close-icon';
 import Avatar from '@/components/ui/avatar';
 import Button from '@/components/ui/button';
 import {
+  CustomProductStatus,
   ProductPaymentTypes,
   ProductType,
   useCartItemsQuery,
@@ -14,8 +15,8 @@ import { fetchCartItemCount } from '@/store/slices/product/cart';
 import { getImage } from '@/utils/getImage';
 import { useStripe } from '@stripe/react-stripe-js';
 import { notification, Table } from 'antd';
+import { ColumnsType } from 'antd/es/table';
 import React from 'react';
-export const CartData = [];
 export default function CartPage() {
   const { data, loading, refetch } = useCartItemsQuery();
   const [DeletCartItem, { loading: DeleteLoading }] =
@@ -26,7 +27,7 @@ export default function CartPage() {
 
   const items = data?.cartItems ?? [];
   const dipatch = useAppDispatch();
-  const columns = [
+  const columns: ColumnsType<any> = [
     {
       title: 'Name',
       dataIndex: 'product',
@@ -49,7 +50,7 @@ export default function CartPage() {
         <div className=" flex flex-col flex-wrap">
           <Avatar size="45" src={getImage(employee.image)} />
 
-          <p className=' min-w-[100px]'>{employee.name}</p>
+          <p className=" min-w-[100px]">{employee.name}</p>
         </div>
       ),
     },
@@ -87,7 +88,7 @@ export default function CartPage() {
               checkoutCustomProduct(
                 data.product?.id,
                 data.quantity,
-                data.employeeId
+                data.employeeId,
               )
             }
             className=" bg-neutral-800 hover:!bg-neutral-900"
@@ -143,7 +144,7 @@ export default function CartPage() {
   const checkoutCustomProduct = async (
     id: string,
     qty: number,
-    employeeId: string
+    employeeId: string,
   ) => {
     if (id) {
       const { data } = await CreateSession({

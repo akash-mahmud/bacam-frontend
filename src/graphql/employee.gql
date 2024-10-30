@@ -62,7 +62,7 @@ query Employee($where: EmployeeWhereUniqueInput!) {
       name
       slug
     }
-        employeeSubCategory {
+    employeeSubCategory {
       name
       slug
     }

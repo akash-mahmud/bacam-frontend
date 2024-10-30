@@ -29,7 +29,7 @@ export type ListingItemTypes = {
   title: string;
   slug: string;
   location: string;
-  price: string;
+  price: number;
   rating?: number;
   ratingCount?: string;
   userAvatar?: string;

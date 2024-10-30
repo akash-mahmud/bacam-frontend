@@ -127,7 +127,7 @@ export interface TextareaProps
   /** The variants of the component are: */
   variant?: keyof typeof textareaClasses.variant;
   /** Change textarea color */
-  color?: keyof typeof textareaClasses.variant['active']['color'];
+  color?: keyof (typeof textareaClasses.variant)['active']['color'];
   /** Set field label */
   label?: string;
   /** The rounded variants are: */
@@ -168,7 +168,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       helperText,
       ...textareaProps
     },
-    ref
+    ref,
   ) => {
     const variantStyle = textareaClasses.variant[variant];
     return (
@@ -190,7 +190,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               variantStyle.base,
               variantStyle.color[color],
               error && textareaClasses.error,
-              textareaClassName
+              textareaClassName,
             )}
             {...textareaProps}
           />
@@ -205,7 +205,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 Textarea.displayName = 'Textarea';

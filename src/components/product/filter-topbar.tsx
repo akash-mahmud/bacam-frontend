@@ -19,7 +19,6 @@ export default function FilterTopbar() {
   const [selected, setSelected] = useState(sortingOptions[0]);
   return (
     <div className="mb-4 sm:mb-0 flex items-center justify-between">
-    
       <Button
         variant="text"
         type="button"
@@ -35,7 +34,6 @@ export default function FilterTopbar() {
       >
         <AdjustmentsHorizontalIcon className="h-auto w-6 lg:w-7" />
       </Button>
-
     </div>
   );
 }

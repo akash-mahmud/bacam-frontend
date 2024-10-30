@@ -26,15 +26,14 @@ const menuItems = [
   {
     id: 3,
     label: 'Employee',
-    path: "/employee",
+    path: '/employee',
   },
-
 ];
 
 export default function Menu() {
-  const { isAuthorized , loading } = useAuth();
+  const { isAuthorized, loading } = useAuth();
   const mounted = useIsMounted();
-const router = useRouter()
+  const router = useRouter();
   return (
     <nav className="primary-nav hidden items-center justify-between md:flex">
       <ul className="hidden flex-wrap md:flex">
@@ -48,32 +47,24 @@ const router = useRouter()
       </ul>
       {mounted ? (
         <>
-               <ActionIcon
-      variant="text"
-      onClick={()=> router.push("/cart")}
+          <ActionIcon variant="text" onClick={() => router.push('/cart')}>
+            <ShoppingCartIcon />
+          </ActionIcon>
 
-    >
-
-                   <ShoppingCartIcon />
-    </ActionIcon>
-              
-          {
-          loading? 
-          <Spin/> :
-          isAuthorized ? (
+          {loading ? (
+            <Spin />
+          ) : isAuthorized ? (
             <div className="ml-7 flex justify-end">
               <ProfileMenu className="hidden md:block" />
             </div>
           ) : (
             <Button
-              onClick={() =>            router.push(Routes.private.account)
-              }
+              onClick={() => router.push(Routes.private.account)}
               className="ml-5 rounded-lg px-6 py-2 text-sm capitalize md:text-base 4xl:px-8 4xl:py-2.5  bg-primaryBg"
             >
-                 Login
-                  </Button>
+              Login
+            </Button>
           )}
-           
         </>
       ) : null}
     </nav>

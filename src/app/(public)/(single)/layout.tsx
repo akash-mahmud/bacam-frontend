@@ -3,7 +3,9 @@ import MobileNav from '@/components/ui/mobile-nav';
 import Footer from '@/components/footer/footer';
 import ListingDetailsHeader from '@/components/header/listing-details';
 
-export default function SingleLayout({ children }: React.PropsWithChildren<{}>) {
+export default function SingleLayout({
+  children,
+}: React.PropsWithChildren<{}>) {
   return (
     <>
       <ListingDetailsHeader />

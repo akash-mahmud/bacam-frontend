@@ -17,7 +17,6 @@ export default function SignIn({ className }: { className?: string }) {
           </p>
         </div>
         <SigninForm />
-       
       </div>
     </div>
   );

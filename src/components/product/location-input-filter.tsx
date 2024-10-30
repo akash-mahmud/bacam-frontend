@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -23,7 +25,6 @@ export default function LocationInputFilter() {
       searchedLocation: places && places[0] && places[0].formatted_address,
       searchedPlaceAPIData: places ? places : [],
     });
- 
   };
 
   // removes value when reset

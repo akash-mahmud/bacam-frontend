@@ -2,11 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -20,9 +16,7 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]
     },
     "plugins": [
       {
@@ -36,9 +30,9 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "C:\\Users\\NAHID\\Desktop\\tripfinder\\packages\\boat\\.next/types/**/*.ts",
-    "/Users/idris/RedQTeam/RedQApp/tripfinder/packages/boat/.next/types/**/*.ts"
-, ".d.ts"  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "/Users/idris/RedQTeam/RedQApp/tripfinder/packages/boat/.next/types/**/*.ts",
+    ".d.ts",
+    "src/library/helpers/rtl.js"
+  ],
+  "exclude": ["node_modules"]
 }

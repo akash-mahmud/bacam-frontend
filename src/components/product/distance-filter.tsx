@@ -17,8 +17,6 @@ export default function DistanceFilter() {
   const dis = searchParams?.get('distance');
   const [selected, setSelected] = useState(options[0]);
 
-
-
   // sets the state if in url
   useEffect(() => {
     if (dis) {

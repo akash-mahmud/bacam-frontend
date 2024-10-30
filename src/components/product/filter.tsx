@@ -32,7 +32,10 @@ export default function Filter({ className }: FilterTypes) {
 
   return (
     <div
-      className={clsx('h-full overflow-y-auto bg-white  border p-5 rounded shadow-lg', className)}
+      className={clsx(
+        'h-full overflow-y-auto bg-white  border p-5 rounded shadow-lg',
+        className,
+      )}
     >
       <div className="mb-4 flex items-center justify-between py-2 px-5 pt-3 uppercase md:px-7 xl:px-0 xl:pt-0">
         <Text tag="h5" className="leading-8">
@@ -63,11 +66,9 @@ export default function Filter({ className }: FilterTypes) {
         </Button>
       </div>
       <div className="grid grid-cols-1 gap-8 px-5 pb-3 md:px-7 xl:p-0 xl:pb-0">
-    
         <CategoryFilter />
-    
+
         <PriceFilter />
- 
       </div>
       <div className="sticky inset-x-0 bottom-0 z-10 mt-4 flex items-center justify-between bg-white py-3 px-5 uppercase shadow-card sm:hidden md:px-7 xl:px-0">
         <div>

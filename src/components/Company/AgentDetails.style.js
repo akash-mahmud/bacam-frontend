@@ -66,8 +66,6 @@ export const SocialAccount = styled.div`
 
   a {
     margin: 0 10px;
-
-  
   }
 
   svg {

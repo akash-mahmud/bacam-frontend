@@ -1,10 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-sidebarOpen:false
+  sidebarOpen: false,
 };
 export const commonSlice = createSlice({
-  name: "common",
+  name: 'common',
   initialState,
   reducers: {
     sidebarOpen(state) {

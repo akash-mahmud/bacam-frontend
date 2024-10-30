@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use client';
 
 import { useState } from 'react';
@@ -7,22 +8,20 @@ import SelectBox from '@/components/ui/select-box';
 import { useCategoriesQuery } from '@/graphql/generated/schema';
 import { useUpdateSearchParams } from '@/utils/searchParams';
 
-
-
 export default function CategoryFilter() {
   const searchParams = useSearchParams();
   // const { clearFilter, updateQueryparams } = useQueryParam();
   const [selected, setSelected] = useState({});
   const { createQueryString } = useUpdateSearchParams();
 
-  const { data } = useCategoriesQuery()
-  const router = useRouter()
-  const pathName = usePathname()
-  const categories = data?.categories ?? []
+  const { data } = useCategoriesQuery();
+  const router = useRouter();
+  const pathName = usePathname();
+  const categories = data?.categories ?? [];
   const options = categories?.map((category) => ({
     label: category.name,
     value: category.slug,
-  }))
+  }));
   return (
     <SelectBox
       value={selected}
@@ -31,9 +30,9 @@ export default function CategoryFilter() {
       // optionIcon={true}
       optionIcon={false}
       onChange={(data: any) => {
-        const updatedparams = createQueryString("category", data.value)
-        router.push(`${pathName}?${updatedparams}`)
-        setSelected(data)
+        const updatedparams = createQueryString('category', data.value);
+        router.push(`${pathName}?${updatedparams}`);
+        setSelected(data);
       }}
       labelClassName="mb-2 !text-sm lg:!text-base"
       buttonClassName="h-10 lg:h-11 2xl:h-12"
@@ -41,8 +40,8 @@ export default function CategoryFilter() {
       clearable={selected.disabled ? false : true}
       onClearClick={(e) => {
         e.stopPropagation();
-        const updatedparams = createQueryString("category", "")
-        router.push(`${pathName}?${updatedparams}`)
+        const updatedparams = createQueryString('category', '');
+        router.push(`${pathName}?${updatedparams}`);
 
         setSelected({});
       }}

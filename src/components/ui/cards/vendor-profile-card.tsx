@@ -1,6 +1,7 @@
 'use client';
 
 import {
+  CartItem,
   Product,
   ProductPaymentTypes,
   ProductType,
@@ -111,7 +112,7 @@ export default function VendorProfileCard({ product }: { product?: Product }) {
           },
         },
       });
-      const cartItem = data?.cartItems[0] ?? {};
+      const cartItem = data?.cartItems[0] ?? ({} as CartItem);
       console.log(cartItem);
 
       const res = await AddTocart({
@@ -122,7 +123,7 @@ export default function VendorProfileCard({ product }: { product?: Product }) {
           create: {
             product: {
               connect: {
-                id: product.id,
+                id: product?.id,
               },
             },
             quantity: qty,
@@ -155,12 +156,14 @@ export default function VendorProfileCard({ product }: { product?: Product }) {
       setcustomEmployeeIdForCutomProduct(product?.employee?.id);
     }
   }, [product?.id]);
-const params = useSearchParams()
-const employeeId = params?.get("employee")
+  const params = useSearchParams();
+  const employeeId = params?.get('employee');
   useEffect(() => {
-   product?.type===ProductType.Custom&& employeeId&& setcustomEmployeeIdForCutomProduct(employeeId)
-  }, [product?.id])
-  
+    product?.type === ProductType.Custom &&
+      employeeId &&
+      setcustomEmployeeIdForCutomProduct(employeeId);
+  }, [product?.id]);
+
   const { data: EmployeeData } = useEmployeesQuery();
   const employees = EmployeeData?.employees ?? [];
   return (
@@ -271,7 +274,7 @@ const employeeId = params?.get("employee")
                     />
                   </svg>
                 </button>
-                <input 
+                <input
                   type="number"
                   value={qty}
                   id="quantity-input"
@@ -280,19 +283,18 @@ const employeeId = params?.get("employee")
                   className="block h-11 w-full border-x-0 border-gray-300 bg-gray-50 py-2.5 text-center text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                   placeholder="999"
                   onChange={(event) => {
-                    const value = parseInt(event.target.value)
-                   !( value > (product?.stock??0))&& setqty(value);
+                    const value = parseInt(event.target.value);
+                    !(value > (product?.stock ?? 0)) && setqty(value);
                   }}
                 />
                 <button
-                  onClick={() =>{
-
-                    !qty ? setqty(1) :
-                    setqty((prev) =>
-                      prev === product?.stock ? prev : prev + 1
-                    )
-                  }
-                  }
+                  onClick={() => {
+                    !qty
+                      ? setqty(1)
+                      : setqty((prev) =>
+                          prev === product?.stock ? prev : prev + 1,
+                        );
+                  }}
                   type="button"
                   id="increment-button"
                   data-input-counter-increment="quantity-input"
@@ -321,7 +323,8 @@ const employeeId = params?.get("employee")
                 <label htmlFor="artistSelect" className=" text-left">
                   Artist
                 </label>
-                <select value={customEmployeeIdForCutomProduct}
+                <select
+                  value={customEmployeeIdForCutomProduct}
                   onChange={(event) =>
                     setcustomEmployeeIdForCutomProduct(event.target.value)
                   }

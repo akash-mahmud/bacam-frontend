@@ -17,7 +17,6 @@ export default function SignUp({ className }: { className?: string }) {
           </p>
         </div>
         <SignUpForm />
-     
       </div>
     </div>
   );

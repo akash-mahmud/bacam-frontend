@@ -1,16 +1,12 @@
-import { ApolloLink } from "@apollo/client";
+import { ApolloLink } from '@apollo/client';
 
-import { server2Link } from "./server2Link";
-import { server1Link } from "./server1Link";
-
-
-
-
+import { server2Link } from './server2Link';
+import { server1Link } from './server1Link';
 
 export const splitLink = new ApolloLink((operation, forward) => {
   const serverName = operation.getContext().server; // Assumes that you set the server name in the operation context
   let selectedLink;
-  
+
   // Determine which server to use based on the serverName
   switch (serverName) {
     case 'main':

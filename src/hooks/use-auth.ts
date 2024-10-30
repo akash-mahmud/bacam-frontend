@@ -5,7 +5,6 @@ import { useAppDispatch } from '@/store';
 import { setUser } from '@/store/slices/auth/authSlice';
 import { useEffect } from 'react';
 
-
 interface UserType {
   name: string;
   avatar: string;
@@ -20,31 +19,29 @@ const demoUser = {
 };
 
 export default function useAuth() {
+  const { data, loading, refetch } = useMeQuery();
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    if (data?.me?.id) {
+      dispatch(
+        setUser({
+          isAuthorized: data?.me?.id ? true : false,
+          user: data?.me,
+          loading,
+        }) ?? {},
+      );
+    }
+  }, [dispatch, data?.me?.id]);
 
-const {data , loading, refetch} = useMeQuery()
-const dispatch = useAppDispatch()
-useEffect(() => {
-if (data?.me?.id) {
-  dispatch(setUser(
-{    isAuthorized: data?.me?.id?true:false,
-    user: data?.me,
-    loading,}
-  )??{})}
-}, [dispatch , data?.me?.id])
-
-  
   return {
-    isAuthorized: data?.me?.id?true:false,
+    isAuthorized: data?.me?.id ? true : false,
     user: data?.me,
     loading,
     authorize() {
-      refetch()
+      refetch();
     },
     unauthorize() {
-
       //? call server logout and all localstorage and cookie clear function
-
-
     },
   };
 }

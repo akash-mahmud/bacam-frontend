@@ -57,14 +57,14 @@ export default function Table({
     return <>{skeleton}</>;
   }
   return (
-    <RcTable 
+    <RcTable
       className={clsx(
         classes.table,
         classes.thead,
         classes.tCell,
         classes.variants[variant],
         striped && classes.striped,
-        className
+        className,
       )}
       emptyText={emptyText ? emptyText : <Empty />}
       {...props}

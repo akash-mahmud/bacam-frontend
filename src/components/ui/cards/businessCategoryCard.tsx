@@ -26,7 +26,6 @@ export default function BusinessCategoryCard({
         <h3 className="text-xl font-bold leading-7 text-center text-black 3xl:text-2xl">
           {name}
         </h3>
-    
       </div>
     </Link>
   );

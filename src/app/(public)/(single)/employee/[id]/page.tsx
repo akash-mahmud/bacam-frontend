@@ -16,7 +16,7 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import React, { useEffect } from 'react';
 
-export default function page() {
+export default function Page() {
   const params: { id: string } = useParams() as any;
   const { data } = useEmployeeQuery({
     variables: {
@@ -66,7 +66,10 @@ export default function page() {
           {employee?.shortDescription}
         </p>
         <div className="mx-8 mt-2 border-t p-4">
-          <Link href={`/product?employee=${params.id}`} className=" mx-auto block w-1/6 rounded-full bg-gray-900 px-6 py-2 font-semibold text-white hover:shadow-lg">
+          <Link
+            href={`/product?employee=${params.id}`}
+            className=" mx-auto block w-1/6 rounded-full bg-gray-900 px-6 py-2 font-semibold text-white hover:shadow-lg"
+          >
             Order
           </Link>
         </div>
@@ -79,6 +82,7 @@ export default function page() {
         {loading && <ListingCardLoader />}
         {!loading && (
           <TopBikes
+            // @ts-ignore
             title=""
             description=""
             employeeId={params.id}

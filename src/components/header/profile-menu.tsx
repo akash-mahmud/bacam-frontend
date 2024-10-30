@@ -53,7 +53,7 @@ function MenuItem({ text, link }: MenuItemProps) {
           href={`${link}`}
           className={clsx(
             'block rounded-sm py-2 px-5   text-base font-normal capitalize text-gray-dark',
-            active && 'bg-gray-lightest'
+            active && 'bg-gray-lightest',
           )}
         >
           {text}
@@ -65,30 +65,27 @@ function MenuItem({ text, link }: MenuItemProps) {
 
 export default function ProfileMenu({ className }: { className?: string }) {
   const { user } = useAuth();
-const router = useRouter()
+  const router = useRouter();
   return (
     <>
       <Menu
         as="div"
         className={clsx(
           'relative h-9 w-9 rounded-full bg-white shadow-card sm:h-10 sm:w-10 2xl:h-12 2xl:w-12 2xl:border 2xl:border-gray-lighter 2xl:p-[3px]',
-          className
+          className,
         )}
-      > 
-        
+      >
         <Menu.Button className="relative h-full w-full rounded-full bg-white">
           <Link href={Routes.private.account}>
-          
-          <Avatar name={`${user?.firstname} ${user?.lastname}`}
-            className="cursor-pointer"
-            
-            src={user?.avater??''}
-            rounded="full"
-            size="100%"
-          />
+            <Avatar
+              name={`${user?.firstname} ${user?.lastname}`}
+              className="cursor-pointer"
+              src={user?.avater ?? ''}
+              rounded="full"
+              size="100%"
+            />
           </Link>
         </Menu.Button>
-   
       </Menu>
     </>
   );

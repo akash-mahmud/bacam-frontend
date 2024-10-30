@@ -1,15 +1,15 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { persistedState, saveState } from "../utils/persisted.store";
+import { configureStore } from '@reduxjs/toolkit';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import { persistedState, saveState } from '../utils/persisted.store';
 import { createWrapper } from 'next-redux-wrapper';
-import authSlice from "./slices/auth/authSlice";
-import cartSlice from "./slices/product/cart";
-import  commonSlice  from "./slices/common/sidebar";
+import authSlice from './slices/auth/authSlice';
+import cartSlice from './slices/product/cart';
+import commonSlice from './slices/common/sidebar';
 export const store = configureStore({
   reducer: {
     auth: authSlice,
     common: commonSlice,
-    cart:cartSlice
+    cart: cartSlice,
   },
   // @ts-ignore
   preloadedState: persistedState,

@@ -17,30 +17,34 @@ import { useRouter } from 'next/navigation';
 import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 import ActionIcon from '../ui/action-icon';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCartItemCount, fetchCartOfTheUser } from '@/store/slices/product/cart';
+import {
+  fetchCartItemCount,
+  fetchCartOfTheUser,
+} from '@/store/slices/product/cart';
 import { useAppDispatch, useAppSelector } from '@/store';
 
 export default function ListingDetailsHeader() {
   const mounted = useIsMounted();
   const { openModal } = useModal();
-  const { isAuthorized , loading} = useAuth();
+  const { isAuthorized, loading } = useAuth();
   const headerRef = useRef(null);
   addScrollingClass(headerRef);
-const router = useRouter()
-const dispatch = useAppDispatch();
-const { cartItemCount, status, error, cart } = useAppSelector((state) => state.cart);
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+  const { cartItemCount, status, error, cart } = useAppSelector(
+    (state) => state.cart,
+  );
 
-// Fetch cart item count on component mount
-useEffect(() => {
-  dispatch(fetchCartOfTheUser());
-}, [dispatch]);
+  // Fetch cart item count on component mount
+  useEffect(() => {
+    dispatch(fetchCartOfTheUser());
+  }, [dispatch]);
 
-useEffect(() => {
-if(cart?.id){
-
-  dispatch(fetchCartItemCount());
-}
-}, [dispatch , cart?.id]);
+  useEffect(() => {
+    if (cart?.id) {
+      dispatch(fetchCartItemCount());
+    }
+  }, [dispatch, cart?.id]);
   return (
     <header
       // ref={headerRef}
@@ -51,41 +55,33 @@ if(cart?.id){
           <Logo className="!text-gray-dark" />
         </div>
         <Searchbox className="hidden lg:block" />
-    
+
         <div className=" hidden md:flex items-center justify-end gap-5">
-          <SearchIconBtn className=' ' />
+          <SearchIconBtn className=" " />
           {mounted ? (
-        <>
-                  <Badge count={cartItemCount} showZero> <ActionIcon 
-      variant="text"
-      onClick={()=> router.push("/cart")}
-
-    >
-   
-
-                   <ShoppingCartIcon />
-
-    </ActionIcon>
-      </Badge>
-          {
-          loading? 
-          <Spin/> :
-          isAuthorized ? (
-            <div className="ml-7 flex justify-end">
-              <ProfileMenu className="hidden md:block" />
-            </div>
-          ) : (
-            <Button
-              onClick={() =>            router.push(Routes.private.account)
-              }
-              className="ml-5 rounded-lg px-6 py-2 text-sm capitalize md:text-base 4xl:px-8 4xl:py-2.5  bg-primaryBg"
-            >
-                 Login
-                  </Button>
-          )}
-           
-        </>
-      )  : null}
+            <>
+              <Badge count={cartItemCount} showZero>
+                {' '}
+                <ActionIcon variant="text" onClick={() => router.push('/cart')}>
+                  <ShoppingCartIcon />
+                </ActionIcon>
+              </Badge>
+              {loading ? (
+                <Spin />
+              ) : isAuthorized ? (
+                <div className="ml-7 flex justify-end">
+                  <ProfileMenu className="hidden md:block" />
+                </div>
+              ) : (
+                <Button
+                  onClick={() => router.push(Routes.private.account)}
+                  className="ml-5 rounded-lg px-6 py-2 text-sm capitalize md:text-base 4xl:px-8 4xl:py-2.5  bg-primaryBg"
+                >
+                  Login
+                </Button>
+              )}
+            </>
+          ) : null}
         </div>
       </div>
     </header>

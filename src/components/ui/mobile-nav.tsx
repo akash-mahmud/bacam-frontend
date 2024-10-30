@@ -38,9 +38,7 @@ export default function MobileNav() {
       </div>
       <div className="flex items-center justify-center">
         <button
-          onClick={() =>
-           router.push(Routes.private.account)
-          }
+          onClick={() => router.push(Routes.private.account)}
           className="inline-block hover:text-red"
         >
           <UserCircleIcon className="h-6 w-6" />

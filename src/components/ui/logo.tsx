@@ -14,11 +14,10 @@ const Logo: React.FC<React.AnchorHTMLAttributes<{}>> = ({
       href={Routes.public.home}
       className={clsx(
         'brand-logo inline-flex w-full max-w-[120px] text-black focus:outline-none sm:text-black xl:max-w-[125px] 2xl:max-w-[135px] 3xl:max-w-[150px]',
-        className
+        className,
       )}
       {...props}
     >
-
       <LogoIcon className="w-full" />
     </Link>
   );

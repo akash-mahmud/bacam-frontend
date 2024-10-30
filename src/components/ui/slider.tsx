@@ -14,7 +14,6 @@ export {
   Grid,
   EffectFade,
   FreeMode,
-  
 } from 'swiper';
 
 export { Swiper, SwiperSlide } from 'swiper/react';

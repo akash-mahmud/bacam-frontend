@@ -75,8 +75,6 @@ export default function Manufacturer() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
-
   // reset
   useEffect(() => {
     if (!manf) {

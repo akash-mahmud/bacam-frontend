@@ -1,5 +1,3 @@
-
-
 export default function ListingDetailsLayout({
   children,
 }: React.PropsWithChildren<{}>) {

@@ -12,7 +12,6 @@ import {
   CubeIcon,
   XMarkIcon,
   UserIcon,
-  
 } from '@heroicons/react/24/outline';
 import { drawerStateAtom } from '@/components/drawers/view';
 import ActionIcon from '@/components/ui/action-icon';
@@ -31,7 +30,6 @@ const menu = [
     icon: <UserIcon className="h-auto w-5" />,
     path: Routes.private.account,
   },
-
 ];
 
 interface navListTypes {
@@ -57,7 +55,7 @@ function List({ navListItem }: navListTypes) {
               'flex items-center gap-3 py-4 px-10 text-base capitalize text-gray-dark hover:bg-gray-lightest',
               {
                 'bg-gray-lightest': pathname === item.path,
-              }
+              },
             )}
           >
             {item.icon}
@@ -69,10 +67,12 @@ function List({ navListItem }: navListTypes) {
   );
 }
 
-export default function DashboardSidebar({ className }: {className:string}) {
+export default function DashboardSidebar({ className }: { className: string }) {
   const [drawerSate, setDrawerState] = useAtom(drawerStateAtom);
   return (
-    <div className={`ml-auto h-full bg-white md:ml-0 border shadow-lg ${className}`}>
+    <div
+      className={`ml-auto h-full bg-white md:ml-0 border shadow-lg ${className}`}
+    >
       <div className="flex h-14 items-center justify-between px-10 pt-6 md:h-20 xl:h-24 md:hidden">
         <ActionIcon
           size="sm"

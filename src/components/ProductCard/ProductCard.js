@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -61,9 +61,7 @@ export default function ProductCard({
       rating={<Rating rating={rating} ratingCount={ratingCount} type="bulk" />}
       viewDetailsBtn={
         <Link href={`${link}/[slug]`} as={`${link}/${slug}`} prefetch={false}>
-        
-            <FiExternalLink /> View Details
-       
+          <FiExternalLink /> View Details
         </Link>
       }
     >
@@ -92,9 +90,9 @@ export default function ProductCard({
             alt={title}
             width={500}
             height={500}
-          // style={{
-          //   objectFit:"cover"
-          // }}
+            // style={{
+            //   objectFit:"cover"
+            // }}
           />
         ))}
       </Carousel>

@@ -165,7 +165,7 @@ export interface PhoneNumberProps
   /** The variants of the component are: */
   variant?: keyof typeof inputClasses.variant;
   /** Change input color */
-  color?: keyof typeof inputClasses.variant['active']['color'];
+  color?: keyof (typeof inputClasses.variant)['active']['color'];
   /** add clearable option */
   clearable?: boolean;
   /** add search filed at the top of dropdown list */
@@ -236,7 +236,7 @@ const PhoneNumber = ({
             inputClasses.variant[variant].base,
             inputClasses.variant[variant].color[color],
             error && inputClasses.error,
-            inputClassName
+            inputClassName,
           )}
           buttonClass={clsx(
             buttonClasses.base,
@@ -245,13 +245,13 @@ const PhoneNumber = ({
             props.inputProps?.disabled && 'pointer-events-none',
             // @ts-ignore
             props.inputProps?.readOnly && 'pointer-events-none',
-            buttonClassName
+            buttonClassName,
           )}
           dropdownClass={clsx(
             dropdownClasses.base,
             dropdownClasses.rounded[rounded],
             dropdownClasses.highlightListColor[color],
-            dropdownClassName
+            dropdownClassName,
           )}
           searchClass={clsx(dropdownClasses.searchBox, searchClassName)}
           enableSearch={enableSearch}

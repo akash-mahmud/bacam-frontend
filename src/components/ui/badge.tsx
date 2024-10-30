@@ -68,7 +68,7 @@ const classes = {
 
 export interface BadgeProps {
   /** Change badge color */
-  color?: keyof typeof classes.variant['solid']['color'];
+  color?: keyof (typeof classes.variant)['solid']['color'];
   /** The variants of the component are: */
   variant?: keyof typeof classes.variant;
   /** The size of the component. `"sm"` is equivalent to the dense badge styling. */
@@ -109,7 +109,7 @@ export default function Badge({
         classes.rounded[rounded],
         enableOutlineRing && classes.outlineRing,
         className,
-        { ...props }
+        { ...props },
       )}
     >
       {!renderAsDot ? children : null}

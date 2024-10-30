@@ -27,8 +27,6 @@ const tabData = [
     path: 1,
     icon: <ShieldCheckIcon className="h-auto w-5" />,
   },
-
-
 ];
 
 export default function AccountSettingsPage() {
@@ -75,8 +73,6 @@ export default function AccountSettingsPage() {
           <TabPanel>
             <LoginSecurity />
           </TabPanel>
-     
-     
         </TabPanels>
       </Tab.Group>
     </div>

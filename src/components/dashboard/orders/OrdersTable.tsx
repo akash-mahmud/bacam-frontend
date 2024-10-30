@@ -9,7 +9,11 @@ import Pagination from '@/components/ui/pagination';
 import Text from '@/components/ui/typography/text';
 import Table from '@/components/ui/table';
 import useAuth from '@/hooks/use-auth';
-import { ProductPaymentTypes, useCreateCheckoutSessionMutation, useMyOrdersQuery } from '@/graphql/generated/schema';
+import {
+  ProductPaymentTypes,
+  useCreateCheckoutSessionMutation,
+  useMyOrdersQuery,
+} from '@/graphql/generated/schema';
 import { OrderReservationCol } from './OrderReservationCol';
 import { Modal, Spin } from 'antd';
 import { useStripe } from '@stripe/react-stripe-js';
@@ -17,51 +21,50 @@ import { useStripe } from '@stripe/react-stripe-js';
 export default function OrdersTable() {
   const [order, setOrder] = useState<string>('desc');
   const [column, setColumn] = useState<string>('');
-  const {user} = useAuth()
-  const [CreateSession , {loading}] = useCreateCheckoutSessionMutation()
-const stripe = useStripe();
+  const { user } = useAuth();
+  const [CreateSession, { loading }] = useCreateCheckoutSessionMutation();
+  const stripe = useStripe();
 
-const createPaymentSession = async (productId:string, qty:number , orderId:string ) => {
-  const {data} = await CreateSession({
-    variables:{
-      input:{
-        paymentType:ProductPaymentTypes.Totalprice,
-        productId:productId,
-        quantity:qty,
-        orderId:orderId
-      }
+  const createPaymentSession = async (
+    productId: string,
+    qty: number,
+    orderId: string,
+  ) => {
+    const { data } = await CreateSession({
+      variables: {
+        input: {
+          paymentType: ProductPaymentTypes.Totalprice,
+          productIds: [productId],
+          quantity: qty,
+          orderId: orderId,
+        },
+      },
+    });
+
+    if (data?.createCheckoutSession?.id) {
+      stripe?.redirectToCheckout({
+        sessionId: data?.createCheckoutSession?.id,
+      });
     }
-  })
-
-  if (data?.createCheckoutSession?.id) {
-    stripe?.redirectToCheckout({ sessionId: data?.createCheckoutSession?.id });
-
-  }
-  
-}
-  const {data} = useMyOrdersQuery({
- variables:{
-
- }
-  })
+  };
+  const { data } = useMyOrdersQuery({
+    variables: {},
+  });
   console.log(data);
-  
-  const [addShippingModal, setaddShippingModal] = useState(false)
-  const openAddShippingModal =() => {
-    setaddShippingModal(true)
-  }
-  const closeAddShippingModal =() => {
-    setaddShippingModal(false)
 
-  }
+  const [addShippingModal, setaddShippingModal] = useState(false);
+  const openAddShippingModal = () => {
+    setaddShippingModal(true);
+  };
+  const closeAddShippingModal = () => {
+    setaddShippingModal(false);
+  };
   const [searchfilter, setSearchFilter] = useState('');
   const [current, setCurrent] = useState(1);
-
 
   const onMore = useCallback((e: any, row: any) => {
     console.log(e.target.id);
   }, []);
-
 
   const columns: any = useMemo(
     () =>
@@ -73,17 +76,18 @@ const createPaymentSession = async (productId:string, qty:number , orderId:strin
         onMore,
         // onHeaderClick
         openAddShippingModal,
-        createPaymentSession
-
+        createPaymentSession,
       ),
-    [order, column, 
-        // onSelectAll,
-        //  onChange,
-          onMore,
-          openAddShippingModal,
-          createPaymentSession
-        //  onHeaderClick
-        ]
+    [
+      order,
+      column,
+      // onSelectAll,
+      //  onChange,
+      onMore,
+      openAddShippingModal,
+      createPaymentSession,
+      //  onHeaderClick
+    ],
   );
 
   return (
@@ -92,17 +96,14 @@ const createPaymentSession = async (productId:string, qty:number , orderId:strin
         <Text tag="h4" className="text-xl">
           Your Orders
         </Text>
-     
       </div>
       <Spin spinning={loading}>
-
-      <Table 
-        data={data?.myOrders??[]}
-        columns={columns}
-        variant="modern"
-        className="text-sm w-[80vw] "
-
-      />
+        <Table
+          data={data?.myOrders ?? []}
+          columns={columns}
+          variant="modern"
+          className="text-sm w-[80vw] "
+        />
       </Spin>
       {/* <div className="mt-8 text-center">
         <Pagination
@@ -119,9 +120,11 @@ const createPaymentSession = async (productId:string, qty:number , orderId:strin
           }}
         />
       </div> */}
-      <Modal footer={<></>} onCancel={closeAddShippingModal} open={addShippingModal}>
-
-      </Modal>
+      <Modal
+        footer={<></>}
+        onCancel={closeAddShippingModal}
+        open={addShippingModal}
+      ></Modal>
     </>
   );
 }

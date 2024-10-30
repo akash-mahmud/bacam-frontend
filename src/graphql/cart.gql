@@ -4,34 +4,77 @@ query Cart($where: CartWhereUniqueInput!) {
   }
 }
 
-query CartItemsExistOrNotForThisProduct($where: CartItemWhereInput, $orderBy: [CartItemOrderByWithRelationInput!], $cursor: CartItemWhereUniqueInput, $take: Int, $skip: Int, $distinct: [CartItemScalarFieldEnum!]) {
-  cartItems(where: $where, orderBy: $orderBy, cursor: $cursor, take: $take, skip: $skip, distinct: $distinct) {
+query CartItemsExistOrNotForThisProduct(
+  $where: CartItemWhereInput
+  $orderBy: [CartItemOrderByWithRelationInput!]
+  $cursor: CartItemWhereUniqueInput
+  $take: Int
+  $skip: Int
+  $distinct: [CartItemScalarFieldEnum!]
+) {
+  cartItems(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+    distinct: $distinct
+  ) {
     id
     quantity
   }
 }
 
-mutation UpsertOneCartItem($where: CartItemWhereUniqueInput!, $create: CartItemCreateInput!, $update: CartItemUpdateInput!) {
+mutation UpsertOneCartItem(
+  $where: CartItemWhereUniqueInput!
+  $create: CartItemCreateInput!
+  $update: CartItemUpdateInput!
+) {
   upsertOneCartItem(where: $where, create: $create, update: $update) {
     id
   }
 }
 
-
-query AggregateCartItem($where: CartItemWhereInput, $orderBy: [CartItemOrderByWithRelationInput!], $cursor: CartItemWhereUniqueInput, $take: Int, $skip: Int) {
-  aggregateCartItem(where: $where, orderBy: $orderBy, cursor: $cursor, take: $take, skip: $skip) {
+query AggregateCartItem(
+  $where: CartItemWhereInput
+  $orderBy: [CartItemOrderByWithRelationInput!]
+  $cursor: CartItemWhereUniqueInput
+  $take: Int
+  $skip: Int
+) {
+  aggregateCartItem(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+  ) {
     _sum {
       quantity
     }
   }
 }
 
-query CartItems($where: CartItemWhereInput, $orderBy: [CartItemOrderByWithRelationInput!], $cursor: CartItemWhereUniqueInput, $take: Int, $skip: Int, $distinct: [CartItemScalarFieldEnum!]) {
-  cartItems(where: $where, orderBy: $orderBy, cursor: $cursor, take: $take, skip: $skip, distinct: $distinct) {
+query CartItems(
+  $where: CartItemWhereInput
+  $orderBy: [CartItemOrderByWithRelationInput!]
+  $cursor: CartItemWhereUniqueInput
+  $take: Int
+  $skip: Int
+  $distinct: [CartItemScalarFieldEnum!]
+) {
+  cartItems(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+    distinct: $distinct
+  ) {
     id
     quantity
     employeeId
-    employee{
+    employee {
       name
       image
     }

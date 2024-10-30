@@ -38,38 +38,38 @@ export default function ChangePassword() {
   } = useForm<ChangePasswordType>({
     resolver: zodResolver(changePasswordSchema),
   });
-  const [Update, {loading}] = useUpdateProfileMutation()
-  const { authorize} = useAuth()
+  const [Update, { loading }] = useUpdateProfileMutation();
+  const { authorize } = useAuth();
 
- async function handleChangePassword(data: any) {
+  async function handleChangePassword(data: any) {
     console.log('Data:', data);
 
     try {
-      const {data:res} = await Update({
-        variables:{
-          input:{},
-          passwordInput:{
-            updatePassword:true,
+      const { data: res } = await Update({
+        variables: {
+          input: {},
+          passwordInput: {
+            updatePassword: true,
             oldPassword: data.currentPassword,
-            newPassword: data.newPassword
-          }
-        }
-      })
+            newPassword: data.newPassword,
+          },
+        },
+      });
       if (res?.updateProfile?.success) {
-        authorize()
-        reset()
+        authorize();
+        reset();
         notification.success({
-          message:"Updated"
-        })
-      }else{
+          message: 'Updated',
+        });
+      } else {
         notification.error({
-          message:res?.updateProfile?.message
-        })
+          message: res?.updateProfile?.message,
+        });
       }
     } catch (error) {
       notification.error({
-        message:"Something went wrong"
-      })
+        message: 'Something went wrong',
+      });
     }
   }
 
@@ -82,45 +82,44 @@ export default function ChangePassword() {
         Change Password
       </Text>
       <Spin spinning={loading}>
-
-      <form
-        noValidate
-        onSubmit={handleSubmit((data) => handleChangePassword(data))}
-      >
-        <div className="grid grid-cols-2 gap-x-3 gap-y-3 md:gap-y-4">
-          <Input 
-            type="password"
-            label="Current password"
-            labelClassName="!font-normal lg:text-base"
-            {...register('currentPassword')}
-            error={errors.currentPassword?.message}
-          />
-          <Input
-            type="password"
-            label="New password"
-            labelClassName="!font-normal lg:text-base"
-            {...register('newPassword')}
-            error={errors.newPassword?.message}
-          />
-          <Input
-            type="password"
-            label="Confirm password"
-            labelClassName="!font-normal lg:text-base"
-            {...register('confirmPassword')}
-            error={errors.confirmPassword?.message}
-            className="col-span-2 md:col-span-2"
-          />
-        </div>
-        <div className="mt-8 xl:mt-12">
-          <Button
-            type="submit"
-            size="xl"
-            className="w-full transition-transform duration-100 focus:!ring-0 active:scale-95 md:w-auto"
-          >
-            Update password
-          </Button>
-        </div>
-      </form>
+        <form
+          noValidate
+          onSubmit={handleSubmit((data) => handleChangePassword(data))}
+        >
+          <div className="grid grid-cols-2 gap-x-3 gap-y-3 md:gap-y-4">
+            <Input
+              type="password"
+              label="Current password"
+              labelClassName="!font-normal lg:text-base"
+              {...register('currentPassword')}
+              error={errors.currentPassword?.message}
+            />
+            <Input
+              type="password"
+              label="New password"
+              labelClassName="!font-normal lg:text-base"
+              {...register('newPassword')}
+              error={errors.newPassword?.message}
+            />
+            <Input
+              type="password"
+              label="Confirm password"
+              labelClassName="!font-normal lg:text-base"
+              {...register('confirmPassword')}
+              error={errors.confirmPassword?.message}
+              className="col-span-2 md:col-span-2"
+            />
+          </div>
+          <div className="mt-8 xl:mt-12">
+            <Button
+              type="submit"
+              size="xl"
+              className="w-full transition-transform duration-100 focus:!ring-0 active:scale-95 md:w-auto"
+            >
+              Update password
+            </Button>
+          </div>
+        </form>
       </Spin>
     </div>
   );

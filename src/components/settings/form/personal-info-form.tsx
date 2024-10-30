@@ -37,7 +37,7 @@ const PersonalInfoSchema = z.object({
 type PersonalInfoType = z.infer<typeof PersonalInfoSchema>;
 
 export default function PersonalInfoForm() {
-  const {user, authorize} = useAuth()
+  const { user, authorize } = useAuth();
   const {
     register,
     handleSubmit,
@@ -45,41 +45,40 @@ export default function PersonalInfoForm() {
     formState: { errors },
   } = useForm<PersonalInfoType>({
     defaultValues: {
-firstname: user?.firstname??"",
-lastname: user?.lastname??"",
-email: user?.email??"",
-phoneNumber: user?.phoneNumber??"",
+      firstname: user?.firstname ?? '',
+      lastname: user?.lastname ?? '',
+      email: user?.email ?? '',
+      phoneNumber: user?.phoneNumber ?? '',
     },
     resolver: zodResolver(PersonalInfoSchema),
   });
-const [Update, {loading}] = useUpdateProfileMutation()
- async function handlePersonalInfo(data: any) {
+  const [Update, { loading }] = useUpdateProfileMutation();
+  async function handlePersonalInfo(data: any) {
     console.log('Data:', data);
-try {
-  const {data:res} = await Update({
-    variables:{
-      input:data,
-      passwordInput:{
-        updatePassword:false
+    try {
+      const { data: res } = await Update({
+        variables: {
+          input: data,
+          passwordInput: {
+            updatePassword: false,
+          },
+        },
+      });
+      if (res?.updateProfile?.success) {
+        authorize();
+        notification.success({
+          message: 'Updated',
+        });
+      } else {
+        notification.error({
+          message: res?.updateProfile?.message,
+        });
       }
+    } catch (error) {
+      notification.error({
+        message: 'Something went wrong',
+      });
     }
-  })
-  if (res?.updateProfile?.success) {
-    authorize()
-    notification.success({
-      message:"Updated"
-    })
-  }else{
-    notification.error({
-      message:res?.updateProfile?.message
-    })
-  }
-} catch (error) {
-  notification.error({
-    message:"Something went wrong"
-  })
-}
-
   }
 
   return (
@@ -91,77 +90,74 @@ try {
         Personal Information
       </Text>
       <Spin spinning={loading}>
-
-      <form
-        noValidate
-        onSubmit={handleSubmit((data) => handlePersonalInfo(data))}
-        className="grid grid-cols-1 gap-8 xl:gap-12"
-      >
-        <div>
-          <div className="mb-4 grid grid-cols-1 gap-3 md:mb-6 xl:gap-4">
-            <div className="grid grid-cols-2 gap-3">
-              <Input
-                type="text"
-                label="First name"
-                placeholder="First name"
-                labelClassName="!font-normal lg:text-base"
-                {...register('firstname')}
-                error={errors.firstname?.message}
-              />
-              <Input
-                type="text"
-                label="Last name"
-                placeholder="Last name"
-                labelClassName="!font-normal lg:text-base"
-                {...register('lastname')}
-                error={errors.lastname?.message}
-              />
+        <form
+          noValidate
+          onSubmit={handleSubmit((data) => handlePersonalInfo(data))}
+          className="grid grid-cols-1 gap-8 xl:gap-12"
+        >
+          <div>
+            <div className="mb-4 grid grid-cols-1 gap-3 md:mb-6 xl:gap-4">
+              <div className="grid grid-cols-2 gap-3">
+                <Input
+                  type="text"
+                  label="First name"
+                  placeholder="First name"
+                  labelClassName="!font-normal lg:text-base"
+                  {...register('firstname')}
+                  error={errors.firstname?.message}
+                />
+                <Input
+                  type="text"
+                  label="Last name"
+                  placeholder="Last name"
+                  labelClassName="!font-normal lg:text-base"
+                  {...register('lastname')}
+                  error={errors.lastname?.message}
+                />
+              </div>
+              <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                <Input
+                  type="email"
+                  label="Email"
+                  placeholder="Email"
+                  labelClassName="!font-normal lg:text-base"
+                  {...register('email')}
+                  error={errors.email?.message}
+                />
+                <Controller
+                  name="phoneNumber"
+                  control={control}
+                  render={({ field: { onChange, value } }) => (
+                    <PhoneNumber
+                      country="us"
+                      label="Phone Number"
+                      labelClassName="!font-normal lg:text-base"
+                      buttonClassName="personal-info-phone-input"
+                      inputClassName="!pl-14"
+                      onChange={onChange}
+                      value={value}
+                      error={errors?.phoneNumber?.message}
+                    />
+                  )}
+                />
+              </div>
             </div>
-            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-              <Input
-                type="email"
-                label="Email"
-                placeholder="Email"
-                labelClassName="!font-normal lg:text-base"
-                {...register('email')}
-                error={errors.email?.message}
-              />
-              <Controller
-                name="phoneNumber"
-                control={control}
-                render={({ field: { onChange, value } }) => (
-                  <PhoneNumber
-                    country="us"
-                    label="Phone Number"
-                    labelClassName="!font-normal lg:text-base"
-                    buttonClassName="personal-info-phone-input"
-                    inputClassName="!pl-14"
-                    onChange={onChange}
-                    value={value}
-                    error={errors?.phoneNumber?.message}
-                  />
-                )}
-              />
-            </div>
-         
           </div>
-       
-        </div>
-      
-        <div className="flex items-center justify-between gap-3">
-          <Button
-            type="button"
-            size="xl"
-            variant="outline"
-            className="w-full border-gray-dark hover:bg-gray-dark hover:text-white md:w-auto"
-          >
-            Cancel
-          </Button>
-          <Button type="submit" size="xl" className="w-full md:w-auto">
-            Save
-          </Button>
-        </div>
-      </form>
+
+          <div className="flex items-center justify-between gap-3">
+            <Button
+              type="button"
+              size="xl"
+              variant="outline"
+              className="w-full border-gray-dark hover:bg-gray-dark hover:text-white md:w-auto"
+            >
+              Cancel
+            </Button>
+            <Button type="submit" size="xl" className="w-full md:w-auto">
+              Save
+            </Button>
+          </div>
+        </form>
       </Spin>
     </div>
   );

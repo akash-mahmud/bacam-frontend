@@ -25,7 +25,7 @@ mutation Login($password: String!, $email: String!) {
     success
     user {
       id
-            firstname
+      firstname
       lastname
       email
       role
@@ -46,8 +46,10 @@ mutation RefreshToken {
   refreshToken
 }
 
-
-mutation UpdateProfile($input: UpdateOneUserArgsCustom!, $passwordInput: UpdateProfilePaswordArgs!) {
+mutation UpdateProfile(
+  $input: UpdateOneUserArgsCustom!
+  $passwordInput: UpdateProfilePaswordArgs!
+) {
   updateProfile(input: $input, passwordInput: $passwordInput) {
     message
     success

@@ -43,8 +43,6 @@ export default function BoatTypeFilter() {
   // const { clearFilter, updateQueryparams } = useQueryParam();
   const [selected, setSelected] = useState(options[0]);
 
-
-
   // sets the state if in url
   useEffect(() => {
     if (boatType) {

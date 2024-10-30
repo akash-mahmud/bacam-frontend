@@ -8,10 +8,8 @@ const LogoNext = ({ className, withLink, linkTo, title, src }) => {
     <LogoArea className={className}>
       {withLink ? (
         <Link href={linkTo}>
-   
-            {src && <img src={src} alt="TripFinder." />}
-            {title && <h3>{title}</h3>}
-       
+          {src && <img src={src} alt="TripFinder." />}
+          {title && <h3>{title}</h3>}
         </Link>
       ) : (
         <Fragment>

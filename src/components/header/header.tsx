@@ -20,10 +20,10 @@ import ActionIcon from '../ui/action-icon';
 export default function Header() {
   const mounted = useIsMounted();
   const { openModal } = useModal();
-  const { isAuthorized , loading} = useAuth();
+  const { isAuthorized, loading } = useAuth();
   const headerRef = useRef(null);
   addScrollingClass(headerRef);
-const router = useRouter()
+  const router = useRouter();
   return (
     <header
       // ref={headerRef}
@@ -38,34 +38,27 @@ const router = useRouter()
         <div className="flex items-center justify-end gap-5">
           <SearchIconBtn />
           {mounted ? (
-        <>
-           <ActionIcon
-      variant="text"
-onClick={()=> router.push("/cart")}
-    >
+            <>
+              <ActionIcon variant="text" onClick={() => router.push('/cart')}>
+                <ShoppingCartIcon />
+              </ActionIcon>
 
-                 <ShoppingCartIcon/>
-    </ActionIcon>
-               
-          {
-          loading? 
-          <Spin/> :
-          isAuthorized ? (
-            <div className="ml-7 flex justify-end">
-              <ProfileMenu className="hidden md:block" />
-            </div>
-          ) : (
-            <Button
-              onClick={() =>            router.push(Routes.private.account)
-              }
-              className="ml-5 rounded-lg px-6 py-2 text-sm capitalize md:text-base 4xl:px-8 4xl:py-2.5  bg-primaryBg"
-            >
-                 Login
-                  </Button>
-          )}
-           
-        </>
-      )  : null}
+              {loading ? (
+                <Spin />
+              ) : isAuthorized ? (
+                <div className="ml-7 flex justify-end">
+                  <ProfileMenu className="hidden md:block" />
+                </div>
+              ) : (
+                <Button
+                  onClick={() => router.push(Routes.private.account)}
+                  className="ml-5 rounded-lg px-6 py-2 text-sm capitalize md:text-base 4xl:px-8 4xl:py-2.5  bg-primaryBg"
+                >
+                  Login
+                </Button>
+              )}
+            </>
+          ) : null}
         </div>
       </div>
     </header>

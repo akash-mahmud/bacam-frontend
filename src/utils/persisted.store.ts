@@ -1,17 +1,14 @@
-import { IinitialStateAuth } from "../store/slices/auth/authSlice";
-import { getAuthData,setAuthData,  } from "./session";
+import { IinitialStateAuth } from '../store/slices/auth/authSlice';
+import { getAuthData, setAuthData } from './session';
 
-interface Isate{
-  
-    auth: IinitialStateAuth;
-
+interface Isate {
+  auth: IinitialStateAuth;
 }
-export const saveState = (state:Isate) => {
+export const saveState = (state: Isate) => {
   try {
     // Parsing auth data from Redux store
     let stateFilter = state;
     setAuthData(stateFilter.auth);
-
   } catch (err) {
     // Ignore write error
   }
@@ -25,7 +22,6 @@ export const persistedState = (() => {
     if (Object.keys(auth as any).length === 0) return undefined;
     return {
       auth,
-      
     };
   } catch (err) {
     return {
@@ -34,7 +30,7 @@ export const persistedState = (() => {
       token: null,
       loading: false,
       isError: false,
-      error: "",
+      error: '',
     };
   }
 })();

@@ -9,8 +9,6 @@ export default function WithCrewFilter() {
   const crew = searchParams?.get('withCrew');
   const [withCrew, setWithCrew] = useState<boolean>(Boolean(crew));
 
-
-
   // reset
   useEffect(() => {
     if (!crew) {

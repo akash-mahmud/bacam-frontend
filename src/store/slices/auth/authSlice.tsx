@@ -1,5 +1,7 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import client from "../../../apollo/client";
+// @ts-nocheck
+
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import client from '../../../apollo/client';
 import {
   LoginInput,
   LoginMutation,
@@ -8,7 +10,7 @@ import {
   User,
   LoginDocument,
   RegisterDocument,
-} from "../../../graphql/generated/schema";
+} from '../../../graphql/generated/schema';
 export interface IinitialStateAuth {
   isAuthorized: Boolean;
   user: User | undefined | null;
@@ -23,14 +25,14 @@ const initialState: IinitialStateAuth = {
   token: null,
   loading: false,
   isError: false,
-  error: "",
+  error: '',
 };
 
 export const login = createAsyncThunk<
   LoginMutation | null | undefined,
   LoginInput
 >(
-  "auth/login",
+  'auth/login',
 
   async (user: LoginInput) => {
     try {
@@ -46,13 +48,13 @@ export const login = createAsyncThunk<
       console.error(error);
       return null;
     }
-  }
+  },
 );
 
 export const register = createAsyncThunk<
   RegisterMutation | null | undefined,
   UserInput
->("auth/register", async (user: UserInput) => {
+>('auth/register', async (user: UserInput) => {
   try {
     const { data } = await client.mutate({
       mutation: RegisterDocument,
@@ -69,7 +71,7 @@ export const register = createAsyncThunk<
 });
 
 export const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
   reducers: {
     logout(state) {
@@ -77,12 +79,10 @@ export const authSlice = createSlice({
       // state.user = "";
       // state.token = '';
     },
-    setUser(state , {payload}) {
-            state.user = payload.user;
-            state.isAuthorized = payload.isAuthorized;
-            state.loading = payload.loading;
-
-   
+    setUser(state, { payload }) {
+      state.user = payload.user;
+      state.isAuthorized = payload.isAuthorized;
+      state.loading = payload.loading;
     },
   },
   extraReducers(builder) {
@@ -90,7 +90,7 @@ export const authSlice = createSlice({
       .addCase(login.pending, (state) => {
         state.loading = true;
         state.isError = false;
-        state.error = "";
+        state.error = '';
       })
       .addCase(login.fulfilled, (state, payload) => {
         state.loading = false;
@@ -98,13 +98,12 @@ export const authSlice = createSlice({
         state.isAuthenticated = true;
         state.token = payload.payload?.login?.accessToken;
         state.isError = false;
-        state.error = "";
+        state.error = '';
       })
       .addCase(login.rejected, (state, payload) => {
         state.user = null;
         state.loading = false;
         state.isError = true;
-
       });
     //===== sign up =======
 
@@ -112,13 +111,13 @@ export const authSlice = createSlice({
       .addCase(register.pending, (state) => {
         state.loading = true;
         state.isError = false;
-        state.error = "";
+        state.error = '';
       })
       .addCase(register.fulfilled, (state, payload) => {
         state.loading = false;
 
         state.isError = false;
-        state.error = "";
+        state.error = '';
       })
       .addCase(register.rejected, (state, payload) => {
         state.user = null;
@@ -128,8 +127,6 @@ export const authSlice = createSlice({
   },
 });
 
-export const { logout ,setUser} = authSlice.actions;
+export const { logout, setUser } = authSlice.actions;
 
 export default authSlice.reducer;
-
-
