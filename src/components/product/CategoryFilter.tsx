@@ -14,7 +14,7 @@ export default function CategoryFilter() {
   const [selected, setSelected] = useState({});
   const { createQueryString } = useUpdateSearchParams();
 
-  const { data } = useCategoriesQuery();
+  const { data } = useCategoriesQuery(); 
   const router = useRouter();
   const pathName = usePathname();
   const categories = data?.categories ?? [];

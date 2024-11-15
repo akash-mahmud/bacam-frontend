@@ -14,7 +14,7 @@ export default function AppProgressBarProvider({
 
       <AppProgressBar
         height="2px"
-        color="#433f92"
+        color="#dd3780"
         options={{ showSpinner: false }}
       />
     </>

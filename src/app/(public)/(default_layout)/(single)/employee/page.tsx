@@ -17,7 +17,7 @@ export default function Page() {
   });
   const employeeBycategories = data?.employeeCategories;
   return (
-    <div>
+    <div className=' bg-sectionSecondary'>
       {employeeBycategories?.map(
         (category) =>
           category?.employee?.length && (

@@ -16,7 +16,6 @@ const sortingOptions = [
 
 export default function FilterTopbar() {
   let [drawerSate, setDrawerState] = useAtom(drawerStateAtom);
-  const [selected, setSelected] = useState(sortingOptions[0]);
   return (
     <div className="mb-4 sm:mb-0 flex items-center justify-between">
       <Button

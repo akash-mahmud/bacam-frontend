@@ -1,12 +1,12 @@
 import TransparentHeader from '@/components/header/transparent';
+import React, { ReactNode } from 'react';
 import MobileNav from '@/components/ui/mobile-nav';
 import Footer from '@/components/footer/footer';
-
-export default function HomeLayout({ children }: React.PropsWithChildren<{}>) {
+export default function layout({ children }: { children: ReactNode }) {
   return (
     <>
       <TransparentHeader />
-      <section className="flex-grow">{children}</section>
+      {children}
       <Footer />
       <MobileNav />
     </>

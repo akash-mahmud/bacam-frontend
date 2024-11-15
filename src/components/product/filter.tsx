@@ -29,7 +29,7 @@ export default function Filter({ className }: FilterTypes) {
       setState(false);
     }
   }, [params]);
-
+const router = useRouter()
   return (
     <div
       className={clsx(
@@ -46,8 +46,8 @@ export default function Filter({ className }: FilterTypes) {
             type="reset"
             variant="text"
             className="hidden !p-0 text-base text-gray focus:!ring-0 sm:block"
-            // onClick={() => router.push(Routes.public.explore)}
-          >
+            onClick={() => router.push("/product")}
+            >
             Reset
           </Button>
         )}
@@ -77,7 +77,7 @@ export default function Filter({ className }: FilterTypes) {
               type="reset"
               variant="text"
               className="!p-0 text-base text-gray underline focus:!ring-0"
-              // onClick={() => router.push(Routes.public.explore)}
+              onClick={() => router.push("/product")}
             >
               Reset
             </Button>

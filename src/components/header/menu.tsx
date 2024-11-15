@@ -3,14 +3,11 @@
 import Link from 'next/link';
 import useAuth from '@/hooks/use-auth';
 import { Routes } from '@/config/routes';
-import ProfileMenu from '@/components/header/profile-menu';
-import { useModal } from '@/components/modals/context';
+
 import { useIsMounted } from '@/hooks/use-is-mounted';
-import Button from '@/components/ui/button';
-import { Spin } from 'antd';
+
 import { useRouter } from 'next/navigation';
-import { ShoppingCartIcon } from '@heroicons/react/24/outline';
-import ActionIcon from '../ui/action-icon';
+
 
 const menuItems = [
   {
@@ -45,28 +42,7 @@ export default function Menu() {
           </li>
         ))}
       </ul>
-      {mounted ? (
-        <>
-          <ActionIcon variant="text" onClick={() => router.push('/cart')}>
-            <ShoppingCartIcon />
-          </ActionIcon>
 
-          {loading ? (
-            <Spin />
-          ) : isAuthorized ? (
-            <div className="ml-7 flex justify-end">
-              <ProfileMenu className="hidden md:block" />
-            </div>
-          ) : (
-            <Button
-              onClick={() => router.push(Routes.private.account)}
-              className="ml-5 rounded-lg px-6 py-2 text-sm capitalize md:text-base 4xl:px-8 4xl:py-2.5  bg-primaryBg"
-            >
-              Login
-            </Button>
-          )}
-        </>
-      ) : null}
     </nav>
   );
 }

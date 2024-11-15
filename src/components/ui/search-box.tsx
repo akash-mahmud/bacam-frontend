@@ -2,11 +2,12 @@
 
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 import InputIconOnClear from '@/components/ui/form-fields/field-clear-btn';
 import { useModal } from '@/components/modals/context';
 import ActionIcon from '@/components/ui/action-icon';
+import { useUpdateSearchParams } from '@/utils/searchParams';
 
 interface SearchboxProps {
   className?: string;
@@ -18,12 +19,15 @@ export default function Searchbox({ className }: SearchboxProps) {
   const search = searchParams?.get('q');
   let [state, setState] = useState('');
   const [isClearable, setIsClearable] = useState(false);
-
+  const { createQueryString } = useUpdateSearchParams();
+const router = useRouter()
   function handleSubmit(e: any) {
     e.preventDefault();
     if (state) {
       closeModal();
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      const updatedparams = createQueryString('search', state);
+      router.push(`/product?${updatedparams}`);
     }
   }
 

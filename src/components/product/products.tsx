@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { topBoats } from 'public/data/top-boats';
 import Button from '@/components/ui/button';
-import { useProductsQuery } from '@/graphql/generated/schema';
+import { QueryMode, useProductsQuery } from '@/graphql/generated/schema';
 import { useParams, useSearchParams } from 'next/navigation';
 import ProductCard from '../ui/cards/products';
 
@@ -20,6 +20,7 @@ export default function Products({}) {
   }
   const searchParams = useSearchParams();
   const category = searchParams?.get('category') ?? '';
+  const search = searchParams?.get('search') ?? '';
   const { data } = useProductsQuery({
     variables: {
       where: {
@@ -31,6 +32,32 @@ export default function Products({}) {
                 },
               },
             }
+          : undefined,
+        OR: search
+          ? [
+              {
+                name: {
+                  contains: search,
+                  mode: QueryMode.Insensitive,
+                },
+              },
+              {
+                description: {
+                  contains: search,
+                  mode: QueryMode.Insensitive,
+                },
+              },
+              {
+                category: {
+                  is: {
+                    name: {
+                      contains: search,
+                      mode: QueryMode.Insensitive,
+                    },
+                  },
+                },
+              },
+            ]
           : undefined,
       },
     },
