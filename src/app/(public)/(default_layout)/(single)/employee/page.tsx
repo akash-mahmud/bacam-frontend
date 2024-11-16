@@ -17,7 +17,7 @@ export default function Page() {
   });
   const employeeBycategories = data?.employeeCategories;
   return (
-    <div className=' bg-sectionSecondary'>
+    <div className=''>
       {employeeBycategories?.map(
         (category) =>
           category?.employee?.length && (
@@ -28,6 +28,7 @@ export default function Page() {
                   key={employee.id}
                   className="flex flex-row flex-wrap gap-x-5 "
                 >
+                  <EmployeeCard {...(employee as Employee)} />
                   <EmployeeCard {...(employee as Employee)} />
                 </div>
               ))}
