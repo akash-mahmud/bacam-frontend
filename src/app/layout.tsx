@@ -32,8 +32,8 @@ const satisfy = Satisfy({
 });
 
 export const metadata: Metadata = {
-  title: 'Boat Rental',
-  description: 'Find your boat with the best experience.',
+  title: 'Art booking',
+  description: 'Buy arts and find your dream bike',
   icons: ['/images/logo.svg'],
 };
 

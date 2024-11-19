@@ -25,6 +25,18 @@ query Products(
 
 query Product(
   $where: ProductWhereUniqueInput!
+  $fetauresCategoriesWhere2: FetaureCategoryWhereInput
+  $orderBy: [FetaureCategoryOrderByWithRelationInput!]
+  $cursor: FetaureCategoryWhereUniqueInput
+  $take: Int
+  $skip: Int
+  $distinct: [FetaureCategoryScalarFieldEnum!]
+  $fetauresWhere2: ProductFetaureWhereInput
+  $fetauresOrderBy2: [ProductFetaureOrderByWithRelationInput!]
+  $fetauresCursor2: ProductFetaureWhereUniqueInput
+  $fetauresTake2: Int
+  $fetauresSkip2: Int
+  $fetauresDistinct2: [ProductFetaureScalarFieldEnum!]
   $reveiwsWhere2: ReviewWhereInput
 ) {
   product(where: $where) {
@@ -51,6 +63,30 @@ query Product(
     stock
     minimumOrderNeededToStart
     custom_product_status
+    sizes
+    fetauresCategories(
+      where: $fetauresCategoriesWhere2
+      orderBy: $orderBy
+      cursor: $cursor
+      take: $take
+      skip: $skip
+      distinct: $distinct
+    ) {
+      name
+      id
+      fetaures(
+        where: $fetauresWhere2
+        orderBy: $fetauresOrderBy2
+        cursor: $fetauresCursor2
+        take: $fetauresTake2
+        skip: $fetauresSkip2
+        distinct: $fetauresDistinct2
+      ) {
+        name
+        id
+        value
+      }
+    }
   }
 }
 
