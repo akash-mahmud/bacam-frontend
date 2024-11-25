@@ -1,0 +1,19 @@
+query PartnerShips($where: PartnerShipWhereInput, $orderBy: [PartnerShipOrderByWithRelationInput!], $cursor: PartnerShipWhereUniqueInput, $take: Int, $skip: Int, $distinct: [PartnerShipScalarFieldEnum!]) {
+  partnerShips(where: $where, orderBy: $orderBy, cursor: $cursor, take: $take, skip: $skip, distinct: $distinct) {
+    id
+    link
+    logo
+    name
+    position
+  }
+}
+
+query PartnerShip($where: PartnerShipWhereUniqueInput!) {
+  partnerShip(where: $where) {
+    id
+    link
+    logo
+    name
+    position
+  }
+}

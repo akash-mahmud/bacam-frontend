@@ -19,26 +19,18 @@ const menuItems = [
   },
   {
     label: 'Help',
-    path: Routes.public.help, 
+    path: Routes.public.help,
   },
 ];
 
 export default function Footer({ className }: { className?: string }) {
   return (
-    <footer className=' bg-footerBg text-white'>
+    <footer className=" bg-footerBg text-white">
       <div className={clsx('container-fluid mb-4', className)}>
         <div className=" flex flex-col md:mb-6 md:flex-row md:items-center md:justify-between md:border-t md:border-t-gray-lighter md:pt-6 lg:mb-8 lg:pt-8">
           <div className="order-2 pt-4 md:order-none md:pt-0 lg:shrink-0">
             <p className="text-center text-sm font-normal capitalize leading-6 md:text-left 3xl:text-base">
-              Copyright &copy; {new Date().getFullYear()}{' '}
-              <a
-                href="https://redq.io/"
-                rel="noreferrer noopener"
-                target="_blank"
-                className="font-semibold hover:underline"
-              >
-                RedQ Inc.
-              </a>{' '}
+              Copyright &copy; {new Date().getFullYear()} <b>Art booking</b>{" "}
               All rights reserved
             </p>
           </div>

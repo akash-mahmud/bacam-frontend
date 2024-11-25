@@ -1,0 +1,21 @@
+
+
+query FindManyNews($where: NewsWhereInput, $orderBy: [NewsOrderByWithRelationInput!], $cursor: NewsWhereUniqueInput, $take: Int, $skip: Int, $distinct: [NewsScalarFieldEnum!]) {
+  findManyNews(where: $where, orderBy: $orderBy, cursor: $cursor, take: $take, skip: $skip, distinct: $distinct) {
+    
+    fetaureMedias
+    id
+    position
+    title
+  }
+}
+
+query FindUniqueNews($where: NewsWhereUniqueInput!) {
+  findUniqueNews(where: $where) {
+    id
+    fetaureMedias
+    description
+    position
+    title
+  }
+}
