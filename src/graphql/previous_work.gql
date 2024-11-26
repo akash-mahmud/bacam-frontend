@@ -5,7 +5,7 @@ query EmployeePreviousWorks($where: EmployeePreviousWorkWhereInput, $orderBy: [E
     link
     position
     title
-    
+    slug
   }
 }
 
@@ -17,5 +17,6 @@ query EmployeePreviousWork($where: EmployeePreviousWorkWhereUniqueInput!) {
     link
     position
     title
+    slug
   }
 }

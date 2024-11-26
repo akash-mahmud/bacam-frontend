@@ -1,20 +1,21 @@
 'use client';
 import { TopBikes } from '@/components/home/top-bikes';
+import PreviousWorkCard from '@/components/ui/cards/PreviousWorkCard';
 import ListingCardLoader from '@/components/ui/loader/listing-card-loader';
 import Section from '@/components/ui/section';
 import SeeMore from '@/components/ui/see-more';
 import {
   Product,
   SortOrder,
+  useEmployeePreviousWorksQuery,
   useEmployeeQuery,
-  useProductsLazyQuery,
   useProductsQuery,
 } from '@/graphql/generated/schema';
 import { getImage } from '@/utils/getImage';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 export default function Page() {
   const params: { id: string } = useParams() as any;
@@ -40,8 +41,22 @@ export default function Page() {
     },
   });
 
+  const { data: previousWork, loading: previousWorkLoading } =
+    useEmployeePreviousWorksQuery({
+      variables: {
+        take: 8,
+        where: {
+          employeeId: {
+            equals: params.id,
+          },
+        },
+        orderBy: {
+          createdAt: SortOrder.Desc,
+        },
+      },
+    });
   const products = productData?.products ?? [];
-
+  const previousWorks = previousWork?.employeePreviousWorks ?? [];
   return (
     <div className=" flex flex-col">
       <div className="w-full rounded border p-5 text-center text-gray-500 shadow">
@@ -76,14 +91,35 @@ export default function Page() {
       </div>
       <Section
         className="group/section  my-5 mt-5 overflow-hidden lg:mt-8"
-        headerClassName="items-end mb-4 md:mb-5 xl:mb-6 gap-5"
-        rightElement={<SeeMore />}
+        headerClassName="items-end mb-4  gap-5"
+        title=" Previous works"
+      >
+        {previousWorkLoading && <ListingCardLoader />}
+        {!previousWorkLoading && (
+          <div className="grid grid-cols-1 gap-y-8 gap-x-5 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 3xl:gap-y-10">
+            {previousWorks.map((item, index) => (
+              // @ts-ignore
+              <PreviousWorkCard
+                key={`top-boat-grid-${index}`}
+                id={`top-boat-grid-${index}`}
+                slides={item.files}
+                title={item.title}
+                slug={item.slug}
+link={item.link}
+              />
+            ))}
+          </div>
+        )}
+      </Section>
+      <Section
+        className="group/section  my-5 mt-5 overflow-hidden lg:mt-8"
+        headerClassName="items-end mb-4  gap-5"
+        title=" Current Products"
       >
         {loading && <ListingCardLoader />}
         {!loading && (
           <TopBikes
             // @ts-ignore
-            title=""
             description=""
             employeeId={params.id}
             products={products as Product[]}

@@ -11873,14 +11873,14 @@ export type EmployeePreviousWorksQueryVariables = Exact<{
 }>;
 
 
-export type EmployeePreviousWorksQuery = { __typename?: 'Query', employeePreviousWorks: Array<{ __typename?: 'EmployeePreviousWork', id: string, files: Array<string>, link: string, position: number, title: string }> };
+export type EmployeePreviousWorksQuery = { __typename?: 'Query', employeePreviousWorks: Array<{ __typename?: 'EmployeePreviousWork', id: string, files: Array<string>, link: string, position: number, title: string, slug: string }> };
 
 export type EmployeePreviousWorkQueryVariables = Exact<{
   where: EmployeePreviousWorkWhereUniqueInput;
 }>;
 
 
-export type EmployeePreviousWorkQuery = { __typename?: 'Query', employeePreviousWork?: { __typename?: 'EmployeePreviousWork', files: Array<string>, description: string, id: string, link: string, position: number, title: string } | null };
+export type EmployeePreviousWorkQuery = { __typename?: 'Query', employeePreviousWork?: { __typename?: 'EmployeePreviousWork', files: Array<string>, description: string, id: string, link: string, position: number, title: string, slug: string } | null };
 
 export type ProductsQueryVariables = Exact<{
   where?: InputMaybe<ProductWhereInput>;
@@ -11892,7 +11892,7 @@ export type ProductsQueryVariables = Exact<{
 }>;
 
 
-export type ProductsQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', id: string, images: Array<string>, name: string, price: number, type: ProductType, slug: string, categoryId: string }> };
+export type ProductsQuery = { __typename?: 'Query', products: Array<{ __typename?: 'Product', id: string, images: Array<string>, name: string, price: number, type: ProductType, slug: string }> };
 
 export type ProductQueryVariables = Exact<{
   where: ProductWhereUniqueInput;
@@ -12760,6 +12760,7 @@ export const EmployeePreviousWorksDocument = gql`
     link
     position
     title
+    slug
   }
 }
     `;
@@ -12805,6 +12806,7 @@ export const EmployeePreviousWorkDocument = gql`
     link
     position
     title
+    slug
   }
 }
     `;
@@ -12852,7 +12854,6 @@ export const ProductsDocument = gql`
     price
     type
     slug
-    categoryId
   }
 }
     `;

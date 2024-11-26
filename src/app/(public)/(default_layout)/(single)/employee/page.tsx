@@ -23,15 +23,14 @@ export default function Page() {
           category?.employee?.length && (
             <div key={category.slug} className=" flex flex-col gap-y-3 mb-2">
               <h3 className=" font-bold text-xl">{category.name}</h3>
+              <div
+            
+                className="flex flex-row flex-wrap gap-x-5 "
+              >
               {category.employee?.map((employee) => (
-                <div
-                  key={employee.id}
-                  className="flex flex-row flex-wrap gap-x-5 "
-                >
-                  <EmployeeCard {...(employee as Employee)} />
-                  <EmployeeCard {...(employee as Employee)} />
+                  <EmployeeCard key={employee.id} {...(employee as Employee)} />
+                ))}
                 </div>
-              ))}
             </div>
           ),
       )}
