@@ -7,6 +7,7 @@ query FindManyNews($where: NewsWhereInput, $orderBy: [NewsOrderByWithRelationInp
     id
     position
     title
+    slug
   }
 }
 
@@ -17,5 +18,6 @@ query FindUniqueNews($where: NewsWhereUniqueInput!) {
     description
     position
     title
+    slug
   }
 }

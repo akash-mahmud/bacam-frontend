@@ -59,7 +59,6 @@ export default function TransparentHeader() {
         <div className=" hidden md:flex items-center justify-end gap-5">
           {mounted ? (
             <>
-
               <Badge color="#dd3780" count={cartItemCount} showZero>
                 {' '}
                 <ActionIcon variant="text" onClick={() => router.push('/cart')}>
@@ -83,8 +82,9 @@ export default function TransparentHeader() {
                 </Button>
               )}
             </>
-          ) :           <SearchIconBtn className=" " />
-}
+          ) : (
+            <SearchIconBtn className=" " />
+          )}
         </div>
       </div>
     </header>

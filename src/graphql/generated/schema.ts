@@ -11816,14 +11816,14 @@ export type FindManyNewsQueryVariables = Exact<{
 }>;
 
 
-export type FindManyNewsQuery = { __typename?: 'Query', findManyNews: Array<{ __typename?: 'News', fetaureMedias: Array<string>, id: string, position: number, title: string }> };
+export type FindManyNewsQuery = { __typename?: 'Query', findManyNews: Array<{ __typename?: 'News', fetaureMedias: Array<string>, id: string, position: number, title: string, slug: string }> };
 
 export type FindUniqueNewsQueryVariables = Exact<{
   where: NewsWhereUniqueInput;
 }>;
 
 
-export type FindUniqueNewsQuery = { __typename?: 'Query', findUniqueNews?: { __typename?: 'News', id: string, fetaureMedias: Array<string>, description: string, position: number, title: string } | null };
+export type FindUniqueNewsQuery = { __typename?: 'Query', findUniqueNews?: { __typename?: 'News', id: string, fetaureMedias: Array<string>, description: string, position: number, title: string, slug: string } | null };
 
 export type MyOrdersQueryVariables = Exact<{
   where?: InputMaybe<OrderWhereInput>;
@@ -12471,6 +12471,7 @@ export const FindManyNewsDocument = gql`
     id
     position
     title
+    slug
   }
 }
     `;
@@ -12515,6 +12516,7 @@ export const FindUniqueNewsDocument = gql`
     description
     position
     title
+    slug
   }
 }
     `;

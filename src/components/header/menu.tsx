@@ -25,6 +25,11 @@ const menuItems = [
     label: 'Employee',
     path: '/employee',
   },
+  {
+    id: 4,
+    label: 'News',
+    path: '/news',
+  },
 ];
 
 export default function Menu() {

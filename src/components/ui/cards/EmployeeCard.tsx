@@ -47,7 +47,7 @@ export default function EmployeeCard({
             </h3>
           </div>
         </div>
-        <p className="mb-5 overflow-y-auto  border-b border-gray-200 pb-5 text-left text-sm  md:leading-6 xl:text-base xl:leading-7 4xl:text-lg">
+        <p className="mb-5 overflow-y-auto max-h-36  border-b border-gray-200 pb-5 text-left text-sm  md:leading-6 xl:text-base xl:leading-7 4xl:text-lg">
           {shortDescription}
         </p>
       </Link>

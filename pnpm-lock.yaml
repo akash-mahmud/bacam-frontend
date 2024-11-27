@@ -176,6 +176,9 @@ dependencies:
   react-redux:
     specifier: ^8.0.7
     version: 8.0.7(@reduxjs/toolkit@1.9.5)(@types/react-dom@18.2.4)(@types/react@18.2.8)(react-dom@18.2.0)(react@18.2.0)(redux@4.2.1)
+  react-slideshow-image:
+    specifier: ^4.3.2
+    version: 4.3.2(react@18.2.0)
   styled-components:
     specifier: ^6.1.11
     version: 6.1.11(react-dom@18.2.0)(react@18.2.0)
@@ -3642,6 +3645,10 @@ packages:
 
   /@tsconfig/node16@1.0.4:
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
+    dev: false
+
+  /@tweenjs/tween.js@18.6.4:
+    resolution: {integrity: sha512-lB9lMjuqjtuJrx7/kOkqQBtllspPIN+96OvTCeJ2j5FEzinoAXTdAMFnDAQT1KVPRlnYfBrqxtqP66vDM40xxQ==}
     dev: false
 
   /@types/apollo-upload-client@18.0.0(@types/react@18.2.8)(graphql-ws@5.16.0)(react-dom@18.2.0)(react@18.2.0):
@@ -9077,6 +9084,16 @@ packages:
 
   /react-required-if@1.0.1:
     resolution: {integrity: sha512-n0HDT1G/1GoWvX7HcGzBOVwgfrbaymtEoYBkKOOhca3ThXQYFMjI3uKWcc5DSBHpPbSEJPPWEAV6Zu9BrSG+rg==}
+    dev: false
+
+  /react-slideshow-image@4.3.2(react@18.2.0):
+    resolution: {integrity: sha512-cALXr6RvP7er5QYWcX1ctBvG2x4jvZsgSPMPWUzQG47ZeKZjmXNmN9h8y4tScsWk/7TV23uAFQIESN8kxTaBHQ==}
+    peerDependencies:
+      react: '>=15'
+    dependencies:
+      '@tweenjs/tween.js': 18.6.4
+      react: 18.2.0
+      resize-observer-polyfill: 1.5.1
     dev: false
 
   /react-with-direction@1.4.0(react-dom@18.2.0)(react@18.2.0):

@@ -30,8 +30,7 @@ export default function PreviousWorkCard({
   link,
   employeeId,
 }: ListingItemTypes) {
-  const searchParams = useSearchParams();
-  const employee = searchParams?.get('employee') ?? employeeId ?? '';
+
   return (
     <>
       <div className="listing-card group/item relative inline-flex w-full flex-col  p-5 rounded-md border shadow-lg">

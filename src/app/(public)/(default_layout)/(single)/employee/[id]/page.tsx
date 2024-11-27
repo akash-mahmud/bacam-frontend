@@ -105,7 +105,7 @@ export default function Page() {
                 slides={item.files}
                 title={item.title}
                 slug={item.slug}
-link={item.link}
+                link={item.link}
               />
             ))}
           </div>

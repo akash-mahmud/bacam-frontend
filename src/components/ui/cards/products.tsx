@@ -70,7 +70,7 @@ export default function ProductCard({
                       src={getImage(slide)}
                       width={816}
                       height={600}
-                      alt="boat"
+                      alt={title}
                       priority
                     />
                   </Link>
