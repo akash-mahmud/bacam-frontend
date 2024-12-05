@@ -29,7 +29,7 @@ function ReviewBar({ count, percent }: ReviewBarTypes) {
 export default function ReviewStat({ stats }: ReviewStatProps) {
   return (
     <div className="mt-8 hidden items-center md:mt-8 md:flex">
-      <div className="flex-shrink-0 border-r-[1px] border-gray-lighter py-3 pr-5 md:pr-14">
+      <div className="flex-shrink-0 r-[1px] gray-lighter py-3 pr-5 md:pr-14">
         <h3 className="text-center text-3xl font-bold sm:text-6xl md:text-left">
           {stats.averageRating}
         </h3>

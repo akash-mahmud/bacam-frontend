@@ -77,14 +77,14 @@ export default function TestimonialBlock() {
           <ActionIcon
             rounded="full"
             color="invert"
-            className="testimonial-button-prev invisible absolute top-1/2 left-[25px] z-10 hidden -translate-y-1/2 shadow-md !transition-all group-hover/section:visible group-hover/section:left-0 md:flex lg:-translate-x-1/2 lg:-translate-y-1/2"
+            className="testimonial-button-prev invisible absolute top-1/2 left-[25px] z-10 hidden -translate-y-1/2 md !transition-all group-hover/section:visible group-hover/section:left-0 md:flex lg:-translate-x-1/2 lg:-translate-y-1/2"
           >
             <ChevronLeftIcon className="h-5 w-5" />
           </ActionIcon>
           <ActionIcon
             rounded="full"
             color="invert"
-            className="testimonial-button-next invisible absolute top-1/2 right-[25px] z-10 hidden -translate-y-1/2 shadow-md !transition-all group-hover/section:visible group-hover/section:right-[10px] md:flex lg:group-hover/section:-right-[19px]"
+            className="testimonial-button-next invisible absolute top-1/2 right-[25px] z-10 hidden -translate-y-1/2 md !transition-all group-hover/section:visible group-hover/section:right-[10px] md:flex lg:group-hover/section:-right-[19px]"
           >
             <ChevronRightIcon className="h-5 w-5" />
           </ActionIcon>

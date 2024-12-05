@@ -20,13 +20,13 @@ export default function PhotoGallery() {
 
   return (
     <div className="min-h-full w-full bg-white">
-      <div className="container-fluid sticky top-0 z-10 flex h-14 w-full items-center bg-white shadow-sm md:h-20">
+      <div className="container-fluid sticky top-0 z-10 flex h-14 w-full items-center bg-white sm md:h-20">
         <div className="flex w-full items-center justify-between">
           <ActionIcon
             variant="outline"
             size="sm"
             rounded="full"
-            className="border-none focus:ring-0 md:h-8 md:w-8"
+            className="none focus:ring-0 md:h-8 md:w-8"
             onClick={() =>
               setDrawerState({
                 ...drawerSate,

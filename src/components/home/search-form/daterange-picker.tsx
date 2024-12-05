@@ -33,9 +33,9 @@ export default function DatePickerInput({
       </label>
       <DatePicker
         className={clsx(
-          'block w-full appearance-none rounded-lg border border-gray-300 bg-transparent px-2.5 pl-[60px] pt-6 pb-2 text-sm font-semibold text-gray-dark transition duration-200 focus:outline-none focus:ring-0 md:pt-6 md:pb-2.5 md:text-base lg:rounded-xl 3xl:pb-3 3xl:pt-7 3xl:text-lg',
+          'block w-full appearance-none rounded-lg -gray-300 bg-transparent px-2.5 pl-[60px] pt-6 pb-2 text-sm font-semibold text-gray-dark transition duration-200 focus:outline-none focus:ring-0 md:pt-6 md:pb-2.5 md:text-base lg:rounded-xl 3xl:pb-3 3xl:pt-7 3xl:text-lg',
           props.className,
-          state && '!border-gray-1000 !ring-[1px] !ring-gray-900/20',
+          state && 'gray-1000 !ring-[1px] !ring-gray-900/20',
         )}
         onFocus={(e) => e.target.blur()}
         onCalendarOpen={() => setState(true)}

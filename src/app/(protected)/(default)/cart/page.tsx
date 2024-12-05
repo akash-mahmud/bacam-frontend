@@ -166,7 +166,7 @@ export default function CartPage() {
     }
   };
   return (
-    <div className="container relative mt-5 rounded border bg-white shadow">
+    <div className="container relative mt-5 rounded  bg-white ">
       <div className="p-5">
         <div className=" flex justify-end">
           <Button

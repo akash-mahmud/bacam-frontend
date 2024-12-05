@@ -21,24 +21,24 @@ const classes = {
   },
   variant: {
     solid: {
-      base: 'border border-transparent',
+      base: '-transparent',
       color: {
         DEFAULT:
           'bg-primaryBg text-white hover:enabled:bg-primaryBg focus:ring-gray-900/30 text-gray-0',
       },
     },
     flat: {
-      base: 'border-transparent',
+      base: 'transparent',
       color: {
         DEFAULT:
           'bg-gray-200 hover:enabled:bg-gray-300/70 focus:ring-gray-900/30 text-gray-1000',
       },
     },
     outline: {
-      base: 'bg-transparent border',
+      base: 'bg-transparent ""',
       color: {
         DEFAULT:
-          'border-gray-300 hover:enabled:border-gray-1000 focus:enabled:border-gray-1000 focus:ring-gray-900/30',
+          'gray-300 hover:enabled:gray-1000 focus:enabled:gray-1000 focus:ring-gray-900/30',
       },
     },
     text: {
@@ -97,8 +97,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           variantStyle.base,
           variantStyle.color[color],
           isLoading && 'pointer-events-none relative',
-          disabled &&
-            'cursor-not-allowed !border-gray-200 !bg-gray-100 !text-gray-400',
+          disabled && 'cursor-not-allowed gray-200 !bg-gray-100 !text-gray-400',
           className,
         )}
         {...buttonProps}

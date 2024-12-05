@@ -6,10 +6,7 @@ import Text from '@/components/ui/typography/text';
 export default function DeactiveAccount() {
   return (
     <div>
-      <Text
-        tag="h3"
-        className="mb-4 border-b border-b-gray-lighter pb-4 text-xl lg:mb-6"
-      >
+      <Text tag="h3" className="mb-4 b b-gray-lighter pb-4 text-xl lg:mb-6">
         Account
       </Text>
       <div className="flex justify-between">

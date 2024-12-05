@@ -21,7 +21,7 @@ const LocationInput = forwardRef<HTMLInputElement, LocationInputType>(
         <input
           ref={ref}
           type="text"
-          className="border-1 peer block w-full appearance-none rounded-lg border-gray-300 bg-transparent px-2.5 pl-[60px] pt-6 pb-1 font-semibold text-gray-dark focus:border-gray-dark focus:outline-none focus:ring-[1px] focus:ring-gray-900/20 md:pb-2.5 md:pt-6 md:text-base lg:rounded-xl 3xl:pb-4 3xl:pt-7 4xl:pb-3 4xl:text-lg"
+          className="1 peer block w-full appearance-none rounded-lg gray-300 bg-transparent px-2.5 pl-[60px] pt-6 pb-1 font-semibold text-gray-dark focus:gray-dark focus:outline-none focus:ring-[1px] focus:ring-gray-900/20 md:pb-2.5 md:pt-6 md:text-base lg:rounded-xl 3xl:pb-4 3xl:pt-7 4xl:pb-3 4xl:text-lg"
           placeholder=" "
           {...inputProps}
         />

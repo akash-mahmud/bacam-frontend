@@ -100,8 +100,8 @@ export default function BoatInfo() {
             <AdvancedRadio
               key={item.name}
               value={item.name}
-              className="card-gradient cursor-pointer rounded-lg border border-gray-lighter py-4 text-center lg:rounded-xl xl:p-6 xl:text-left"
-              inputClassName="[&:checked:enabled~span]:ring-1 [&:checked:enabled~span]:ring-gray-lighter [&:checked:enabled~span]:border [&:checked:enabled~span]:border-gray-dark"
+              className="card-gradient cursor-pointer rounded-lg -gray-lighter py-4 text-center lg:rounded-xl xl:p-6 xl:text-left"
+              inputClassName="[&:checked:enabled~span]:ring-1 [&:checked:enabled~span]:ring-gray-lighter [&:checked:enabled~span [&:checked:enabled~span]:gray-dark"
               {...register('boatType')}
             >
               <div className="relative inline-block h-8 w-8">
@@ -162,7 +162,7 @@ export default function BoatInfo() {
             name="beadRooms"
             control={control}
             render={({ field: { onChange, value } }) => (
-              <div className="card-gradient flex items-center justify-between rounded-lg border border-gray-lighter p-6 lg:rounded-xl lg:p-8">
+              <div className="card-gradient flex items-center justify-between rounded-lg -gray-lighter p-6 lg:rounded-xl lg:p-8">
                 <Text className="text-base !font-semibold">Bed rooms</Text>
                 <Counter
                   count={value ? value : 0}
@@ -177,7 +177,7 @@ export default function BoatInfo() {
             name="bathRooms"
             control={control}
             render={({ field: { onChange, value } }) => (
-              <div className="card-gradient flex items-center justify-between rounded-lg border border-gray-lighter p-6 lg:rounded-xl lg:p-8">
+              <div className="card-gradient flex items-center justify-between rounded-lg -gray-lighter p-6 lg:rounded-xl lg:p-8">
                 <Text className="text-base !font-semibold">Bathrooms</Text>
                 <Counter
                   count={value ? value : 0}
@@ -192,7 +192,7 @@ export default function BoatInfo() {
             name="guests"
             control={control}
             render={({ field: { onChange, value } }) => (
-              <div className="card-gradient flex items-center justify-between rounded-lg border border-gray-lighter p-6 lg:rounded-xl lg:p-8">
+              <div className="card-gradient flex items-center justify-between rounded-lg -gray-lighter p-6 lg:rounded-xl lg:p-8">
                 <Text className="text-base !font-semibold">Guests</Text>
                 <Counter
                   count={value ? value : 0}

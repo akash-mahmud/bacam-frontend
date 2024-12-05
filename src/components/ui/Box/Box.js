@@ -100,7 +100,7 @@ Box.propTypes = {
       PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     ),
   ]),
-  border: PropTypes.oneOfType([
+  '': PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
     PropTypes.arrayOf(

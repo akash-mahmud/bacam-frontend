@@ -83,10 +83,7 @@ export default function PersonalInfoForm() {
 
   return (
     <div>
-      <Text
-        tag="h3"
-        className="mb-4 border-b border-b-gray-lighter pb-4 text-xl lg:mb-6"
-      >
+      <Text tag="h3" className="mb-4 b b-gray-lighter pb-4 text-xl lg:mb-6">
         Personal Information
       </Text>
       <Spin spinning={loading}>
@@ -149,7 +146,7 @@ export default function PersonalInfoForm() {
               type="button"
               size="xl"
               variant="outline"
-              className="w-full border-gray-dark hover:bg-gray-dark hover:text-white md:w-auto"
+              className="w-full gray-dark hover:bg-gray-dark hover:text-white md:w-auto"
             >
               Cancel
             </Button>

@@ -217,7 +217,7 @@ export default function VendorProfileCard({ product }: { product?: Product }) {
       </div>
 
       <div
-        className="z-10 mt-20 flex h-auto w-full flex-col rounded-lg  border bg-white p-8 shadow-lg md:mt-0   md:h-full md:w-[40%]  
+        className="z-10 mt-20 flex h-auto w-full flex-col rounded-lg   bg-white p-8 lg md:mt-0   md:h-full md:w-[40%]  
       
       "
       >
@@ -256,7 +256,7 @@ export default function VendorProfileCard({ product }: { product?: Product }) {
                   type="button"
                   id="decrement-button"
                   data-input-counter-decrement="quantity-input"
-                  className="h-11 rounded-s-lg border border-gray-300 bg-gray-100 p-3 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
+                  className="h-11 rounded-s-lg -gray-300 bg-gray-100 p-3 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
                 >
                   <svg
                     className="h-3 w-3 text-gray-900 dark:text-white"
@@ -280,7 +280,7 @@ export default function VendorProfileCard({ product }: { product?: Product }) {
                   id="quantity-input"
                   data-input-counter
                   aria-describedby="helper-text-explanation"
-                  className="block h-11 w-full border-x-0 border-gray-300 bg-gray-50 py-2.5 text-center text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                  className="block h-11 w-full x-0 gray-300 bg-gray-50 py-2.5 text-center text-sm text-gray-900 focus:blue-500 focus:ring-blue-500 dark:gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:blue-500 dark:focus:ring-blue-500"
                   placeholder="999"
                   onChange={(event) => {
                     const value = parseInt(event.target.value);
@@ -298,7 +298,7 @@ export default function VendorProfileCard({ product }: { product?: Product }) {
                   type="button"
                   id="increment-button"
                   data-input-counter-increment="quantity-input"
-                  className="h-11 rounded-e-lg border border-gray-300 bg-gray-100 p-3 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
+                  className="h-11 rounded-e-lg -gray-300 bg-gray-100 p-3 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
                 >
                   <svg
                     className="h-3 w-3 text-gray-900 dark:text-white"
@@ -330,7 +330,7 @@ export default function VendorProfileCard({ product }: { product?: Product }) {
                   }
                   id="artistSelect"
                   placeholder="Select"
-                  className="block w-full rounded-lg border border-gray-300 bg-gray-50  p-2.5 text-sm text-gray-900 focus:border-none focus:outline-none active:border-none active:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                  className="block w-full rounded-lg -gray-300 bg-gray-50  p-2.5 text-sm text-gray-900 focus:none focus:outline-none active:none active:outline-none dark:gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
                 >
                   <option selected disabled>
                     Select

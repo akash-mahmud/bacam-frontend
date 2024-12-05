@@ -22,7 +22,7 @@ export default function SpecificationBlock({
           {specifications.map((item) => (
             <div
               key={item.name}
-              className="grid grid-cols-1 gap-[2px] border-b border-gray-lighter py-2 leading-6 sm:grid-cols-2 sm:gap-1 sm:py-3 md:py-4 lg:grid-cols-1 lg:gap-2 xl:grid-cols-2"
+              className="grid grid-cols-1 gap-[2px] b gray-lighter py-2 leading-6 sm:grid-cols-2 sm:gap-1 sm:py-3 md:py-4 lg:grid-cols-1 lg:gap-2 xl:grid-cols-2"
             >
               <span className="text-gray opacity-80 sm:text-secondary sm:opacity-100 lg:text-gray lg:opacity-80 xl:text-secondary xl:opacity-100">
                 {item.name}

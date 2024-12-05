@@ -24,7 +24,7 @@ export function TabItem({
       className={({ selected }) =>
         clsx(
           'relative pb-4 text-sm capitalize tracking-wide text-gray focus:outline-none lg:text-base',
-          selected && 'tab-text-shadow !text-white',
+          selected && 'tab-text-"" !text-white',
           className,
         )
       }

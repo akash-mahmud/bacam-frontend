@@ -29,11 +29,11 @@ export default function Filter({ className }: FilterTypes) {
       setState(false);
     }
   }, [params]);
-const router = useRouter()
+  const router = useRouter();
   return (
     <div
       className={clsx(
-        'h-full overflow-y-auto bg-white  border p-5 rounded shadow-lg',
+        'h-full overflow-y-auto bg-white  "" p-5 rounded lg',
         className,
       )}
     >
@@ -46,8 +46,8 @@ const router = useRouter()
             type="reset"
             variant="text"
             className="hidden !p-0 text-base text-gray focus:!ring-0 sm:block"
-            onClick={() => router.push("/product")}
-            >
+            onClick={() => router.push('/product')}
+          >
             Reset
           </Button>
         )}
@@ -70,14 +70,14 @@ const router = useRouter()
 
         <PriceFilter />
       </div>
-      <div className="sticky inset-x-0 bottom-0 z-10 mt-4 flex items-center justify-between bg-white py-3 px-5 uppercase shadow-card sm:hidden md:px-7 xl:px-0">
+      <div className="sticky inset-x-0 bottom-0 z-10 mt-4 flex items-center justify-between bg-white py-3 px-5 uppercase card sm:hidden md:px-7 xl:px-0">
         <div>
           {state && (
             <Button
               type="reset"
               variant="text"
               className="!p-0 text-base text-gray underline focus:!ring-0"
-              onClick={() => router.push("/product")}
+              onClick={() => router.push('/product')}
             >
               Reset
             </Button>

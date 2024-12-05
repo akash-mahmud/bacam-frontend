@@ -36,7 +36,7 @@ export default function UploadedPhotoPreview({ file, onDelete }: Props) {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0 top-full min-w-[160px] rounded-lg bg-white shadow-lg xl:mt-2 xl:min-w-[192px]">
+          <Menu.Items className="absolute right-0 top-full min-w-[160px] rounded-lg bg-white lg xl:mt-2 xl:min-w-[192px]">
             <div className="rounded-lg p-2">
               <Menu.Item
                 as="button"

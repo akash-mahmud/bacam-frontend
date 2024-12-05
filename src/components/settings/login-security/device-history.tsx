@@ -48,7 +48,7 @@ export default function DeviceHistory() {
     <div>
       <Text
         tag="h3"
-        className="mb-4 border-b border-b-gray-lighter pb-4 text-xl capitalize lg:mb-6"
+        className="mb-4 b b-gray-lighter pb-4 text-xl capitalize lg:mb-6"
       >
         Device history
       </Text>
@@ -56,7 +56,7 @@ export default function DeviceHistory() {
         {deviceHistory.map((item) => (
           <div
             key={item.id}
-            className="card-gradient flex flex-col justify-between rounded-xl border border-gray-lighter p-6 xs:flex-row xs:items-center"
+            className="card-gradient flex flex-col justify-between rounded-xl -gray-lighter p-6 xs:flex-row xs:items-center"
           >
             <div className="flex gap-4 lg:items-center lg:gap-5">
               <div>

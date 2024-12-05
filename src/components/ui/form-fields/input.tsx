@@ -20,9 +20,9 @@ const labelClasses = {
 };
 
 const inputClasses = {
-  base: 'block peer w-full bg-transparent font-normal focus:outline-none focus:ring-[1px] transition duration-200 disabled:bg-gray-100 disabled:placeholder:text-gray-400 disabled:cursor-not-allowed disabled:border-gray-200',
+  base: 'block peer w-full bg-transparent font-normal focus:outline-none focus:ring-[1px] transition duration-200 disabled:bg-gray-100 disabled:placeholder:text-gray-400 disabled:cursor-not-allowed disabled:gray-200',
   error:
-    'border-red not-read-only:hover:enabled:!border-red not-read-only:focus:enabled:!border-red not-read-only:focus:!ring-red/30',
+    'red not-read-only:hover:enabled:red not-read-only:focus:enabled:red not-read-only:focus:!ring-red/30',
   size: {
     sm: 'px-2.5 py-1 text-xs h-8 leading-[32px]',
     DEFAULT:
@@ -39,25 +39,24 @@ const inputClasses = {
   },
   variant: {
     active: {
-      base: 'border bg-gray-0 placeholder:opacity-80 read-only:focus:ring-0',
+      base: '"" bg-gray-0 placeholder:opacity-80 read-only:focus:ring-0',
       color: {
         DEFAULT:
-          'border-gray-900 focus:enabled:border-gray-1000 focus:ring-gray-900/20 text-gray-1000',
+          'gray-900 focus:enabled:gray-1000 focus:ring-gray-900/20 text-gray-1000',
         primary:
-          'border-primary focus:enabled:border-primary focus:ring-primary/30 text-primary-dark',
+          'primary focus:enabled:primary focus:ring-primary/30 text-primary-dark',
         secondary:
-          'border-secondary focus:enabled:border-secondary focus:ring-secondary/30 text-secondary-dark',
-        danger:
-          'border-red focus:enabled:border-red focus:ring-red/30 text-red-dark',
-        info: 'border-blue focus:enabled:border-blue focus:ring-blue/30 text-blue-dark',
+          'secondary focus:enabled:secondary focus:ring-secondary/30 text-secondary-dark',
+        danger: 'red focus:enabled:red focus:ring-red/30 text-red-dark',
+        info: 'blue focus:enabled:blue focus:ring-blue/30 text-blue-dark',
         success:
-          'border-green focus:enabled:border-green focus:ring-green/30 text-green-dark',
+          'green focus:enabled:green focus:ring-green/30 text-green-dark',
         warning:
-          'border-orange focus:enabled:border-orange-dark/70 focus:ring-orange/30 text-orange-dark',
+          'orange focus:enabled:orange-dark/70 focus:ring-orange/30 text-orange-dark',
       },
     },
     flat: {
-      base: 'border border-0 placeholder:opacity-90 read-only:focus:ring-0',
+      base: '-0 placeholder:opacity-90 read-only:focus:ring-0',
       color: {
         DEFAULT:
           'bg-gray-200/70 not-read-only:hover:enabled:bg-gray-200/90 focus:ring-gray-900/20 text-gray-1000 placeholder:text-gray-600',
@@ -75,25 +74,25 @@ const inputClasses = {
       },
     },
     outline: {
-      base: 'bg-transparent border border-gray-300 read-only:border-gray-300 read-only:focus:ring-0 placeholder:text-gray-500',
+      base: 'bg-transparent -gray-300 read-only:gray-300 read-only:focus:ring-0 placeholder:text-gray-500',
       color: {
         DEFAULT:
-          'not-read-only:hover:enabled:border-gray-1000 focus:border-gray-1000 not-read-only:focus:enabled:border-gray-1000 focus:ring-gray-900/20',
+          'not-read-only:hover:enabled:gray-1000 focus:gray-1000 not-read-only:focus:enabled:gray-1000 focus:ring-gray-900/20',
         primary:
-          'not-read-only:hover:enabled:border-primary not-read-only:focus:enabled:border-primary focus:ring-primary/30',
+          'not-read-only:hover:enabled:primary not-read-only:focus:enabled:primary focus:ring-primary/30',
         secondary:
-          'not-read-only:hover:enabled:border-secondary not-read-only:focus:enabled:border-secondary focus:ring-secondary/30',
+          'not-read-only:hover:enabled:secondary not-read-only:focus:enabled:secondary focus:ring-secondary/30',
         danger:
-          'not-read-only:hover:enabled:border-red not-read-only:focus:enabled:border-red focus:ring-red/30',
-        info: 'not-read-only:hover:enabled:border-blue not-read-only:focus:enabled:border-blue focus:ring-blue/30',
+          'not-read-only:hover:enabled:red not-read-only:focus:enabled:red focus:ring-red/30',
+        info: 'not-read-only:hover:enabled:blue not-read-only:focus:enabled:blue focus:ring-blue/30',
         success:
-          'not-read-only:hover:enabled:border-green not-read-only:focus:enabled:border-green focus:ring-green/30',
+          'not-read-only:hover:enabled:green not-read-only:focus:enabled:green focus:ring-green/30',
         warning:
-          'not-read-only:hover:enabled:border-orange not-read-only:focus:enabled:border-orange-dark/70 focus:ring-orange/30',
+          'not-read-only:hover:enabled:orange not-read-only:focus:enabled:orange-dark/70 focus:ring-orange/30',
       },
     },
     text: {
-      base: 'border-0 bg-transparent',
+      base: '0 bg-transparent',
       color: {
         DEFAULT:
           'hover:text-gray-1000 focus:ring-gray-900/20 placeholder:text-gray-500',

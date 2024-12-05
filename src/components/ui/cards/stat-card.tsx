@@ -14,7 +14,7 @@ interface PricingCardTypes {
 
 export default function StatCard({ data }: PricingCardTypes) {
   return (
-    <div className="card-gradient rounded-lg border-2 border-gray-lighter p-6 transition-all duration-200 hover:shadow-card md:rounded-xl md:p-8 lg:p-11 2xl:p-14">
+    <div className="card-gradient rounded-lg 2 gray-lighter p-6 transition-all duration-200 hover:card md:rounded-xl md:p-8 lg:p-11 2xl:p-14">
       <Text className="text-sm text-gray md:!text-sm 2xl:!text-base">
         {data.title}
       </Text>

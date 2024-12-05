@@ -70,7 +70,6 @@ function ImageMagnifier({
           top: `${y - magnifierHeight / 2}px`,
           left: `${x - magnifieWidth / 2}px`,
           opacity: '1', // reduce opacity so you can verify position
-          border: '1px solid lightgray',
           backgroundColor: 'white',
           backgroundImage: `url('${src}')`,
           backgroundRepeat: 'no-repeat',

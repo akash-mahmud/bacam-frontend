@@ -35,10 +35,10 @@ const BulletButton = styled.button`
   width: 10px;
   height: 10px;
   margin: 4px;
-  border: 0;
+  "":0 ;
   padding: 0;
   outline: none;
-  border-radius: 50%;
+  radius: 50%;
   background-color: #d6d6d6;
 
   &:hover,

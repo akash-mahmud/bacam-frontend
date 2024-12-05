@@ -27,14 +27,14 @@ export default function Footer({ className }: { className?: string }) {
   return (
     <footer className=" bg-footerBg text-white">
       <div className={clsx('container-fluid mb-4', className)}>
-        <div className=" flex flex-col md:mb-6 md:flex-row md:items-center md:justify-between md:border-t md:border-t-gray-lighter md:pt-6 lg:mb-8 lg:pt-8">
+        <div className=" flex flex-col md:mb-6 md:flex-row md:items-center md:justify-between md:t md:t-gray-lighter md:pt-6 lg:mb-8 lg:pt-8">
           <div className="order-2 pt-4 md:order-none md:pt-0 lg:shrink-0">
             <p className="text-center text-sm font-normal capitalize leading-6 md:text-left 3xl:text-base">
-              Copyright &copy; {new Date().getFullYear()} <b>Art booking</b>{" "}
-              All rights reserved
+              Copyright &copy; {new Date().getFullYear()} <b>Art booking</b> All
+              rights reserved
             </p>
           </div>
-          <nav className="order-1 border-b border-gray-lighter pb-4 md:order-none md:border-b-0 md:pb-0">
+          <nav className="order-1 b gray-lighter pb-4 md:order-none md:b-0 md:pb-0">
             <ul className="flex flex-wrap items-center justify-center md:justify-end">
               {menuItems.map((item) => (
                 <li

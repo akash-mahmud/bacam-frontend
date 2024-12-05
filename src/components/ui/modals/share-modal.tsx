@@ -73,7 +73,7 @@ export default function ShareModal() {
         <ActionIcon
           size="sm"
           variant="outline"
-          className="border-none !p-0 focus:!ring-0"
+          className="none !p-0 focus:!ring-0"
           onClick={closeModal}
         >
           <XMarkIcon className="h-6 w-6" />
@@ -86,7 +86,7 @@ export default function ShareModal() {
               target="_blank"
               href={item.path}
               rel="noreferrer"
-              className="flex h-12 w-12 items-center justify-center rounded-full text-white transition-all duration-200 group-hover:shadow-md sm:h-16 sm:w-16 xl:h-[72px] xl:w-[72px]"
+              className="flex h-12 w-12 items-center justify-center rounded-full text-white transition-all duration-200 group-hover:md sm:h-16 sm:w-16 xl:h-[72px] xl:w-[72px]"
               style={{ backgroundColor: item.color }}
             >
               {item.icon}

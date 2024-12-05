@@ -57,7 +57,7 @@ export default function GalleryCarousel({
               size="xl"
               variant="outline"
               rounded="full"
-              className="gallery-left !border-gray-lighter text-white !ring-0 hover:bg-gray-lighter hover:text-gray-dark"
+              className="gallery-left gray-lighter text-white !ring-0 hover:bg-gray-lighter hover:text-gray-dark"
             >
               <ChevronLeftIcon className="h-auto w-4" />
             </ActionIcon>
@@ -93,7 +93,7 @@ export default function GalleryCarousel({
               size="xl"
               variant="outline"
               rounded="full"
-              className="gallery-right !border-gray-lighter text-white !ring-0 hover:bg-gray-lighter hover:text-gray-dark"
+              className="gallery-right gray-lighter text-white !ring-0 hover:bg-gray-lighter hover:text-gray-dark"
             >
               <ChevronRightIcon className="h-auto w-4" />
             </ActionIcon>

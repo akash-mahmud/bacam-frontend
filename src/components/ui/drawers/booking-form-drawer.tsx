@@ -12,7 +12,7 @@ export default function BookingFormModal() {
   const [drawerSate, setDrawerState] = useAtom(drawerStateAtom);
   return (
     <div className="w-full bg-white">
-      <div className="container-fluid sticky top-0 z-10 flex h-14 w-full items-center justify-end bg-white shadow-sm">
+      <div className="container-fluid sticky top-0 z-10 flex h-14 w-full items-center justify-end bg-white sm">
         <ActionIcon
           variant="outline"
           size="sm"
@@ -32,7 +32,7 @@ export default function BookingFormModal() {
         price={vendorData.price}
         averageRating={reviewsData.stats.averageRating}
         totalReviews={reviewsData.stats.totalReview}
-        className="mx-auto mt-5 w-full max-w-lg !border-none !shadow-none"
+        className="mx-auto mt-5 w-full max-w-lg none none"
       />
     </div>
   );

@@ -20,7 +20,7 @@ export default function Searchbox({ className }: SearchboxProps) {
   let [state, setState] = useState('');
   const [isClearable, setIsClearable] = useState(false);
   const { createQueryString } = useUpdateSearchParams();
-const router = useRouter()
+  const router = useRouter();
   function handleSubmit(e: any) {
     e.preventDefault();
     if (state) {
@@ -59,7 +59,7 @@ const router = useRouter()
     >
       <input
         type="text"
-        className="h-full w-full rounded-full border-2 border-gray-lighter py-3 pr-[72px] pl-4 text-base font-semibold shadow-none outline-0 transition-all duration-200 placeholder:text-gray focus:border-gray-dark focus:outline-0 focus:ring-0 focus:ring-gray-lighter 3xl:py-3.5 3xl:pr-20 3xl:pl-6"
+        className="h-full w-full rounded-full 2 gray-lighter py-3 pr-[72px] pl-4 text-base font-semibold none outline-0 transition-all duration-200 placeholder:text-gray focus:gray-dark focus:outline-0 focus:ring-0 focus:ring-gray-lighter 3xl:py-3.5 3xl:pr-20 3xl:pl-6"
         placeholder="Search..."
         value={state}
         onChange={(e) => setState(e.target.value)}

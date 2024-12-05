@@ -61,8 +61,8 @@ function SelectBoxCard({
     <AdvancedCheckbox
       name="payment-secondary"
       value="single"
-      className="border-secondary-lighter card-gradient w-full rounded-xl border p-4 text-sm hover:cursor-pointer hover:border-gray-dark lg:p-6"
-      inputClassName="[&:checked~span]:!border-gray-dark"
+      className="secondary-lighter card-gradient w-full rounded-xl  p-4 text-sm hover:cursor-pointer hover:gray-dark lg:p-6"
+      inputClassName="[&:checked~span]:gray-dark"
       checked={checked}
       onChange={onChange}
     >
@@ -77,7 +77,7 @@ function SelectBoxCard({
           checked={checked}
           variant="outline"
           className="self-start"
-          inputClassName="lg:h-6 lg:w-6 !border-gray-dark"
+          inputClassName="lg:h-6 lg:w-6 gray-dark"
           iconClassName="bg-gray-dark rounded-lg lg:h-6 lg:w-6"
           onChange={onChange}
         />
@@ -93,7 +93,7 @@ export default function Notifications() {
   const [state, setState] = useState(pushNotifications[0].id);
   return (
     <div>
-      <div className="mb-4 grid grid-cols-1 gap-4 border-b border-gray-lighter pb-4 lg:mb-6 lg:gap-6 lg:pb-6">
+      <div className="mb-4 grid grid-cols-1 gap-4 b gray-lighter pb-4 lg:mb-6 lg:gap-6 lg:pb-6">
         <Text tag="h3" className="text-xl capitalize">
           Notifications
         </Text>
@@ -112,7 +112,7 @@ export default function Notifications() {
       </div>
       <Text
         tag="h4"
-        className="mb-4 border-b border-b-gray-lighter pb-4 text-xl capitalize lg:mb-6"
+        className="mb-4 b b-gray-lighter pb-4 text-xl capitalize lg:mb-6"
       >
         Push Notifications
       </Text>

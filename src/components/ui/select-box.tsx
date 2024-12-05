@@ -10,7 +10,7 @@ const buttonClasses = {
   base: 'relative flex w-full cursor-pointer items-center text-left text-sm capitalize text-gray',
   variant: {
     outline: {
-      base: 'py-[9px] 2xl:py-3 px-4 rounded-md border border-gray-lighter placeholder:text-gray-500 bg-white focus:outline-none',
+      base: 'py-[9px] 2xl:py-3 px-4 rounded-md -gray-lighter placeholder:text-gray-500 bg-white focus:outline-none',
     },
   },
 };
@@ -78,7 +78,7 @@ export default function SelectBox({
                 buttonClasses.base,
                 buttonClasses.variant[variant].base,
                 buttonClassName,
-                open && '!border-gray-1000 !ring-[1px] !ring-gray-900/20',
+                open && 'gray-1000 !ring-[1px] !ring-gray-900/20',
               )}
             >
               {optionIcon && <span className="block pr-4">{value.icon}</span>}
@@ -121,7 +121,7 @@ export default function SelectBox({
         >
           <Listbox.Options
             className={clsx(
-              'absolute top-full z-20 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm',
+              'absolute top-full z-20 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm',
               optionsContainerClassName,
             )}
           >

@@ -33,6 +33,6 @@
     "/Users/idris/RedQTeam/RedQApp/tripfinder/packages/boat/.next/types/**/*.ts",
     ".d.ts",
     "src/library/helpers/rtl.js"
-  ],
+, "src/library/hooks/useToggle.js"  ],
   "exclude": ["node_modules"]
 }

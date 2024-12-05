@@ -3,7 +3,8 @@
 import { Employee } from '@/graphql/generated/schema';
 import { getImage } from '@/utils/getImage';
 import clsx from 'clsx';
-
+// @ts-ignore
+import TextTruncate from 'react-text-truncate';
 import Image from 'next/image';
 import Link from 'next/link';
 export type IEmployeeCard = Employee & {
@@ -20,12 +21,12 @@ export default function EmployeeCard({
   return (
     <div
       className={clsx(
-        'rounded-xl border bg-sectionSecondary max-w-md text-white  border-gray-200 px-6 py-6 shadow 3xl:px-8 3xl:py-8 4xl:px-12 4xl:py-10',
+        'rounded-xl "" bg-sectionSecondary max-w-md text-white  gray-200 px-6 py-6 "" 3xl:px-8 3xl:py-8 4xl:px-12 4xl:py-10',
         className,
       )}
     >
       <Link href={`/employee/${id}`}>
-        <div className=" mb-5">
+        {/* <div className=" mb-5">
           <Image
             src={image.includes('https') ? image : getImage(image)}
             alt={name}
@@ -35,7 +36,7 @@ export default function EmployeeCard({
             height={600}
             className="aspect-[34/25] bg-gray-50 rounded"
           />
-        </div>
+        </div> */}
 
         <div className="flex items-center justify-start gap-2 text-left">
           <div>
@@ -47,8 +48,13 @@ export default function EmployeeCard({
             </h3>
           </div>
         </div>
-        <p className="mb-5 overflow-y-auto max-h-36  border-b border-gray-200 pb-5 text-left text-sm  md:leading-6 xl:text-base xl:leading-7 4xl:text-lg">
-          {shortDescription}
+        <p className="mb-5  max-h-36  b gray-200 pb-5 text-left text-sm  md:leading-6 xl:text-base xl:leading-7 4xl:text-lg">
+          <TextTruncate
+            line={5}
+            element="span"
+            truncateText="…"
+            text={shortDescription}
+          />
         </p>
       </Link>
     </div>

@@ -71,7 +71,7 @@ export default function ProfileMenu({ className }: { className?: string }) {
       <Menu
         as="div"
         className={clsx(
-          'relative h-9 w-9 rounded-full bg-white shadow-card sm:h-10 sm:w-10 2xl:h-12 2xl:w-12 2xl:border 2xl:border-gray-lighter 2xl:p-[3px]',
+          'relative h-9 w-9 rounded-full bg-white card sm:h-10 sm:w-10 2xl:h-12 2xl:w-12 2xl:"" 2xl:gray-lighter 2xl:p-[3px]',
           className,
         )}
       >

@@ -32,7 +32,7 @@ export default function ListingDetailsHeader() {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const { cartItemCount, status, error, cart } = useAppSelector(
-    (state) => state.cart, 
+    (state) => state.cart,
   );
 
   // Fetch cart item count on component mount

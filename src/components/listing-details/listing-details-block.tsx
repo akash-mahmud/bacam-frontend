@@ -46,7 +46,7 @@ export default function ListingDetails() {
                 onClick={() => openModal('REPORT_LISTING')}
               >
                 Report this listing
-                <span className="absolute left-0 bottom-0 w-full border border-gray"></span>
+                <span className="absolute left-0 bottom-0 w-full -gray"></span>
               </Button>
             </div>
           </div>

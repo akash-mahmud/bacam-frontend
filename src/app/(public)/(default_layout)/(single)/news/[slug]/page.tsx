@@ -82,7 +82,7 @@ export default function Page() {
             color="light"
             size="sm"
             className={clsx(
-              'absolute top-1/2 left-4 z-10 hidden -translate-y-1/2 shadow-md !transition-all focus:!ring-0 md:invisible md:flex md:disabled:hidden md:group-hover/item:visible',
+              'absolute top-1/2 left-4 z-10 hidden -translate-y-1/2 md !transition-all focus:!ring-0 md:invisible md:flex md:disabled:hidden md:group-hover/item:visible',
               `${news?.id}-previousWork-item-button-prev`,
             )}
           >
@@ -93,7 +93,7 @@ export default function Page() {
             size="sm"
             color="light"
             className={clsx(
-              'absolute top-1/2 right-4 z-10 hidden -translate-y-1/2 opacity-80 shadow-md !transition-all duration-300 focus:!ring-0 md:invisible md:flex md:disabled:hidden md:group-hover/item:visible md:group-hover/item:opacity-100',
+              'absolute top-1/2 right-4 z-10 hidden -translate-y-1/2 opacity-80 md !transition-all duration-300 focus:!ring-0 md:invisible md:flex md:disabled:hidden md:group-hover/item:visible md:group-hover/item:opacity-100',
               `${news?.id}-previousWork-item-button-next`,
             )}
           >

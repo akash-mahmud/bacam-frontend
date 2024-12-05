@@ -50,7 +50,7 @@ export default function RevealContent({
             onClick={() => handleRevealContent()}
           >
             {buttonText}
-            <span className="absolute left-0 bottom-0 block w-full border-t border-gray md:border"></span>
+            <span className="absolute left-0 bottom-0 block w-full t gray "></span>
           </Button>
         </div>
       )}

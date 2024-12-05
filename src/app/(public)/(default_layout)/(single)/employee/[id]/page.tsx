@@ -59,7 +59,7 @@ export default function Page() {
   const previousWorks = previousWork?.employeePreviousWorks ?? [];
   return (
     <div className=" flex flex-col">
-      <div className="w-full rounded border p-5 text-center text-gray-500 shadow">
+      <div className="w-full rounded p-5 text-center text-gray-500 ">
         <Image
           height={128}
           width={128}
@@ -80,10 +80,10 @@ export default function Page() {
         <p className="mb-5 mt-2 text-sm text-gray-900">
           {employee?.shortDescription}
         </p>
-        <div className="mx-8 mt-2 border-t p-4">
+        <div className="mx-8 mt-2 t p-4">
           <Link
             href={`/product?employee=${params.id}`}
-            className=" mx-auto block w-1/6 rounded-full bg-gray-900 px-6 py-2 font-semibold text-white hover:shadow-lg"
+            className=" mx-auto block w-1/6 rounded-full bg-gray-900 px-6 py-2 font-semibold text-white hover:lg"
           >
             Order
           </Link>

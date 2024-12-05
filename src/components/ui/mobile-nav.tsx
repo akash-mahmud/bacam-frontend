@@ -22,7 +22,7 @@ export default function MobileNav() {
   const { openModal } = useModal();
   const [drawerSate, setDrawerState] = useAtom(drawerStateAtom);
   return (
-    <div className="sticky inset-x-0 bottom-0 z-30 grid h-16 w-full grid-cols-5 items-center justify-center gap-2 bg-white shadow-menu-shadow md:hidden">
+    <div className="sticky inset-x-0 bottom-0 z-30 grid h-16 w-full grid-cols-5 items-center justify-center gap-2 bg-white  md:hidden">
       <div className="flex items-center justify-center">
         <Link href={Routes.public.home} className="inline-block hover:text-red">
           <HomeIcon className="h-6 w-6" />

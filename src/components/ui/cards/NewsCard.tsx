@@ -6,15 +6,10 @@ import Image from 'next/image';
 
 import { ChevronRightIcon } from '@/components/icons/chevronRight';
 import { ChevronLeftIcon } from '@/components/icons/chevronLeft';
-import {
-  Swiper,
-  SwiperSlide,
-  Navigation,
-
-} from '@/components/ui/slider';
+import { Swiper, SwiperSlide, Navigation } from '@/components/ui/slider';
 import ActionIcon from '@/components/ui/action-icon';
 import { getImage } from '@/utils/getImage';
-import { News,  } from '@/graphql/generated/schema';
+import { News } from '@/graphql/generated/schema';
 import { getFileType } from '@/utils/fileType';
 import ReactPlayer from 'react-player';
 
@@ -22,7 +17,7 @@ export default function NewsCard({ id, title, slug, fetaureMedias }: News) {
   return (
     <>
       <Link href={`/news/${slug}`}>
-        <div className="listing-card group/item relative inline-flex w-full flex-col  p-5 rounded-md border shadow-lg">
+        <div className="listing-card group/item relative inline-flex w-full flex-col  p-5 rounded-md -lg">
           <div className="relative w-full overflow-hidden rounded-xl">
             <div className="listing-item ">
               <Swiper
@@ -64,7 +59,7 @@ export default function NewsCard({ id, title, slug, fetaureMedias }: News) {
                 color="light"
                 size="sm"
                 className={clsx(
-                  'absolute top-1/2 left-4 z-10 hidden -translate-y-1/2 shadow-md !transition-all focus:!ring-0 md:invisible md:flex md:disabled:hidden md:group-hover/item:visible',
+                  'absolute top-1/2 left-4 z-10 hidden -translate-y-1/2 md !transition-all focus:!ring-0 md:invisible md:flex md:disabled:hidden md:group-hover/item:visible',
                   `${id}-previousWork-item-button-prev`,
                 )}
               >
@@ -75,7 +70,7 @@ export default function NewsCard({ id, title, slug, fetaureMedias }: News) {
                 size="sm"
                 color="light"
                 className={clsx(
-                  'absolute top-1/2 right-4 z-10 hidden -translate-y-1/2 opacity-80 shadow-md !transition-all duration-300 focus:!ring-0 md:invisible md:flex md:disabled:hidden md:group-hover/item:visible md:group-hover/item:opacity-100',
+                  'absolute top-1/2 right-4 z-10 hidden -translate-y-1/2 opacity-80 md !transition-all duration-300 focus:!ring-0 md:invisible md:flex md:disabled:hidden md:group-hover/item:visible md:group-hover/item:opacity-100',
                   `${id}-previousWork-item-button-next`,
                 )}
               >

@@ -8,7 +8,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import Input from '@/components/ui/form-fields/input';
 
 const calendarContainerClasses = {
-  base: '[&.react-datepicker]:shadow-lg [&.react-datepicker]:border-gray-100 [&.react-datepicker]:rounded-md',
+  base: '[&.react-datepicker]:lg [&.react-datepicker]:gray-100 [&.react-datepicker]:rounded-md',
   monthContainer: {
     padding: '[&.react-datepicker>div]:pt-5 [&.react-datepicker>div]:pb-3',
   },
@@ -16,13 +16,13 @@ const calendarContainerClasses = {
 
 const prevNextButtonClasses = {
   base: '[&.react-datepicker>button]:items-baseline [&.react-datepicker>button]:top-7',
-  border:
-    '[&.react-datepicker>button]:border [&.react-datepicker>button]:border-solid [&.react-datepicker>button]:border-gray-300 [&.react-datepicker>button]:rounded-md',
+  "":
+    '[&.react-datepicker>button]:"" [&.react-datepicker>button]:solid [&.react-datepicker>button]:gray-300 [&.react-datepicker>button]:rounded-md',
   size: '[&.react-datepicker>button]:h-[22px] [&.react-datepicker>button]:w-[22px]',
   children: {
     position: '[&.react-datepicker>button>span]:top-0',
-    border:
-      '[&.react-datepicker>button>span]:before:border-t-[1.5px] [&.react-datepicker>button>span]:before:border-r-[1.5px] [&.react-datepicker>button>span]:before:border-gray-400',
+    "":
+      '[&.react-datepicker>button>span]:before:t-[1.5px] [&.react-datepicker>button>span]:before:r-[1.5px] [&.react-datepicker>button>span]:before:gray-400',
     size: '[&.react-datepicker>button>span]:before:h-[7px] [&.react-datepicker>button>span]:before:w-[7px]',
   },
 };
@@ -112,10 +112,8 @@ const DateTime = ({
           calendarContainerClasses.base,
           calendarContainerClasses.monthContainer.padding,
           prevNextButtonClasses.base,
-          prevNextButtonClasses.border,
           prevNextButtonClasses.size,
           prevNextButtonClasses.children.position,
-          prevNextButtonClasses.children.border,
           prevNextButtonClasses.children.size,
           timeOnlyClasses.base,
           calendarClassName,

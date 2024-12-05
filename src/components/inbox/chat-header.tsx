@@ -13,7 +13,7 @@ interface ChatHeaderProps {
 
 export default function ChatHeader({ currentChat, onClick }: ChatHeaderProps) {
   return (
-    <div className="flex items-center justify-between border-b border-gray-lighter py-3">
+    <div className="flex items-center justify-between b gray-lighter py-3">
       <div className="flex items-center gap-3">
         <button onClick={onClick} className="mr-3 md:hidden">
           <ChevronLeftIcon className="h-auto w-4" />

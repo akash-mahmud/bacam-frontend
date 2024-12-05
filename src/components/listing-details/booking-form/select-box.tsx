@@ -39,8 +39,8 @@ export default function SelectBox({
             {({ open }) => (
               <button
                 className={clsx(
-                  'flex h-16 w-full cursor-pointer items-center justify-between rounded-b-lg border border-gray-lighter bg-white py-2.5 px-4 text-left uppercase text-gray-dark focus:outline-none xl:py-3',
-                  open && 'border-gray-dark ring-[1px] ring-gray-900/20',
+                  'flex h-16 w-full cursor-pointer items-center justify-between rounded-b-lg -gray-lighter bg-white py-2.5 px-4 text-left uppercase text-gray-dark focus:outline-none xl:py-3',
+                  open && 'gray-dark ring-[1px] ring-gray-900/20',
                 )}
               >
                 <span className="block">
@@ -57,7 +57,7 @@ export default function SelectBox({
               </button>
             )}
           </Listbox.Button>
-          <Listbox.Options className="absolute left-0 mt-1 grid w-full grid-cols-1 gap-3 rounded-lg border border-gray-lighter bg-white p-6 text-base shadow-lg ring-1 ring-gray-lightest">
+          <Listbox.Options className="absolute left-0 mt-1 grid w-full grid-cols-1 gap-3 rounded-lg -gray-lighter bg-white p-6 text-base lg ring-1 ring-gray-lightest">
             <div className="flex w-full items-center justify-between">
               <div className="  text-sm xl:text-base">
                 <h5 className="font-bold text-gray-dark">Adults</h5>
@@ -92,7 +92,7 @@ export default function SelectBox({
                   labelClassName="!text-sm xl:!text-base"
                   inputClassName={clsx(
                     pets &&
-                      '!border-gray-lightest focus:!ring-1 focus:!ring-offset-0 focus:!ring-gray-dark ring-1 !ring-gray-dark',
+                      'gray-lightest focus:!ring-1 focus:!ring-offset-0 focus:!ring-gray-dark ring-1 !ring-gray-dark',
                   )}
                 />
                 <Radio
@@ -104,7 +104,7 @@ export default function SelectBox({
                   labelClassName="!text-sm xl:!text-base"
                   inputClassName={clsx(
                     !pets &&
-                      '!border-gray-lightest focus:!ring-1 focus:!ring-offset-0 focus:!ring-gray-dark ring-1 !ring-gray-dark',
+                      'gray-lightest focus:!ring-1 focus:!ring-offset-0 focus:!ring-gray-dark ring-1 !ring-gray-dark',
                   )}
                 />
               </div>

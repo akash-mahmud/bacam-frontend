@@ -67,13 +67,13 @@ export default function ContactHost() {
         <ActionIcon
           size="sm"
           variant="outline"
-          className="border-none !p-0 focus:!ring-0"
+          className="none !p-0 focus:!ring-0"
           onClick={closeModal}
         >
           <XMarkIcon className="h-6 w-6" />
         </ActionIcon>
       </div>
-      <div className="mt-3 flex items-center justify-between border-b border-gray-lighter pb-3 md:mt-7 md:pb-7">
+      <div className="mt-3 flex items-center justify-between b gray-lighter pb-3 md:mt-7 md:pb-7">
         <div>
           <Text tag="h6" className="text-sm uppercase md:!text-base">
             <Link href={Routes.private.inbox}>{vendor.name}</Link>
@@ -100,7 +100,7 @@ export default function ContactHost() {
         noValidate
         onSubmit={handleSubmit((data) => handleReservation(data))}
       >
-        <div className="grid grid-cols-2 gap-3 border-gray-lighter py-3 md:border-b md:py-6">
+        <div className="grid grid-cols-2 gap-3 gray-lighter py-3 md:b md:py-6">
           <Controller
             name="startDate"
             control={control}
@@ -120,8 +120,7 @@ export default function ContactHost() {
                 error={errors?.startDate?.message}
                 inputClassName={clsx(
                   '!text-gray text-xs xl:text-sm sm:pl-12',
-                  state &&
-                    '!border !border-gray-1000 !ring-[1px] !ring-gray-900/20',
+                  state && '!"" gray-1000 !ring-[1px] !ring-gray-900/20',
                 )}
                 labelClassName="!text-sm md:!text-base mb-1.5"
                 onCalendarOpen={() => setState(true)}
@@ -148,8 +147,7 @@ export default function ContactHost() {
                 error={errors?.endDate?.message}
                 inputClassName={clsx(
                   '!text-gray text-xs xl:text-sm sm:pl-12',
-                  stateTwo &&
-                    '!border !border-gray-1000 !ring-[1px] !ring-gray-900/20',
+                  stateTwo && '!"" gray-1000 !ring-[1px] !ring-gray-900/20',
                 )}
                 labelClassName="!text-sm md:!text-base mb-1.5"
                 onCalendarOpen={() => setStateTwo(true)}
@@ -202,7 +200,7 @@ export default function ContactHost() {
         <Textarea
           className="mt-4"
           label="Your message"
-          textareaClassName="w-full min-h-[100px] md:min-h-[160px] focus:border-gray-dark py-3 !px-5"
+          textareaClassName="w-full min-h-[100px] md:min-h-[160px] focus:gray-dark py-3 !px-5"
           labelClassName="!text-sm md:!text-base font-bold text-gray-dark"
           {...register('message')}
           error={errors?.message?.message}

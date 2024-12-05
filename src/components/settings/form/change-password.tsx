@@ -75,10 +75,7 @@ export default function ChangePassword() {
 
   return (
     <div>
-      <Text
-        tag="h3"
-        className="mb-4 border-b border-b-gray-lighter pb-4 text-xl lg:mb-6"
-      >
+      <Text tag="h3" className="mb-4 b b-gray-lighter pb-4 text-xl lg:mb-6">
         Change Password
       </Text>
       <Spin spinning={loading}>

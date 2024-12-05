@@ -58,10 +58,7 @@ function List({ navListItem }: navListTypes) {
   return (
     <ul className="pt-4">
       {navListItem.map((item) => (
-        <li
-          key={item.name}
-          className="border-b border-gray-lightest last:border-b-0"
-        >
+        <li key={item.name} className="-gray-lightest last:b-0">
           <Link
             href={item.path}
             className={clsx(
@@ -89,7 +86,7 @@ export default function SideMenu() {
         <ActionIcon
           size="sm"
           variant="outline"
-          className="border-none !p-0 focus:!ring-0"
+          className="none !p-0 focus:!ring-0"
           onClick={() => setDrawerState({ ...drawerSate, isOpen: false })}
         >
           <XMarkIcon className="h-6 w-6" />

@@ -13,10 +13,10 @@ import { TrashIcon } from '@heroicons/react/24/outline';
 import { UploadIcon } from '@/components/icons/upload';
 
 const inputClasses = {
-  base: 'p-16 border rounded-xl cursor-pointer duration-75 ease-in-out focus:ring',
+  base: 'p-16 "" rounded-xl cursor-pointer duration-75 ease-in-out focus:ring',
   flex: 'flex flex-col items-center gap-4',
   disabled:
-    '!text-gray-400 !bg-gray-100 !border-gray-200 hover:border-gray-200 cursor-not-allowed',
+    '!text-gray-400 !bg-gray-100 gray-200 hover:gray-200 cursor-not-allowed',
   darkTextColor: {
     DEFAULT: 'text-gray-1000',
     primary: 'text-primary-dark',
@@ -37,23 +37,23 @@ const inputClasses = {
   },
   variant: {
     active: {
-      base: 'border bg-gray-0',
+      base: '"" bg-gray-0',
       color: {
         DEFAULT:
-          'border-gray-900 text-gray-600 focus:border-gray-1000 focus:ring-gray-900/20',
-        primary: 'border-primary text-primary focus:ring-primary/30',
-        secondary: 'border-secondary text-secondary focus:ring-secondary/30',
-        danger: 'border-red text-red focus:ring-red/30',
-        info: 'border-blue text-blue focus:ring-blue/30',
-        success: 'border-green text-green focus:ring-green/30',
-        warning: 'border-orange text-orange focus:ring-orange/30',
+          'gray-900 text-gray-600 focus:gray-1000 focus:ring-gray-900/20',
+        primary: 'primary text-primary focus:ring-primary/30',
+        secondary: 'secondary text-secondary focus:ring-secondary/30',
+        danger: 'red text-red focus:ring-red/30',
+        info: 'blue text-blue focus:ring-blue/30',
+        success: 'green text-green focus:ring-green/30',
+        warning: 'orange text-orange focus:ring-orange/30',
       },
     },
     flat: {
-      base: 'border-0',
+      base: '0',
       color: {
         DEFAULT:
-          'bg-gray-100/70 hover:bg-gray-200/50 text-gray-600 focus:border-gray-1000 focus:ring-gray-900/20',
+          'bg-gray-100/70 hover:bg-gray-200/50 text-gray-600 focus:gray-1000 focus:ring-gray-900/20',
         primary:
           'bg-primary-lighter/70 hover:bg-primary-lighter/90 text-primary focus:ring-primary/30',
         secondary:
@@ -68,16 +68,15 @@ const inputClasses = {
       },
     },
     outline: {
-      base: 'bg-transparent border-gray-300 text-gray-600',
+      base: 'bg-transparent gray-300 text-gray-600',
       color: {
-        DEFAULT:
-          'hover:border-gray-1000 focus:border-gray-1000 focus:ring-gray-900/20',
-        primary: 'hover:border-primary focus:ring-primary/30',
-        secondary: 'hover:border-secondary focus:ring-secondary/30',
-        danger: 'hover:border-red focus:ring-red/30',
-        info: 'hover:border-blue focus:ring-blue/30',
-        success: 'hover:border-green focus:ring-green/30',
-        warning: 'hover:border-orange focus:ring-orange/30',
+        DEFAULT: 'hover:gray-1000 focus:gray-1000 focus:ring-gray-900/20',
+        primary: 'hover:primary focus:ring-primary/30',
+        secondary: 'hover:secondary focus:ring-secondary/30',
+        danger: 'hover:red focus:ring-red/30',
+        info: 'hover:blue focus:ring-blue/30',
+        success: 'hover:green focus:ring-green/30',
+        warning: 'hover:orange focus:ring-orange/30',
       },
     },
   },
@@ -91,7 +90,7 @@ const listClasses = {
     bg: 'bg-gray-900/50 h-full w-full relative top-full transition-all duration-75 ease-out group-hover:top-0',
   },
   pdf: {
-    base: 'w-full px-4 py-2 text-sm h-10 my-3 relative text-gray-500 border border-gray-300 rounded-md',
+    base: 'w-full px-4 py-2 text-sm h-10 my-3 relative text-gray-500 -gray-300 rounded-md',
     icon: 'text-gray-500 top-2 right-3 cursor-pointer',
   },
 };

@@ -16,11 +16,11 @@ export const UserInfoArea = styled.div`
 export const ProfileImage = styled.div`
   width: 180px;
   height: 180px;
-  border-radius: 3px;
+  radius: 3px;
   margin-bottom: 27px;
   background-color: #e9e8ec;
-  border: 5px solid ${themeGet('color.1', '#ffffff')};
-  box-shadow: 0 3px 6px ${themeGet('boxShadow.1', 'rgba(26, 68, 116, 0.16)')};
+  "": 5px solid ${themeGet('color.1', '#ffffff')};
+  box-"": 0 3px 6px ${themeGet('boxShadow.1', 'rgba(26, 68, 116, 0.16)')};
   position: relative;
   overflow: hidden;
 `;
@@ -106,8 +106,8 @@ export const SocialAccount = styled.div`
 
 export const NavigationArea = styled.div`
   margin-bottom: 30px;
-  border-top: 1px solid ${themeGet('border.3', '#E6E6E6')};
-  border-bottom: 1px solid ${themeGet('border.3', '#E6E6E6')};
+  top: 1px solid ${themeGet('"".3', '#E6E6E6')};
+  bottom: 1px solid ${themeGet('"".3', '#E6E6E6')};
 
   > div {
     display: flex;
@@ -130,7 +130,7 @@ export const NavigationArea = styled.div`
     display: inline-flex;
     align-items: center;
     padding: 11px 22px;
-    border-radius: 3px;
+    radius: 3px;
     font-size: 15px;
     text-transform: capitalize;
     color: ${themeGet('color.1', '#ffffff')};
@@ -156,10 +156,10 @@ export const NavigationArea = styled.div`
   }
 
   .ant-menu {
-    border: 0;
+    "":0 ;
     display: flex;
     align-items: center;
-    box-shadow: none;
+    box-"": none;
 
     @media (max-width: 480px) {
       flex-direction: column;
@@ -194,7 +194,7 @@ export const NavigationArea = styled.div`
           display: block;
           width: 0%;
           height: 2px;
-          border-radius: 4px;
+          radius: 4px;
           position: absolute;
           left: 0;
           bottom: 0;
@@ -257,9 +257,9 @@ export const AgentContactWrapper = styled.div`
 `;
 
 export const ContactDetails = styled.div`
-  border-radius: 3px;
+  radius: 3px;
   padding: 30px;
-  box-sizing: border-box;
+  box-sizing: ''-box;
   background-color: ${themeGet('color.2', '#F7F7F7')};
 
   > h3 {

@@ -31,7 +31,7 @@ export default function useAuth() {
         }) ?? {},
       );
     }
-  }, [dispatch, data?.me?.id]);
+  }, [dispatch, data?.me?.id, data?.me, loading]);
 
   return {
     isAuthorized: data?.me?.id ? true : false,

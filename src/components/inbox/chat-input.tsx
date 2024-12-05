@@ -16,14 +16,14 @@ export default function ChatInput({
   onSubmit,
 }: ChatInputType) {
   return (
-    <div className="border-t border-gray-lighter pt-2 xl:pt-3">
+    <div className="t gray-lighter pt-2 xl:pt-3">
       <form noValidate onSubmit={onSubmit} className="relative">
         <Input
           type="text"
           value={value}
           variant="outline"
           placeholder="Type your message..."
-          className="rounded-lg border-gray-lighter"
+          className="rounded-lg gray-lighter"
           inputClassName="pr-16 pl-2 md:pl-4 lg:pr-24"
           onChange={onChange}
         />

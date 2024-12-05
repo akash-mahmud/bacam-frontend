@@ -31,12 +31,12 @@ export default function CreateListing() {
               setStore(RESET);
               setStep(2);
             }}
-            className="card-gradient mt-4 flex cursor-pointer items-center gap-5 rounded-md border border-gray-lighter p-6 font-bold text-gray-dark transition duration-200 hover:shadow-card md:p-8 lg:mt-6 lg:p-10 lg:text-xl 2xl:rounded-lg 2xl:p-12"
+            className="card-gradient mt-4 flex cursor-pointer items-center gap-5 rounded-md -gray-lighter p-6 font-bold text-gray-dark transition duration-200 hover:card md:p-8 lg:mt-6 lg:p-10 lg:text-xl 2xl:rounded-lg 2xl:p-12"
           >
             <CakeIcon className="h-auto w-8" />
             Create a new listing
           </div>
-          <div className="card-gradient mt-4 flex cursor-pointer items-center gap-5 rounded-md border border-gray-lighter p-6 font-bold text-gray-dark transition duration-200 hover:shadow-card md:p-8 lg:mt-6 lg:p-10 lg:text-xl 2xl:rounded-lg 2xl:p-12">
+          <div className="card-gradient mt-4 flex cursor-pointer items-center gap-5 rounded-md -gray-lighter p-6 font-bold text-gray-dark transition duration-200 hover:card md:p-8 lg:mt-6 lg:p-10 lg:text-xl 2xl:rounded-lg 2xl:p-12">
             <DuplicateIcon className="h-auto w-8" />
             Duplicate an existing listing
           </div>

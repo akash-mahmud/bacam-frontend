@@ -14,11 +14,11 @@ export default function TestimonialCard({
   return (
     <div
       className={clsx(
-        'card-gradient rounded-xl border-2 border-gray-200 py-6 px-6 3xl:py-8 3xl:px-8 4xl:py-10 4xl:px-12',
+        'card-gradient rounded-xl 2 gray-200 py-6 px-6 3xl:py-8 3xl:px-8 4xl:py-10 4xl:px-12',
         className,
       )}
     >
-      <p className="mb-5 border-b border-gray-200 pb-5 text-sm leading-[22px] text-[#222] md:leading-6 xl:text-base xl:leading-7 4xl:text-lg">
+      <p className="mb-5 b gray-200 pb-5 text-sm leading-[22px] text-[#222] md:leading-6 xl:text-base xl:leading-7 4xl:text-lg">
         {description}
       </p>
       <div className="flex items-center justify-between">

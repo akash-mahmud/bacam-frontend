@@ -31,7 +31,7 @@ export default function SocialAccount() {
     <div>
       <Text
         tag="h3"
-        className="mb-4 border-b border-b-gray-lighter pb-4 text-xl capitalize lg:mb-6"
+        className="mb-4 b b-gray-lighter pb-4 text-xl capitalize lg:mb-6"
       >
         Social Account
       </Text>
@@ -39,7 +39,7 @@ export default function SocialAccount() {
         {socialInfo.map((item) => (
           <div
             key={item.id}
-            className="card-gradient flex items-center justify-between rounded-xl border border-gray-lighter p-6"
+            className="card-gradient flex items-center justify-between rounded-xl -gray-lighter p-6"
           >
             <div>
               <Text tag="h6" className="text-sm capitalize">

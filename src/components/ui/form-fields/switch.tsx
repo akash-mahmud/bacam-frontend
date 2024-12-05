@@ -29,7 +29,7 @@ const labelClasses = {
 const switchClasses = {
   base: 'flex items-center cursor-pointer transition duration-200 ease-in-out ring-[1.5px] peer-focus/switch:ring-offset-2 peer-focus/switch:ring-gray-900/20 ring-transparent',
   disabled:
-    'cursor-not-allowed peer-disabled/switch:border-gray-200 peer-disabled/switch:bg-gray-100',
+    'cursor-not-allowed peer-disabled/switch:gray-200 peer-disabled/switch:bg-gray-100',
   rounded: {
     none: 'rounded-none',
     sm: 'rounded-sm',
@@ -45,19 +45,19 @@ const switchClasses = {
   },
   variant: {
     active: {
-      base: 'border',
+      base: '""',
       color: {
-        DEFAULT: 'border-gray-900',
-        primary: 'border-primary',
-        secondary: 'border-secondary',
-        danger: 'border-red',
-        info: 'border-blue',
-        success: 'border-green',
-        warning: 'border-orange',
+        DEFAULT: 'gray-900',
+        primary: 'primary',
+        secondary: 'secondary',
+        danger: 'red',
+        info: 'blue',
+        success: 'green',
+        warning: 'orange',
       },
     },
     flat: {
-      base: 'border border-transparent',
+      base: '-transparent',
       color: {
         DEFAULT: 'bg-gray-200 group-hover/switch:bg-gray-400/40',
         primary: 'bg-primary-light/40 group-hover/switch:bg-primary-light/50',
@@ -70,15 +70,15 @@ const switchClasses = {
       },
     },
     outline: {
-      base: 'border border-gray-300',
+      base: '-gray-300',
       color: {
-        DEFAULT: 'group-hover/switch:border-gray-900',
-        primary: 'group-hover/switch:border-primary',
-        secondary: 'group-hover/switch:border-secondary',
-        danger: 'group-hover/switch:border-red',
-        info: 'group-hover/switch:border-blue',
-        success: 'group-hover/switch:border-green',
-        warning: 'group-hover/switch:border-orange',
+        DEFAULT: 'group-hover/switch:gray-900',
+        primary: 'group-hover/switch:primary',
+        secondary: 'group-hover/switch:secondary',
+        danger: 'group-hover/switch:red',
+        info: 'group-hover/switch:blue',
+        success: 'group-hover/switch:green',
+        warning: 'group-hover/switch:orange',
       },
     },
   },
@@ -108,22 +108,19 @@ const outlineInactiveSwitchKnob = {
 // apply when switch on
 const switchActiveClasses = {
   color: {
-    DEFAULT:
-      'peer-checked/switch:bg-gray-900 peer-checked/switch:border-gray-900',
-    primary:
-      'peer-checked/switch:bg-primary peer-checked/switch:border-primary',
-    secondary:
-      'peer-checked/switch:bg-secondary peer-checked/switch:border-secondary',
-    danger: 'peer-checked/switch:bg-red peer-checked/switch:border-red',
-    info: 'peer-checked/switch:bg-blue peer-checked/switch:border-blue',
-    success: 'peer-checked/switch:bg-green peer-checked/switch:border-green',
-    warning: 'peer-checked/switch:bg-orange peer-checked/switch:border-orange',
+    DEFAULT: 'peer-checked/switch:bg-gray-900 peer-checked/switch:gray-900',
+    primary: 'peer-checked/switch:bg-primary peer-checked/switch:primary',
+    secondary: 'peer-checked/switch:bg-secondary peer-checked/switch:secondary',
+    danger: 'peer-checked/switch:bg-red peer-checked/switch:red',
+    info: 'peer-checked/switch:bg-blue peer-checked/switch:blue',
+    success: 'peer-checked/switch:bg-green peer-checked/switch:green',
+    warning: 'peer-checked/switch:bg-orange peer-checked/switch:orange',
   },
 };
 
 const handleClasses = {
   base: 'flex justify-center items-center transform ring-0 transition duration-200 ease-in-out',
-  disabled: 'peer-disabled/switch:bg-gray-300 peer-disabled/switch:shadow-none',
+  disabled: 'peer-disabled/switch:bg-gray-300 peer-disabled/switch:none',
   rounded: {
     none: 'rounded-none',
     sm: 'rounded-sm',
@@ -274,7 +271,7 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>(
                 handleClasses.color[color],
                 handleClasses.translate.inactive,
                 variant === 'active' && 'text-white',
-                variant === 'flat' && '!bg-white text-gray-900 shadow-sm',
+                variant === 'flat' && '!bg-white text-gray-900 sm',
                 variant === 'outline' && 'bg-gray-300 text-gray-900',
               )}
             >

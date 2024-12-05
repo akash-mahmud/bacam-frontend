@@ -22,8 +22,8 @@ export default function PricingCard({ pricingData }: PricingCardProps) {
   return (
     <div
       className={clsx(
-        'relative w-full rounded-md border border-gray-lighter p-8 lg:rounded-xl lg:p-10 xl:p-12',
-        pricingData.isSuggested && 'md:shadow-lg',
+        'relative w-full rounded-md -gray-lighter p-8 lg:rounded-xl lg:p-10 xl:p-12',
+        pricingData.isSuggested && 'md:lg',
       )}
     >
       {pricingData.isSuggested && (

@@ -100,8 +100,8 @@ export default function Manufacturer() {
             name="manufacturer"
             value={item.value}
             onChange={() => handleInputChange(item)}
-            className="border-primary-lighter flex w-full flex-col space-y-6 rounded-xl border px-2 py-2 text-gray-600 hover:cursor-pointer hover:border-primary 2xl:py-3.5"
-            inputClassName="[&:checked:enabled~span]:ring-1 [&:checked:enabled~span]:ring-offset-0 [&:checked:enabled~span]:ring-primary [&:checked:enabled~span]:border-primary"
+            className="primary-lighter flex w-full flex-col space-y-6 rounded-xl  px-2 py-2 text-gray-600 hover:cursor-pointer hover:primary 2xl:py-3.5"
+            inputClassName="[&:checked:enabled~span]:ring-1 [&:checked:enabled~span]:ring-offset-0 [&:checked:enabled~span]:ring-primary [&:checked:enabled~span]:primary"
             checked={item.checked}
           >
             {item.icon}

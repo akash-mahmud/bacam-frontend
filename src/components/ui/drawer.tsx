@@ -121,7 +121,7 @@ export default function Drawer({
         >
           <div
             className={clsx(
-              'bg-gray-0 fixed h-full w-full shadow-xl',
+              'bg-gray-0 fixed h-full w-full xl',
               placement === 'top' && 'top-0',
               placement === 'right' && 'inset-y-0 right-0',
               placement === 'bottom' && 'bottom-0',

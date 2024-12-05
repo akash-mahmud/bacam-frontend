@@ -13,7 +13,7 @@ interface AccordionProps {
 export default function Accordion({ title, text }: AccordionProps) {
   const { open, targetEl, toggle } = useCollapse();
   return (
-    <div className="w-full border-b border-b-gray-lighter py-4 lg:py-6 2xl:py-9">
+    <div className="w-full b b-gray-lighter py-4 lg:py-6 2xl:py-9">
       <button
         onClick={toggle}
         className="flex w-full items-center justify-between   text-base font-bold lg:text-xl 2xl:text-2xl"

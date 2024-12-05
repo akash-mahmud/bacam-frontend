@@ -32,7 +32,7 @@ const classes = {
   },
   variant: {
     solid: {
-      base: 'border border-transparent',
+      base: '-transparent',
       color: {
         DEFAULT:
           'bg-primaryBg hover:enabled:bg-primaryBg focus:ring-gray-900/20 text-gray-0',
@@ -52,7 +52,7 @@ const classes = {
       },
     },
     flat: {
-      base: 'border-transparent',
+      base: 'transparent',
       color: {
         DEFAULT:
           'bg-gray-200 hover:enabled:bg-gray-300/70 focus:ring-gray-900/30 text-gray-1000',
@@ -72,23 +72,23 @@ const classes = {
       },
     },
     outline: {
-      base: 'bg-transparent border',
+      base: 'bg-transparent ""',
       color: {
         DEFAULT:
-          'border-gray-300 hover:enabled:border-gray-1000 focus:enabled:border-gray-1000 focus:ring-gray-900/30',
+          'gray-300 hover:enabled:gray-1000 focus:enabled:gray-1000 focus:ring-gray-900/30',
         invert: '',
         light: '',
         primary:
-          'hover:enabled:bg-primary-lighter/40 focus:ring-primary/30 text-primary-dark border-primary hover:enabled:border-primary-dark',
+          'hover:enabled:bg-primary-lighter/40 focus:ring-primary/30 text-primary-dark primary hover:enabled:primary-dark',
         secondary:
-          'hover:enabled:bg-secondary-lighter/40 focus:ring-secondary/30 text-secondary-dark border-secondary hover:enabled:border-secondary-dark',
+          'hover:enabled:bg-secondary-lighter/40 focus:ring-secondary/30 text-secondary-dark secondary hover:enabled:secondary-dark',
         danger:
-          'hover:enabled:bg-red-lighter/40 focus:ring-red/30 text-red-dark border-red hover:enabled:border-red-dark ',
-        info: 'hover:enabled:bg-blue-lighter/40 focus:ring-blue/30 text-blue-dark border-blue hover:enabled:border-blue-dark',
+          'hover:enabled:bg-red-lighter/40 focus:ring-red/30 text-red-dark red hover:enabled:red-dark ',
+        info: 'hover:enabled:bg-blue-lighter/40 focus:ring-blue/30 text-blue-dark blue hover:enabled:blue-dark',
         success:
-          'hover:enabled:bg-green-lighter/40 focus:ring-green/30 text-green-dark border-green hover:enabled:border-green-dark',
+          'hover:enabled:bg-green-lighter/40 focus:ring-green/30 text-green-dark green hover:enabled:green-dark',
         warning:
-          'hover:enabled:bg-orange-lighter/40 focus:ring-orange/30 text-orange-dark border-orange hover:enabled:border-orange-dark',
+          'hover:enabled:bg-orange-lighter/40 focus:ring-orange/30 text-orange-dark orange hover:enabled:orange-dark',
       },
     },
     text: {
@@ -160,8 +160,7 @@ const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
           variantStyle.base,
           variantStyle.color[color],
           isLoading && 'pointer-events-none relative',
-          disabled &&
-            'cursor-not-allowed !border-gray-200 !bg-gray-100 !text-gray-400',
+          disabled && 'cursor-not-allowed gray-200 !bg-gray-100 !text-gray-400',
           className,
         )}
         {...buttonProps}

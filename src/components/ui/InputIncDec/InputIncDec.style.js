@@ -15,7 +15,7 @@ const InputIncDecWrapper = styled.div`
     top: 0;
     height: 100%;
     padding: 0;
-    border: 0;
+    "":0 ;
     text-align: center;
     background-color: transparent;
 
@@ -27,15 +27,15 @@ const InputIncDecWrapper = styled.div`
 
     &:focus {
       outline: none;
-      box-shadow: none;
+      box-"": none;
     }
   }
 
   button {
-    border: 0;
+    "":0 ;
     width: 27px;
     height: 27px;
-    border-radius: 50%;
+    radius: 50%;
     display: inline-flex;
     align-items: center;
     position: absolute;

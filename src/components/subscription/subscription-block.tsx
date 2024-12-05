@@ -20,7 +20,7 @@ export default function SubscriptionBlock({
       sectionClassName={sectionClassName}
       titleClassName="!text-primary md:!text-white text-2xl 3xl:text-[44px] 3xl:leading-[64px] mb-2 xl:mb-5"
       descriptionClassName="text-sm md:text-base !text-primary md:!text-white text-center md:text-left leading-[22px] md:leading-6 3xl:leading-8 mb-6 md:!mb-8"
-      contentWrapperClassName="bg-white shadow-card md:bg-transparent md:shadow-none max-w-[500px] md:max-w-[380px] rounded-lg m-auto md:!ml-auto md:!mr-0 lg:max-w-[440px] xl:max-w-[500px] px-4 pb-4 pt-8 md:px-0 md:pb-0 md:pt-0"
+      contentWrapperClassName="bg-white card md:bg-transparent md:none max-w-[500px] md:max-w-[380px] rounded-lg m-auto md:!ml-auto md:!mr-0 lg:max-w-[440px] xl:max-w-[500px] px-4 pb-4 pt-8 md:px-0 md:pb-0 md:pt-0"
     >
       <SubscriptionForm />
     </BannerBlock>

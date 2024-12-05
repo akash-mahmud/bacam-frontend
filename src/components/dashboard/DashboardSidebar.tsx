@@ -16,7 +16,6 @@ import {
 import { drawerStateAtom } from '@/components/drawers/view';
 import ActionIcon from '@/components/ui/action-icon';
 import { Routes } from '@/config/routes';
-import Logo from '@/components/ui/logo';
 import { BookOpenIcon } from '@heroicons/react/24/solid';
 
 const menu = [
@@ -45,10 +44,7 @@ function List({ navListItem }: navListTypes) {
   return (
     <ul className="pt-4">
       {navListItem.map((item) => (
-        <li
-          key={item.name}
-          className="border-b border-gray-lightest last:border-b-0"
-        >
+        <li key={item.name} className="-gray-lightest ">
           <Link
             href={item.path}
             className={clsx(
@@ -70,14 +66,12 @@ function List({ navListItem }: navListTypes) {
 export default function DashboardSidebar({ className }: { className: string }) {
   const [drawerSate, setDrawerState] = useAtom(drawerStateAtom);
   return (
-    <div
-      className={`ml-auto h-full bg-white md:ml-0 border shadow-lg ${className}`}
-    >
+    <div className={`ml-auto h-full bg-white md:ml-0 -lg ${className}`}>
       <div className="flex h-14 items-center justify-between px-10 pt-6 md:h-20 xl:h-24 md:hidden">
         <ActionIcon
           size="sm"
           variant="outline"
-          className="border-none !p-0 focus:!ring-0"
+          className=" !p-0 focus:!ring-0"
           onClick={() => setDrawerState({ ...drawerSate, isOpen: false })}
         >
           <XMarkIcon className="h-6 w-6" />

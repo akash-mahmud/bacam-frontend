@@ -18,7 +18,7 @@ function ShareIcons() {
   return (
     <div className="mt-1 hidden items-center gap-3 bg-white md:flex 3xl:gap-6">
       <Button
-        className="!border-none !bg-gray-lightest !p-4 text-gray-dark hover:!bg-gray-dark hover:text-white"
+        className="none !bg-gray-lightest !p-4 text-gray-dark hover:!bg-gray-dark hover:text-white"
         size="sm"
         variant="outline"
         rounded="pill"
@@ -27,7 +27,7 @@ function ShareIcons() {
         <ShareIcon className="h-auto w-5" />
       </Button>
       <Button
-        className="!border-none !bg-gray-lightest !p-4 text-gray-dark hover:!bg-gray-dark hover:text-white"
+        className="none !bg-gray-lightest !p-4 text-gray-dark hover:!bg-gray-dark hover:text-white"
         size="sm"
         variant="outline"
         rounded="pill"
@@ -43,21 +43,21 @@ function ShareMenu() {
   return (
     <Menu as="div" className="relative md:hidden">
       <div>
-        <Menu.Button className="h-6 w-6 rounded-full border-none outline-none hover:ring-2 hover:ring-gray-lighter">
+        <Menu.Button className="h-6 w-6 rounded-full none outline-none hover:ring-2 hover:ring-gray-lighter">
           <EllipsisHorizontalIcon className="h-6 w-6" />
         </Menu.Button>
         <Menu.Items className="absolute right-0">
-          <div className="flex w-[150px] flex-col rounded-lg bg-white py-1 shadow-card">
+          <div className="flex w-[150px] flex-col rounded-lg bg-white py-1 card">
             <Menu.Item>
               <button
                 onClick={() => openModal('SHARE')}
-                className="border-gray-lightest py-2 text-base font-medium text-gray-dark hover:bg-gray-lightest"
+                className="gray-lightest py-2 text-base font-medium text-gray-dark hover:bg-gray-lightest"
               >
                 Share Now
               </button>
             </Menu.Item>
             <Menu.Item>
-              <button className="border-gray-lightest py-2 text-base font-medium text-gray-dark hover:bg-gray-lightest">
+              <button className="gray-lightest py-2 text-base font-medium text-gray-dark hover:bg-gray-lightest">
                 Add to wishlist
               </button>
             </Menu.Item>
@@ -72,7 +72,7 @@ export default function ListingDetailsHeroBlock({
   vendor,
 }: ListingDetailsHeroBlockProps) {
   return (
-    <div className="flex justify-between border-b border-gray-lighter pb-6 md:pb-8 2xl:pb-10">
+    <div className="flex justify-between b gray-lighter pb-6 md:pb-8 2xl:pb-10">
       <div>
         <p className="text-gray-dark">{vendor.location}</p>
         <Text

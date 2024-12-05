@@ -58,8 +58,8 @@ export default function AddEquipment() {
             <AdvancedCheckbox
               key={`equipment-${index}`}
               value={item.name}
-              className="card-gradient w-full cursor-pointer rounded-lg border border-gray-lighter py-4 text-center lg:rounded-xl xl:p-6 xl:text-left"
-              inputClassName="[&:checked:enabled~span]:ring-1 [&:checked:enabled~span]:ring-gray-lighter [&:checked:enabled~span]:border [&:checked:enabled~span]:border-gray-dark"
+              className="card-gradient w-full cursor-pointer rounded-lg -gray-lighter py-4 text-center lg:rounded-xl xl:p-6 xl:text-left"
+              inputClassName="[&:checked:enabled~span]:ring-1 [&:checked:enabled~span]:ring-gray-lighter [&:checked:enabled~span [&:checked:enabled~span]:gray-dark"
               {...register('equipment')}
             >
               <div className="relative inline-block h-8 w-8">

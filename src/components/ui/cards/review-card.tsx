@@ -14,7 +14,7 @@ export default function ReviewCard({
   review,
 }: ReviewTypes) {
   return (
-    <div className="border-b-[1px] border-gray-200 py-6   md:py-7">
+    <div className="b-[1px] gray-200 py-6   md:py-7">
       <div className="flex justify-between">
         <div className="flex items-center">
           <div className="relative h-12 w-12 overflow-hidden rounded-full md:h-16 md:w-16">

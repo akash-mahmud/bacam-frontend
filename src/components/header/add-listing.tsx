@@ -7,7 +7,7 @@ import { addScrollingClass } from '@/utils/add-scrolling-class';
 import { storeAtom } from '@/components/add-listing/add-listing';
 import Button from '@/components/ui/button';
 import { Routes } from '@/config/routes';
-import Logo from '@/components/ui/logo';
+import Logo from '@/components/ui/homelogo';
 
 export default function AddListingHeader() {
   const router = useRouter();

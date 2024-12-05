@@ -39,7 +39,7 @@ export default function AddnewPaymentMethod() {
     <div>
       <Text
         tag="h3"
-        className="mb-4 border-b border-b-gray-lighter pb-4 text-xl capitalize lg:mb-6"
+        className="mb-4 b b-gray-lighter pb-4 text-xl capitalize lg:mb-6"
       >
         Add new payment method
       </Text>
@@ -87,7 +87,7 @@ export default function AddnewPaymentMethod() {
             type="button"
             size="xl"
             variant="outline"
-            className="w-full border-gray-dark hover:bg-gray-dark hover:text-white md:w-auto"
+            className="w-full gray-dark hover:bg-gray-dark hover:text-white md:w-auto"
           >
             Cancle
           </Button>

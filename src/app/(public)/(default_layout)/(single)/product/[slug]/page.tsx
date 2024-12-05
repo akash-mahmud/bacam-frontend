@@ -88,7 +88,7 @@ export default function UserPage({ params }: { params: { slug: string } }) {
           <div className="   basis-[20%] grow-[2]" />
           <div className="basis-[80%] grow-[8]">
             <Collapse
-              className=" !bg-white shadow-xl"
+              className=" !bg-white xl"
               activeKey={activeKeys}
               onChange={handleCollapseChange}
             >
@@ -137,7 +137,7 @@ export default function UserPage({ params }: { params: { slug: string } }) {
               <div className=" ">
                 <p>There are no reviews yet.</p>
               </div>
-              <div className=" border  p-5 rounded text-lg">
+              <div className="   p-5 rounded text-lg">
                 Only logged in customer who have purchased this product may
                 leave a review.
               </div>

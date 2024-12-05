@@ -33,20 +33,20 @@ const radioDivClasses = {
 };
 
 const radioClasses = {
-  base: 'focus:ring-0 cursor-pointer rounded-full disabled:border-opacity-50 disabled:cursor-not-allowed',
+  base: 'focus:ring-0 cursor-pointer rounded-full disabled:opacity-50 disabled:cursor-not-allowed',
   customSize: {
     DEFAULT: 'w-5 h-5',
     sm: 'w-4 h-4',
     lg: 'w-6 h-6',
   },
   color: {
-    DEFAULT: 'text-gray-700 border-gray-500',
-    primary: 'text-blue-500 border-blue-600',
-    secondary: 'text-gray-900 border-gray-900',
-    danger: 'text-red-500 border-red-600',
-    info: 'text-sky-500 border-sky-600',
-    success: 'text-green-500 border-green-600',
-    warning: 'text-orange-500 border-orange-600',
+    DEFAULT: 'text-gray-700 gray-500',
+    primary: 'text-blue-500 blue-600',
+    secondary: 'text-gray-900 gray-900',
+    danger: 'text-red-500 red-600',
+    info: 'text-sky-500 sky-600',
+    success: 'text-green-500 green-600',
+    warning: 'text-orange-500 orange-600',
   },
 };
 

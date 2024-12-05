@@ -7,7 +7,7 @@ import FieldError from '@/components/ui/form-fields/field-error';
 import FieldHelperText from '@/components/ui/form-fields/field-helper-text';
 
 const inputClasses = {
-  base: 'peer disabled:bg-gray-50 disabled:border-gray-200',
+  base: 'peer disabled:bg-gray-50 disabled:gray-200',
   size: {
     sm: 'h-4 w-4',
     DEFAULT: 'h-5 w-5',
@@ -23,19 +23,19 @@ const inputClasses = {
   },
   variant: {
     outline: {
-      base: 'bg-transparent border border-gray-300 text-gray checked:!bg-red-1000 focus:ring-transparent checked:!border-gray-1000',
+      base: 'bg-transparent -gray-300 text-gray checked:!bg-red-1000 focus:ring-transparent checked:gray-1000',
       color: {
-        DEFAULT: 'hover:enabled:border-gray-1000',
-        primary: 'hover:enabled:border-primary',
-        secondary: 'hover:enabled:border-secondary',
-        danger: 'hover:enabled:border-red',
-        info: 'hover:enabled:border-blue',
-        success: 'hover:enabled:border-green',
-        warning: 'hover:enabled:border-orange',
+        DEFAULT: 'hover:enabled:gray-1000',
+        primary: 'hover:enabled:primary',
+        secondary: 'hover:enabled:secondary',
+        danger: 'hover:enabled:red',
+        info: 'hover:enabled:blue',
+        success: 'hover:enabled:green',
+        warning: 'hover:enabled:orange',
       },
     },
     flat: {
-      base: 'border-0',
+      base: '0',
       color: {
         DEFAULT:
           'bg-gray-200/70 hover:enabled:bg-gray-200/90 focus:ring-gray-900/30 checked:!bg-gray-1000',
@@ -53,20 +53,16 @@ const inputClasses = {
       },
     },
     active: {
-      base: 'border !bg-gray-0',
+      base: '"" !bg-gray-0',
       color: {
-        DEFAULT:
-          'border-gray-900 checked:enabled:border-gray-1000 focus:ring-gray-900/30',
-        primary:
-          'border-primary checked:enabled:border-primary focus:ring-primary/30',
+        DEFAULT: 'gray-900 checked:enabled:gray-1000 focus:ring-gray-900/30',
+        primary: 'primary checked:enabled:primary focus:ring-primary/30',
         secondary:
-          'border-secondary checked:enabled:border-secondary focus:ring-secondary/30',
-        danger: 'border-red checked:enabled:border-red focus:ring-red/30',
-        info: 'border-blue checked:enabled:border-blue focus:ring-blue/30',
-        success:
-          'border-green checked:enabled:border-green focus:ring-green/30',
-        warning:
-          'border-orange checked:enabled:border-orange-dark/70 focus:ring-orange/30',
+          'secondary checked:enabled:secondary focus:ring-secondary/30',
+        danger: 'red checked:enabled:red focus:ring-red/30',
+        info: 'blue checked:enabled:blue focus:ring-blue/30',
+        success: 'green checked:enabled:green focus:ring-green/30',
+        warning: 'orange checked:enabled:orange-dark/70 focus:ring-orange/30',
       },
     },
   },

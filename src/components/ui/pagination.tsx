@@ -8,14 +8,13 @@ import clsx from 'clsx';
 
 const classes = {
   base: {
-    item: '[&>.rc-pagination-item>a]:text-gray-500 [&>li.rc-pagination-item]:border-gray-300 [&>.rc-pagination-item>a]:hover:text-gray-500',
+    item: '[&>.rc-pagination-item>a]:text-gray-500 [&>li.rc-pagination-item]:gray-300 [&>.rc-pagination-item>a]:hover:text-gray-500',
     icon: '[&>.rc-pagination-prev]:align-baseline [&>.rc-pagination-next]:align-baseline',
-    outline:
-      '[&>.rc-pagination-item]:leading-7 [&>.rc-pagination-item]:border-0',
+    outline: '[&>.rc-pagination-item]:leading-7 [&>.rc-pagination-item]:0',
     jumperDiv:
       '[&>.rc-pagination-options>.rc-pagination-options-quick-jumper]:text-sm [&>.rc-pagination-options>.rc-pagination-options-quick-jumper]:text-gray-500',
     jumperInput:
-      '[&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:!py-[3px] [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:text-sm [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:border-gray-300 [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:ring-0',
+      '[&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:!py-[3px] [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:text-sm [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:gray-300 [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:ring-0',
   },
   rounded: {
     none: '[&>.rc-pagination-item]:rounded-none [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:rounded-none',
@@ -30,36 +29,36 @@ const classes = {
       base: '[&>.rc-pagination-item-active>a]:text-gray-0 [&>.rc-pagination-item-active>a]:hover:text-gray-0 [&>.rc-pagination-item-active>a]:focus-within:text-gray-0',
       color: {
         DEFAULT:
-          '[&>.rc-pagination-item-active]:bg-gray-900 [&>li.rc-pagination-item-active]:border-gray-900 [&>.rc-pagination-item-active]:hover:border-gray-900 [&>.rc-pagination-item-active]:focus-within:border-gray-900',
+          '[&>.rc-pagination-item-active]:bg-gray-900 [&>li.rc-pagination-item-active]:gray-900 [&>.rc-pagination-item-active]:hover:gray-900 [&>.rc-pagination-item-active]:focus-within:gray-900',
         primary:
-          '[&>.rc-pagination-item-active]:bg-primary  [&>li.rc-pagination-item-active]:border-primary [&>.rc-pagination-item-active]:hover:border-primary [&>.rc-pagination-item-active]:focus-within:border-primary',
+          '[&>.rc-pagination-item-active]:bg-primary  [&>li.rc-pagination-item-active]:primary [&>.rc-pagination-item-active]:hover:primary [&>.rc-pagination-item-active]:focus-within:primary',
         secondary:
-          '[&>.rc-pagination-item-active]:bg-secondary [&>li.rc-pagination-item-active]:border-secondary [&>.rc-pagination-item-active]:hover:border-secondary [&>.rc-pagination-item-active]:focus-within:border-secondary',
+          '[&>.rc-pagination-item-active]:bg-secondary [&>li.rc-pagination-item-active]:secondary [&>.rc-pagination-item-active]:hover:secondary [&>.rc-pagination-item-active]:focus-within:secondary',
         danger:
-          '[&>.rc-pagination-item-active]:bg-red [&>li.rc-pagination-item-active]:border-red [&>.rc-pagination-item-active]:hover:border-red [&>.rc-pagination-item-active]:focus-within:border-red',
-        info: '[&>.rc-pagination-item-active]:bg-blue [&>li.rc-pagination-item-active]:border-blue [&>.rc-pagination-item-active]:hover:border-blue [&>.rc-pagination-item-active]:focus-within:border-blue',
+          '[&>.rc-pagination-item-active]:bg-red [&>li.rc-pagination-item-active]:red [&>.rc-pagination-item-active]:hover:red [&>.rc-pagination-item-active]:focus-within:red',
+        info: '[&>.rc-pagination-item-active]:bg-blue [&>li.rc-pagination-item-active]:blue [&>.rc-pagination-item-active]:hover:blue [&>.rc-pagination-item-active]:focus-within:blue',
         success:
-          '[&>.rc-pagination-item-active]:bg-green [&>li.rc-pagination-item-active]:border-green [&>.rc-pagination-item-active]:hover:border-green [&>.rc-pagination-item-active]:focus-within:border-green',
+          '[&>.rc-pagination-item-active]:bg-green [&>li.rc-pagination-item-active]:green [&>.rc-pagination-item-active]:hover:green [&>.rc-pagination-item-active]:focus-within:green',
         warning:
-          '[&>.rc-pagination-item-active]:bg-orange [&>li.rc-pagination-item-active]:border-orange [&>.rc-pagination-item-active]:hover:border-orange [&>.rc-pagination-item-active]:focus-within:border-orange',
+          '[&>.rc-pagination-item-active]:bg-orange [&>li.rc-pagination-item-active]:orange [&>.rc-pagination-item-active]:hover:orange [&>.rc-pagination-item-active]:focus-within:orange',
       },
     },
     flat: {
       base: '',
       color: {
         DEFAULT:
-          '[&>.rc-pagination-item-active]:bg-gray-100 [&>li.rc-pagination-item-active]:border-gray-100 [&>.rc-pagination-item-active>a]:text-gray-900 [&>.rc-pagination-item-active>a]:hover:text-gray-900 [&>.rc-pagination-item-active>a]:focus-within:text-gray-900 [&>.rc-pagination-item-active]:hover:border-gray-100 [&>.rc-pagination-item-active]:focus-within:border-gray-100',
+          '[&>.rc-pagination-item-active]:bg-gray-100 [&>li.rc-pagination-item-active]:gray-100 [&>.rc-pagination-item-active>a]:text-gray-900 [&>.rc-pagination-item-active>a]:hover:text-gray-900 [&>.rc-pagination-item-active>a]:focus-within:text-gray-900 [&>.rc-pagination-item-active]:hover:gray-100 [&>.rc-pagination-item-active]:focus-within:gray-100',
         primary:
-          '[&>.rc-pagination-item-active]:bg-primary-lighter [&>li.rc-pagination-item-active]:border-primary-lighter [&>.rc-pagination-item-active>a]:text-primary-dark [&>.rc-pagination-item-active>a]:hover:text-primary-dark [&>.rc-pagination-item-active>a]:focus-within:text-primary-dark [&>.rc-pagination-item-active]:hover:border-primary-lighter [&>.rc-pagination-item-active]:focus-within:border-primary-lighter',
+          '[&>.rc-pagination-item-active]:bg-primary-lighter [&>li.rc-pagination-item-active]:primary-lighter [&>.rc-pagination-item-active>a]:text-primary-dark [&>.rc-pagination-item-active>a]:hover:text-primary-dark [&>.rc-pagination-item-active>a]:focus-within:text-primary-dark [&>.rc-pagination-item-active]:hover:primary-lighter [&>.rc-pagination-item-active]:focus-within:primary-lighter',
         secondary:
-          '[&>.rc-pagination-item-active]:bg-secondary-lighter [&>li.rc-pagination-item-active]:border-secondary-lighter [&>.rc-pagination-item-active>a]:text-secondary-dark [&>.rc-pagination-item-active>a]:hover:text-secondary-dark [&>.rc-pagination-item-active>a]:focus-within:text-secondary-dark [&>.rc-pagination-item-active]:hover:border-secondary-lighter [&>.rc-pagination-item-active]:focus-within:border-secondary-lighter',
+          '[&>.rc-pagination-item-active]:bg-secondary-lighter [&>li.rc-pagination-item-active]:secondary-lighter [&>.rc-pagination-item-active>a]:text-secondary-dark [&>.rc-pagination-item-active>a]:hover:text-secondary-dark [&>.rc-pagination-item-active>a]:focus-within:text-secondary-dark [&>.rc-pagination-item-active]:hover:secondary-lighter [&>.rc-pagination-item-active]:focus-within:secondary-lighter',
         danger:
-          '[&>.rc-pagination-item-active]:bg-red-lighter [&>li.rc-pagination-item-active]:border-red-lighter [&>.rc-pagination-item-active>a]:text-red-dark [&>.rc-pagination-item-active>a]:hover:text-red-dark [&>.rc-pagination-item-active>a]:focus-within:text-red-dark [&>.rc-pagination-item-active]:hover:border-red-lighter [&>.rc-pagination-item-active]:focus-within:border-red-lighter',
-        info: '[&>.rc-pagination-item-active]:bg-blue-lighter [&>li.rc-pagination-item-active]:border-blue-lighter [&>.rc-pagination-item-active>a]:text-blue-dark [&>.rc-pagination-item-active>a]:hover:text-blue-dark [&>.rc-pagination-item-active>a]:focus-within:text-blue-dark [&>.rc-pagination-item-active]:hover:border-blue-lighter [&>.rc-pagination-item-active]:focus-within:border-blue-lighter',
+          '[&>.rc-pagination-item-active]:bg-red-lighter [&>li.rc-pagination-item-active]:red-lighter [&>.rc-pagination-item-active>a]:text-red-dark [&>.rc-pagination-item-active>a]:hover:text-red-dark [&>.rc-pagination-item-active>a]:focus-within:text-red-dark [&>.rc-pagination-item-active]:hover:red-lighter [&>.rc-pagination-item-active]:focus-within:red-lighter',
+        info: '[&>.rc-pagination-item-active]:bg-blue-lighter [&>li.rc-pagination-item-active]:blue-lighter [&>.rc-pagination-item-active>a]:text-blue-dark [&>.rc-pagination-item-active>a]:hover:text-blue-dark [&>.rc-pagination-item-active>a]:focus-within:text-blue-dark [&>.rc-pagination-item-active]:hover:blue-lighter [&>.rc-pagination-item-active]:focus-within:blue-lighter',
         success:
-          '[&>.rc-pagination-item-active]:bg-green-lighter [&>li.rc-pagination-item-active]:border-green-lighter [&>.rc-pagination-item-active>a]:text-green-dark [&>.rc-pagination-item-active>a]:hover:text-green-dark [&>.rc-pagination-item-active>a]:focus-within:text-green-dark [&>.rc-pagination-item-active]:hover:border-green-lighter [&>.rc-pagination-item-active]:focus-within:border-green-lighter',
+          '[&>.rc-pagination-item-active]:bg-green-lighter [&>li.rc-pagination-item-active]:green-lighter [&>.rc-pagination-item-active>a]:text-green-dark [&>.rc-pagination-item-active>a]:hover:text-green-dark [&>.rc-pagination-item-active>a]:focus-within:text-green-dark [&>.rc-pagination-item-active]:hover:green-lighter [&>.rc-pagination-item-active]:focus-within:green-lighter',
         warning:
-          '[&>.rc-pagination-item-active]:bg-orange-lighter [&>li.rc-pagination-item-active]:border-orange-lighter [&>.rc-pagination-item-active>a]:text-orange-dark [&>.rc-pagination-item-active>a]:hover:text-orange-dark [&>.rc-pagination-item-active>a]:focus-within:text-orange-dark [&>.rc-pagination-item-active]:hover:border-orange-lighter [&>.rc-pagination-item-active]:focus-within:border-orange-lighter',
+          '[&>.rc-pagination-item-active]:bg-orange-lighter [&>li.rc-pagination-item-active]:orange-lighter [&>.rc-pagination-item-active>a]:text-orange-dark [&>.rc-pagination-item-active>a]:hover:text-orange-dark [&>.rc-pagination-item-active>a]:focus-within:text-orange-dark [&>.rc-pagination-item-active]:hover:orange-lighter [&>.rc-pagination-item-active]:focus-within:orange-lighter',
       },
     },
   },
@@ -67,7 +66,7 @@ const classes = {
 
 const iconClasses = {
   base: 'text-gray-400',
-  outline: 'border-[1px] border-gray-300 p-[5px]',
+  outline: '[1px] gray-300 p-[5px]',
   center: 'inline-block align-middle',
   rounded: {
     none: 'rounded-none',

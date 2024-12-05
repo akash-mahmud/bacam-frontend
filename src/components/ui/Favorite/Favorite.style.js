@@ -29,13 +29,13 @@ const RemoveAnimation = css`
 const FavoriteWrapper = styled.button`
   display: inline-block;
   cursor: pointer;
-  border: 0;
+  "":0 ;
   padding: 10px;
   background-color: transparent;
   &:hover,
   &:focus {
-    border: 0;
-    box-shadow: none;
+    "":0 ;
+    box-"": none;
     outline: none;
   }
 

@@ -63,25 +63,25 @@ export default function PriceFilter() {
         />
       </div>
       <div className="mt-5 grid grid-cols-2 items-center justify-between gap-5 text-sm font-bold">
-        <div className="overflow-hidden rounded-lg border border-gray-lighter bg-gray-lightest py-2">
+        <div className="overflow-hidden rounded-lg -gray-lighter bg-gray-lightest py-2">
           <p className="px-3 pt-1 text-gray-400">Min</p>
           <input
             type="number"
             value={range.min}
             onChange={(e) => handleMinChange(parseInt(e.target.value))}
-            className="w-full border-none bg-gray-lightest p-3 pb-1 pt-0 text-sm outline-none focus:shadow-none focus:ring-0"
+            className="w-full none bg-gray-lightest p-3 pb-1 pt-0 text-sm outline-none focus:none focus:ring-0"
             min={0}
             max={range.max}
             readOnly
           />
         </div>
-        <div className="overflow-hidden rounded-lg border border-gray-lighter bg-gray-lightest py-2">
+        <div className="overflow-hidden rounded-lg -gray-lighter bg-gray-lightest py-2">
           <p className="px-3 pt-1 text-gray-400">Max</p>
           <input
             type="number"
             value={range.max}
             onChange={(e) => handleMaxChange(parseInt(e.target.value))}
-            className="w-full border-none bg-gray-lightest p-3 pb-1 pt-0 text-sm outline-none focus:shadow-none focus:ring-0"
+            className="w-full none bg-gray-lightest p-3 pb-1 pt-0 text-sm outline-none focus:none focus:ring-0"
             min={range.min}
             readOnly
           />

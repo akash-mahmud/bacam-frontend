@@ -32,7 +32,7 @@ export default function ReviewBlock({ reviewsData }: ReviewBlockTypes) {
         <Button
           size="xl"
           variant="outline"
-          className="hidden !border-gray-dark !py-[10px] !px-4 !text-sm !font-bold !leading-[18px] text-gray-dark hover:bg-gray-1000 hover:text-white md:block md:border-gray md:!text-base lg:!py-[14px] lg:!px-[30px]"
+          className="hidden gray-dark !py-[10px] !px-4 !text-sm !font-bold !leading-[18px] text-gray-dark hover:bg-gray-1000 hover:text-white md:block md:gray md:!text-base lg:!py-[14px] lg:!px-[30px]"
           onClick={() => openModal('ADD_REVIEW')}
         >
           Add Review
@@ -61,13 +61,13 @@ export default function ReviewBlock({ reviewsData }: ReviewBlockTypes) {
       </div>
       <div className="mt-8 hidden items-center justify-between md:flex xl:mt-12">
         <Button size="lg" variant="text" className="!p-0 !ring-0">
-          <span className="flex items-center gap-6 font-medium text-gray-dark drop-shadow-sm hover:text-gray">
+          <span className="flex items-center gap-6 font-medium text-gray-dark drop-sm hover:text-gray">
             <ArrowLeftIcon className="h-auto w-6" />
             Previous Page
           </span>
         </Button>
         <Button size="lg" variant="text" className="!p-0 !ring-0">
-          <span className="flex items-center gap-6 font-medium text-gray-dark drop-shadow-sm hover:text-gray">
+          <span className="flex items-center gap-6 font-medium text-gray-dark drop-sm hover:text-gray">
             Next Page
             <ArrowRightIcon className="h-auto w-6" />
           </span>

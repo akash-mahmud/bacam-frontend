@@ -26,14 +26,14 @@ const Wrapper = styled.div`
   .ant-input-password {
     width: 100%;
     min-height: 48px;
-    border-radius: 3px;
-    border-color: ${themeGet('border.3', '#E6E6E6')};
+    radius: 3px;
+    color: ${themeGet('"".3', '#E6E6E6')};
     &:focus,
     &.ant-input-focused,
     &.ant-picker-focused,
     &.ant-input-number-focused,
     &.ant-input-password-focused {
-      box-shadow: 0 0 0 1px rgba(0, 132, 137, 0.2);
+      box-"": 0 0 0 1px rgba(0, 132, 137, 0.2);
     }
   }
 
@@ -46,12 +46,12 @@ const Wrapper = styled.div`
         line-height: 1;
       }
       .ant-checkbox-inner {
-        border-radius: 0;
-        border-color: ${themeGet('text.1', '#909090')};
+        radius: 0;
+        color: ${themeGet('text.1', '#909090')};
       }
       &.ant-checkbox-checked {
         .ant-checkbox-inner {
-          border-color: ${themeGet('primary.0', '#008489')};
+          color: ${themeGet('primary.0', '#008489')};
           background-color: ${themeGet('primary.0', '#008489')};
         }
       }
@@ -64,7 +64,7 @@ const Wrapper = styled.div`
       min-height: 48px;
     }
     &:hover {
-      border-color: ${themeGet('border.3', '#E6E6E6')};
+      color: ${themeGet('"".3', '#E6E6E6')};
     }
   }
   .ant-input-number-handler:hover {
@@ -76,7 +76,7 @@ const Wrapper = styled.div`
 
   .ant-picker {
     &:hover {
-      border-color: ${themeGet('border.3', '#E6E6E6')};
+      color: ${themeGet('"".3', '#E6E6E6')};
     }
   }
 
@@ -84,8 +84,8 @@ const Wrapper = styled.div`
     &.ant-select-single:not(.ant-select-customize-input) {
       width: 100%;
       .ant-select-selector {
-        border-radius: 3px;
-        border-color: ${themeGet('border.3', '#E6E6E6')};
+        radius: 3px;
+        color: ${themeGet('"".3', '#E6E6E6')};
         min-height: 48px;
         .ant-select-selection-search-input {
           min-height: 48px;
@@ -99,7 +99,7 @@ const Wrapper = styled.div`
     &.ant-select-focused {
       &.ant-select-single:not(.ant-select-customize-input) {
         .ant-select-selector {
-          box-shadow: 0 0 0 1px rgba(0, 132, 137, 0.2);
+          box-"": 0 0 0 1px rgba(0, 132, 137, 0.2);
         }
       }
     }
@@ -108,14 +108,14 @@ const Wrapper = styled.div`
   &.has-error {
     .ant-input,
     .ant-input-password {
-      border-color: ${themeGet('error.0', '#F9503D')};
+      color: ${themeGet('error.0', '#F9503D')};
     }
     .feedback {
       color: ${themeGet('error.0', '#F9503D')};
     }
     .ant-input-password {
       .ant-input {
-        border-color: transparent;
+        color: transparent;
       }
     }
   }
@@ -123,17 +123,17 @@ const Wrapper = styled.div`
   .ant-input-password {
     .ant-input {
       min-height: auto;
-      border-radius: initial;
-      border-color: transparent;
+      radius: initial;
+      color: transparent;
       &:focus {
-        box-shadow: none;
+        box-"": none;
       }
     }
   }
 
   .ant-radio-group-solid {
     .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
-      border-color: ${themeGet('primary.0', '#008489')};
+      color: ${themeGet('primary.0', '#008489')};
       background-color: ${themeGet('primary.0', '#008489')};
       &::before {
         content: none;
@@ -153,9 +153,9 @@ const Wrapper = styled.div`
   }
 
   button[type='submit'] {
-    border-radius: 3px;
+    radius: 3px;
     height: 47px;
-    border-color: ${themeGet('primary.0', '#008489')};
+    color: ${themeGet('primary.0', '#008489')};
     background-color: ${themeGet('primary.0', '#008489')};
     font-size: 15px;
     font-weight: 700;

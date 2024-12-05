@@ -13,7 +13,7 @@ export default function BusinessCategoryCard({
   return (
     <Link
       href={slug}
-      className="group/item relative flex aspect-auto border-2 card-gradient h-[200px] w-full flex-col  overflow-hidden rounded-xl lg:h-[280] 2xl:h-[300px] 4xl:h-[350px]"
+      className="group/item relative flex aspect-auto 2 card-gradient h-[200px] w-full flex-col  overflow-hidden rounded-xl lg:h-[280] 2xl:h-[300px] 4xl:h-[350px]"
     >
       <Image
         src={thumbnail}

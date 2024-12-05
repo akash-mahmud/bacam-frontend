@@ -21,7 +21,7 @@ import {
 export const themed = (key) => (props) => props.theme[key];
 
 export const base = compose(
-  () => ({ boxSizing: 'border-box' }),
+  () => ({ boxSizing: 'box' }),
   space,
   width,
   minWidth,

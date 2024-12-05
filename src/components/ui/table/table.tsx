@@ -12,12 +12,12 @@ const classes = {
     '[&_.rc-table-cell]:px-3 [&_th.rc-table-cell]:py-4 [&_td.rc-table-cell]:py-4',
   variants: {
     classic:
-      '[&_thead]:bg-gray-100 [&_.rc-table-container]:border-x [&_.rc-table-container]:border-gray-300 [&_td.rc-table-cell]:border-b [&_td.rc-table-cell]:border-gray-300 [&_thead]:border-y [&_thead]:border-gray-300',
+      '[&_thead]:bg-gray-100 [&_.rc-table-container]:x [&_.rc-table-container]:gray-300 [&_td.rc-table-cell]:b [&_td.rc-table-cell]:gray-300 [&_thead]:y [&_thead]:gray-300',
     modern:
-      '[&_thead]:bg-gray-100 [&_td.rc-table-cell]:border-b [&_td.rc-table-cell]:border-gray-300',
+      '[&_thead]:bg-gray-100 [&_td.rc-table-cell]:b [&_td.rc-table-cell]:gray-300',
     minimal: '[&_thead]:bg-gray-lightest [&_thead]:text-gray-dark',
     elegant:
-      '[&_thead]:border-y [&_thead]:border-gray-300 [&_td.rc-table-cell]:border-b [&_td.rc-table-cell]:border-gray-300',
+      '[&_thead]:y [&_thead]:gray-300 [&_td.rc-table-cell]:b [&_td.rc-table-cell]:gray-300',
   },
   striped: '[&_.rc-table-row:nth-child(2n)_.rc-table-cell]:bg-gray-100/50',
 };

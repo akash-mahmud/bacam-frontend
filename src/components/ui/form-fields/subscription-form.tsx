@@ -21,7 +21,7 @@ export default function SubscriptionForm({ className }: SubscriptionFormProps) {
           labelClassName="!mb-0"
           rounded="DEFAULT"
           placeholder="Your email address"
-          className="mb-3 rounded-none border-none md:mb-0 lg:!rounded-xl"
+          className="mb-3 rounded-none none md:mb-0 lg:!rounded-xl"
         />
         <Button
           type="submit"

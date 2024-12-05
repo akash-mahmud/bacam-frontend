@@ -43,7 +43,7 @@ export default function AddReview() {
         <ActionIcon
           size="sm"
           variant="outline"
-          className="border-none !p-0 focus:!ring-0"
+          className="none !p-0 focus:!ring-0"
           onClick={closeModal}
         >
           <XMarkIcon className="h-6 w-6" />
@@ -71,7 +71,7 @@ export default function AddReview() {
         <Textarea
           className="mt-8"
           label="Feedback"
-          textareaClassName="w-full min-h-[160px] focus:border-gray-dark py-3 !px-5"
+          textareaClassName="w-full min-h-[160px] focus:gray-dark py-3 !px-5"
           labelClassName="!text-base font-bold text-gray-dark"
           {...register('message')}
           error={errors?.message?.message}

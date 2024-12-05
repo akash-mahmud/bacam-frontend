@@ -54,7 +54,7 @@ function ReportForm() {
       <Textarea
         className="mt-4"
         label="Feedback"
-        textareaClassName="w-full min-h-[160px] focus:border-gray-dark py-3 !px-5"
+        textareaClassName="w-full min-h-[160px] focus:gray-dark py-3 !px-5"
         labelClassName="font-bold text-gray-dark"
         {...register('message')}
         error={errors.message?.message}
@@ -104,7 +104,7 @@ export default function ReportListing() {
         <ActionIcon
           size="sm"
           variant="outline"
-          className="border-none !p-0 focus:!ring-0"
+          className="none !p-0 focus:!ring-0"
           onClick={closeModal}
         >
           <XMarkIcon className="h-6 w-6" />
@@ -130,7 +130,7 @@ export default function ReportListing() {
                   className="[&>div>div]:!p-0"
                   inputClassName={
                     item.title === selected
-                      ? '!border-gray-lighter focus:!ring-1 focus:!ring-offset-0 focus:!ring-gray-dark ring-1 !ring-gray-dark !text-gray-dark'
+                      ? 'gray-lighter focus:!ring-1 focus:!ring-offset-0 focus:!ring-gray-dark ring-1 !ring-gray-dark !text-gray-dark'
                       : ''
                   }
                 />

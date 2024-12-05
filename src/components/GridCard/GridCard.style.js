@@ -3,7 +3,7 @@ import { themeGet } from '@styled-system/theme-get';
 
 const GridCardWrapper = styled.div`
   position: relative;
-  border-radius: 6px;
+  radius: 6px;
   overflow: hidden;
   margin-bottom: 30px;
 
@@ -22,10 +22,10 @@ const GridCardWrapper = styled.div`
   }
 
   &:hover {
-    box-shadow: 0 6px 12px ${themeGet('boxShadow.2', 'rgba(0, 0, 0, 0.16)')};
+    box-"": 0 6px 12px ${themeGet('boxShadow.2', 'rgba(0, 0, 0, 0.16)')};
 
     .content_wrapper {
-      border-color: transparent;
+      color: transparent;
     }
 
     &.has_btn {
@@ -72,7 +72,7 @@ export const ImageWrapper = styled.div`
     top: 0;
     width: 22%;
     height: 100%;
-    border-radius: 0;
+    radius: 0;
     padding: 0;
     opacity: 0;
     visibility: hidden;
@@ -139,9 +139,9 @@ export const ImageWrapper = styled.div`
     button {
       width: 6px;
       height: 6px;
-      border: 0;
+      "":0 ;
       background-color: ${themeGet('color.3', '#E9E8E8')};
-      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05);
+      box-"": 0 2px 2px rgba(0, 0, 0, 0.05);
       transition: all 0.3s ease;
     }
   }
@@ -164,13 +164,13 @@ export const FavoriteIcon = styled.div`
 
 export const ContentWrapper = styled.div`
   padding: 15px;
-  border-width: 1px;
-  border-style: solid;
-  border-top-width: 0;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-  border-color: ${themeGet('border.3', '#E6E6E6')};
-  transition: border-color 0.2s ease;
+  width: 1px;
+  style: solid;
+  top-width: 0;
+  bottom-left-radius: 6px;
+  bottom-right-radius: 6px;
+  color: ${themeGet('"".3', '#E6E6E6')};
+  transition: ''-color 0.2s ease;
 
   div {
     margin-bottom: 8px;

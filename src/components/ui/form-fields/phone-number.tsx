@@ -16,9 +16,9 @@ const labelClasses = {
 };
 
 const inputClasses = {
-  base: 'block peer !w-full focus:outline-none focus:ring-2 focus:ring-opacity-50 transition duration-200 disabled:!bg-gray-100 disabled:!text-gray-500 disabled:placeholder:!text-gray-400 disabled:!cursor-not-allowed disabled:!border-gray-200',
+  base: 'block peer !w-full focus:outline-none focus:ring-2 focus:ring-opacity-50 transition duration-200 disabled:!bg-gray-100 disabled:!text-gray-500 disabled:placeholder:!text-gray-400 disabled:!cursor-not-allowed disabled:gray-200',
   error:
-    '!border-red not-read-only:hover:enabled:!border-red not-read-only:focus:enabled:!border-red not-read-only:focus:!ring-red/30',
+    'red not-read-only:hover:enabled:red not-read-only:focus:enabled:red not-read-only:focus:!ring-red/30',
   size: {
     sm: 'py-1 !text-xs !h-8 !leading-[32px]',
     DEFAULT:
@@ -35,25 +35,24 @@ const inputClasses = {
   },
   variant: {
     active: {
-      base: '!border !bg-gray-0 placeholder:!opacity-80 read-only:focus:!ring-0',
+      base: '!"" !bg-gray-0 placeholder:!opacity-80 read-only:focus:!ring-0',
       color: {
         DEFAULT:
-          '!border-gray-900 focus:enabled:!border-gray-1000 focus:!ring-gray-900/20 !text-gray-1000',
+          'gray-900 focus:enabled:gray-1000 focus:!ring-gray-900/20 !text-gray-1000',
         primary:
-          '!border-primary focus:enabled:!border-primary focus:!ring-primary/30 !text-primary-dark',
+          'primary focus:enabled:primary focus:!ring-primary/30 !text-primary-dark',
         secondary:
-          '!border-secondary focus:enabled:!border-secondary focus:!ring-secondary/30 !text-secondary-dark',
-        danger:
-          '!border-red focus:enabled:!border-red focus:!ring-red/30 !text-red-dark',
-        info: '!border-blue focus:enabled:!border-blue focus:!ring-blue/30 !text-blue-dark',
+          'secondary focus:enabled:secondary focus:!ring-secondary/30 !text-secondary-dark',
+        danger: 'red focus:enabled:red focus:!ring-red/30 !text-red-dark',
+        info: 'blue focus:enabled:blue focus:!ring-blue/30 !text-blue-dark',
         success:
-          '!border-green focus:enabled:!border-green focus:!ring-green/30 !text-green-dark',
+          'green focus:enabled:green focus:!ring-green/30 !text-green-dark',
         warning:
-          '!border-orange focus:enabled:!border-orange-dark/70 focus:!ring-orange/30 !text-orange-dark',
+          'orange focus:enabled:orange-dark/70 focus:!ring-orange/30 !text-orange-dark',
       },
     },
     flat: {
-      base: '!border-0 placeholder:!opacity-90 read-only:focus:!ring-0',
+      base: '0 placeholder:!opacity-90 read-only:focus:!ring-0',
       color: {
         DEFAULT:
           '!bg-gray-200/70 hover:enabled:!bg-gray-200/90 focus:!ring-gray-900/20 !text-gray-1000 placeholder:!text-gray-600',
@@ -71,22 +70,19 @@ const inputClasses = {
       },
     },
     outline: {
-      base: '!bg-transparent !border !border-gray-300 read-only:!border-gray-300 read-only:focus:!ring-0 placeholder:!text-gray-500 focus:!ring-1',
+      base: '!bg-transparent !"" gray-300 read-only:gray-300 read-only:focus:!ring-0 placeholder:!text-gray-500 focus:!ring-1',
       color: {
-        DEFAULT: 'focus:!border-gray-1000 focus:!ring-gray-900/20',
-        primary:
-          'hover:!border-primary focus:!border-primary focus:!ring-primary/30',
-        secondary:
-          'hover:!border-secondary focus:!border-secondary focus:!ring-secondary/30',
-        danger: 'hover:!border-red focus:!border-red focus:!ring-red/30',
-        info: 'hover:!border-blue focus:!border-blue focus:!ring-blue/30',
-        success: 'hover:!border-green focus:!border-green focus:!ring-green/30',
-        warning:
-          'hover:!border-orange focus:!border-orange-dark/70 focus:!ring-orange/30',
+        DEFAULT: 'focus:gray-1000 focus:!ring-gray-900/20',
+        primary: 'hover:primary focus:primary focus:!ring-primary/30',
+        secondary: 'hover:secondary focus:secondary focus:!ring-secondary/30',
+        danger: 'hover:red focus:red focus:!ring-red/30',
+        info: 'hover:blue focus:blue focus:!ring-blue/30',
+        success: 'hover:green focus:green focus:!ring-green/30',
+        warning: 'hover:orange focus:orange-dark/70 focus:!ring-orange/30',
       },
     },
     text: {
-      base: '!border-0 !bg-transparent',
+      base: '0 !bg-transparent',
       color: {
         DEFAULT:
           'hover:!text-gray-1000 focus:!ring-gray-900/20 placeholder:!text-gray-500',
@@ -106,7 +102,7 @@ const inputClasses = {
 };
 
 const buttonClasses = {
-  base: '!border-0 !bg-transparent !static [&>.selected-flag]:!absolute [&>.selected-flag]:!top-0 [&>.selected-flag]:!bottom-0 [&>.selected-flag.open]:!bg-transparent [&>.selected-flag:hover]:!bg-transparent [&>.selected-flag:focus]:!bg-transparent',
+  base: '0 !bg-transparent !static [&>.selected-flag]:!absolute [&>.selected-flag]:!top-0 [&>.selected-flag]:!bottom-0 [&>.selected-flag.open]:!bg-transparent [&>.selected-flag:hover]:!bg-transparent [&>.selected-flag:focus]:!bg-transparent',
   size: {
     sm: '[&>.selected-flag]:!h-[30px]',
     DEFAULT: '[&>.selected-flag]:!h-full',
@@ -116,7 +112,7 @@ const buttonClasses = {
 };
 
 const dropdownClasses = {
-  base: '!shadow-xl !text-sm !max-h-[216px] !w-full !my-1.5 !bg-gray-0 [&>.no-entries-message]:!text-center [&>.divider]:!border-gray-300',
+  base: 'xl !text-sm !max-h-[216px] !w-full !my-1.5 !bg-gray-0 [&>.no-entries-message]:!text-center [&>.divider]:gray-300',
   rounded: {
     none: '!rounded-sm',
     sm: '!rounded',
@@ -125,7 +121,7 @@ const dropdownClasses = {
     pill: '!rounded-xl',
   },
   searchBox:
-    '!pr-2.5 !bg-gray-0 [&>.search-box]:!w-full [&>.search-box]:!m-0 [&>.search-box]:!px-3 [&>.search-box]:!py-1 [&>.search-box]:!text-sm [&>.search-box]:!capitalize [&>.search-box]:!h-9 [&>.search-box]:!leading-[36px] [&>.search-box]:!rounded-md [&>.search-box]:!bg-transparent [&>.search-box]:!border-gray-300 [&>.search-box:focus]:!border-gray-400/70 [&>.search-box:focus]:!ring-0 [&>.search-box]:placeholder:!text-gray-500',
+    '!pr-2.5 !bg-gray-0 [&>.search-box]:!w-full [&>.search-box]:!m-0 [&>.search-box]:!px-3 [&>.search-box]:!py-1 [&>.search-box]:!text-sm [&>.search-box]:!capitalize [&>.search-box]:!h-9 [&>.search-box]:!leading-[36px] [&>.search-box]:!rounded-md [&>.search-box]:!bg-transparent [&>.search-box]:gray-300 [&>.search-box:focus]:gray-400/70 [&>.search-box:focus]:!ring-0 [&>.search-box]:placeholder:!text-gray-500',
   highlightListColor: {
     DEFAULT:
       '[&>li.country.highlight]:!bg-gray-100 [&>li.country:hover]:!bg-gray-100',

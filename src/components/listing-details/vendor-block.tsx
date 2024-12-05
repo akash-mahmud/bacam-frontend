@@ -77,7 +77,7 @@ export default function VendorBlock({ vendor, stats }: VendorProps) {
       <Button
         size="lg"
         variant="outline"
-        className="w-full !border-gray-dark !py-[8px] !px-4 !font-bold text-gray-dark hover:bg-gray-dark hover:text-white md:w-auto md:border-gray lg:!py-[14px] lg:!px-[28px]"
+        className="w-full gray-dark !py-[8px] !px-4 !font-bold text-gray-dark hover:bg-gray-dark hover:text-white md:w-auto md:gray lg:!py-[14px] lg:!px-[28px]"
         onClick={() => openModal('CONTACT_HOST')}
       >
         Send a message

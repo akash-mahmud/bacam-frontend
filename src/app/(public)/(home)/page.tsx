@@ -9,6 +9,7 @@ import Section from '@/components/ui/section';
 import {
   Employee,
   useEmployeesQuery,
+  useFindFirstHomeQuery,
   useFindManyNewsQuery,
   usePartnerShipsQuery,
   useProductsQuery,
@@ -20,14 +21,14 @@ import { uniqueId } from 'lodash';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import ReactPlayer from 'react-player';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 
-export default async function HomePage() {
+export default  function HomePage() {
   const { data: PartnerShips, loading: partnerShipsLoading } =
     usePartnerShipsQuery();
-  const { data: findManyNewsdata, loading: findmanyNewsLoading } =
-    useFindManyNewsQuery();
+  const { data: HomeData, loading: HomeDataLoading } = useFindFirstHomeQuery();
   const { data: ourTeamEmployeeData, loading: ourTeamEmployeeDataLoading } =
     useEmployeesQuery();
   // const {data:reviewData , loading:reviewsDataLoading} = useFindManyNewsQuery()
@@ -36,48 +37,50 @@ export default async function HomePage() {
       where: {},
     },
   });
+  const { data: NewsRes, loading: NewsresLoading } = useFindManyNewsQuery();
   const products = data?.products ?? [];
+  const home = HomeData?.findFirstHome;
+  const newsData = NewsRes?.findManyNews;
   return (
     <div className=" flex flex-col flex-grow">
       {/* <TopBikes /> */}
-      <div className="flex flex-col">
-        <div className="slide-container">
-          {findManyNewsdata?.findManyNews && (
-            <Slide
-              transitionDuration={100}
-              duration={1000}
-              autoplay={findManyNewsdata?.findManyNews.length > 1}
-              infinite
-              pauseOnHover={false}
-              canSwipe={findManyNewsdata?.findManyNews.length > 1}
-              slidesToShow={1}
-            >
-              {findManyNewsdata?.findManyNews.map((item, index) => (
-                <div key={index} className=" relative ">
-                  <div
-                    key={index}
-                    className={`w-full h-[60vh] bg-cover bg-center cursor-grab `}
-                    style={{
-                      backgroundImage: `url(${getImage(
-                        item.fetaureMedias[0],
-                      )})`,
-                    }}
-                  >
-                    <div className=" absolute bottom-[30%] w-full">
-                      <div className=" flex justify-center md:justify-end w-full space-x-5">
-                        <div className=" w-2/3 md:w-[40%] space-y-5">
-                          <h3 className=" font-bold text-2xl md:text-5xl cursor-text">
-                            {item.title}
-                          </h3>
-                          <Button className="">View More</Button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </Slide>
-          )}
+      <div className=" relative w-full aspect-video">
+        {home?.bannerUrl && (
+          <ReactPlayer
+            width="100%"
+            height="100%"
+            playing
+            loop
+            url={getImage(home?.bannerUrl) ?? ''}
+            controls={false}
+            muted
+          />
+        )}
+      </div>
+      <div className=" container my-5  ">
+        <div className=" grid md:grid-cols-2 grid-cols-1 container-fluid space-x-5">
+          {newsData?.map((item, idx) => (
+            
+            <div key={item.id}>
+              <Link href={`/news/${item.slug}`}>
+              <div
+               
+              >
+                <Image
+                  className={`${
+                    (idx + 1) % 2 === 0 ? ' md:h-[500px]' : 'md:h-[400px]'
+                  }`}
+                  src={getImage(item.fetaureMedias[0])}
+                  alt={item.title}
+                  height={400}
+                  width={700}
+                  
+                />
+              </div>
+              <h2 className=' text-6xl font-semibold my-3'>{item.title}</h2>
+              </Link>
+            </div>
+          ))}
         </div>
       </div>
       <div className=" container my-5 ">
@@ -131,7 +134,7 @@ export default async function HomePage() {
           )}
         </Section>
       </div>
-   
+
       <div className=" container my-5 ">
         <Section
           className="group/section container-fluid "
@@ -153,7 +156,6 @@ export default async function HomePage() {
       <div className=" container my-5 ">
         <Section
           className="group/section container-fluid overflow-hidden "
-        
           headerClassName="items-end mb-4 md:mb-5 xl:mb-6 gap-5"
         >
           <h4 className=" mb-2 text-2xl font-bold">Partnerships</h4>
@@ -163,11 +165,14 @@ export default async function HomePage() {
               {PartnerShips?.partnerShips.map((item, index) => (
                 <div
                   key={item.id}
-                  className="listing-card group/item relative inline-flex w-full flex-col shadow-md p-5 rounded-md border"
+                  className="listing-card group/item relative inline-flex w-full flex-col  rounded-md "
                 >
                   <div className="relative w-full overflow-hidden rounded-xl">
                     <div className="listing-item after:absolute after:bottom-0 after:left-0 after:z-[1] after:h-1/4 after:w-full after:bg-gradient-to-t after:from-black/25">
-                      <div className=' cursor-pointer' onClick={() => window.open(item.link, '_blank')}>
+                      <div
+                        className=" cursor-pointer"
+                        onClick={() => window.open(item.link, '_blank')}
+                      >
                         <Image
                           className="aspect-[34/25] bg-gray-lighter"
                           src={getImage(item.logo)}
@@ -179,14 +184,6 @@ export default async function HomePage() {
                       </div>
                     </div>
                   </div>
-                  <Link href={''}>
-                    <div className="content pt-3">
-                      <h4 className="text-ellipsis text-gray-dark 2xl:mb-1.5">
-                        {item.name}
-                      </h4>
-                   
-                    </div>
-                  </Link>
                 </div>
               ))}
             </div>

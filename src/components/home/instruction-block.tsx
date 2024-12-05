@@ -71,14 +71,14 @@ function InstructionGrid() {
         <ActionIcon
           rounded="full"
           color="invert"
-          className="instruction-button-prev invisible absolute top-1/2 left-[25px] z-10 flex -translate-y-1/2 shadow-md !transition-all group-hover/section:visible group-hover/section:left-0"
+          className="instruction-button-prev invisible absolute top-1/2 left-[25px] z-10 flex -translate-y-1/2 md !transition-all group-hover/section:visible group-hover/section:left-0"
         >
           <ChevronLeftIcon className="h-auto w-5" />
         </ActionIcon>
         <ActionIcon
           rounded="full"
           color="invert"
-          className="instruction-button-next invisible absolute top-1/2 right-[25px] z-10 flex -translate-y-1/2 shadow-md !transition-all group-hover/section:visible group-hover/section:right-4 sm:group-hover/section:right-6 lg:group-hover/section:-right-[19px]"
+          className="instruction-button-next invisible absolute top-1/2 right-[25px] z-10 flex -translate-y-1/2 md !transition-all group-hover/section:visible group-hover/section:right-4 sm:group-hover/section:right-6 lg:group-hover/section:-right-[19px]"
         >
           <ChevronRightIcon className="h-auto w-5" />
         </ActionIcon>

@@ -12,7 +12,7 @@ interface SetPriceTypes {
 
 export default function SetPrice({ value, countBy, onChange }: SetPriceTypes) {
   return (
-    <div className="card-gradient flex items-center justify-between rounded-lg border border-gray-lighter py-5 px-6 text-sm text-gray md:text-base lg:rounded-xl lg:p-9">
+    <div className="card-gradient flex items-center justify-between rounded-lg -gray-lighter py-5 px-6 text-sm text-gray md:text-base lg:rounded-xl lg:p-9">
       <div className="flex items-center gap-2">
         <Text tag="h3" className="text-2xl">
           ${value}
